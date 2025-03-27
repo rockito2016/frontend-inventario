@@ -40,28 +40,28 @@ export class StockMinimoComponent implements OnInit {
   }
 
   loadProductsStock(): void {
-    this.http.get<any[]>('http://localhost:3000/inventario/stock-minimo').subscribe(
+    this.http.get<any[]>('https://frontend-inventario-c5x2-1c81jp497-javier-pascuaza-s-projects.vercel.app/inventario/stock-minimo').subscribe(
       (data) => {
         console.log('Datos recibidos del backend:', data);
         let restoredProducts = JSON.parse(localStorage.getItem('stockMinimo') || '[]');
         restoredProducts = restoredProducts.filter((product: any) => product.estado_id === 1);
         this.productsStock = this.removeDuplicates([...data, ...restoredProducts]);
-  
+
         this.productsStock = this.productsStock.map(product => ({
           ...product,
           selected: product.selected || false
         }));
-  
+
         this.groupProductsBySupplier();
         this.calculateTotalDinero();
         localStorage.setItem('stockMinimo', JSON.stringify(this.productsStock));
       },
       (error) => {
-        console.error('Error al obtener los productos en stock mínimo:', error); 
+        console.error('Error al obtener los productos en stock mínimo:', error);
       }
     );
   }
-  
+
   groupProductsBySupplier(): void {
     this.groupedProducts = this.productsStock.reduce((acc, product) => {
       const supplierName = product.proveedor;
@@ -80,7 +80,7 @@ export class StockMinimoComponent implements OnInit {
     );
   }
 
-   getTotalTotalPrice(products: any[]): number {
+  getTotalTotalPrice(products: any[]): number {
     return products.reduce((total, product) => total + (product.cantidad * product.precio_compra), 0);
   }
 
@@ -109,7 +109,7 @@ export class StockMinimoComponent implements OnInit {
         );
 
         localStorage.setItem('stockMinimo', JSON.stringify(this.productsStock));
- 
+
         setTimeout(() => {
           this.isSendingPedido = false;
           this.pedidoEnviado = true;
@@ -131,12 +131,12 @@ export class StockMinimoComponent implements OnInit {
       }
     );
   }
-  
- removeDuplicates(products: any[]): any[] {
-  const uniqueProducts = new Map<number, any>();
-  products.forEach(product => uniqueProducts.set(product.codigo, product));
-  return Array.from(uniqueProducts.values());
-}
+
+  removeDuplicates(products: any[]): any[] {
+    const uniqueProducts = new Map<number, any>();
+    products.forEach(product => uniqueProducts.set(product.codigo, product));
+    return Array.from(uniqueProducts.values());
+  }
 
   calculateTotalSelected(): void {
     this.totalSelected = this.selectedProducts.reduce(
@@ -144,18 +144,18 @@ export class StockMinimoComponent implements OnInit {
       0
     );
   }
-  
+
   toggleSelectAll(): void {
     const allSelected = this.productsStock.every(product => product.selected);
-      this.productsStock.forEach(product => product.selected = !allSelected);
-      this.selectedProducts = this.productsStock.filter(product => product.selected);
-      this.calculateTotalSelected();
-      this.isSelectAllActive = !allSelected;
+    this.productsStock.forEach(product => product.selected = !allSelected);
+    this.selectedProducts = this.productsStock.filter(product => product.selected);
+    this.calculateTotalSelected();
+    this.isSelectAllActive = !allSelected;
   }
-  
+
   toggleProductSelection(product: any): void {
     product.selected = !product.selected;
-  
+
     if (product.selected) {
       if (!this.selectedProducts.some(p => p.codigo === product.codigo)) {
         this.selectedProducts.push(product);
@@ -163,7 +163,7 @@ export class StockMinimoComponent implements OnInit {
     } else {
       this.selectedProducts = this.selectedProducts.filter(p => p.codigo !== product.codigo);
     }
-  
+
     this.calculateTotalSelected();
   }
 
@@ -173,7 +173,7 @@ export class StockMinimoComponent implements OnInit {
       0
     );
   }
-  
+
 
   updateSelection(product: any): void {
     if (product.selected) {
@@ -183,7 +183,7 @@ export class StockMinimoComponent implements OnInit {
     } else {
       this.selectedProducts = this.selectedProducts.filter(p => p.codigo !== product.codigo);
     }
-  
+
     this.totalSelected = this.getTotalSelected();
   }
 }
