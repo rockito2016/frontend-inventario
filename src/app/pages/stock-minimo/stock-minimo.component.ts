@@ -40,7 +40,7 @@ export class StockMinimoComponent implements OnInit {
   }
 
   loadProductsStock(): void {
-    this.http.get<any[]>('https://frontend-inventario-c5x2-1c81jp497-javier-pascuaza-s-projects.vercel.app/inventario/stock-minimo').subscribe(
+    this.http.get<any[]>('http://localhost:3000/inventario/stock-minimo').subscribe(
       (data) => {
         console.log('Datos recibidos del backend:', data);
         let restoredProducts = JSON.parse(localStorage.getItem('stockMinimo') || '[]');
@@ -80,7 +80,7 @@ export class StockMinimoComponent implements OnInit {
     );
   }
 
-  getTotalTotalPrice(products: any[]): number {
+   getTotalTotalPrice(products: any[]): number {
     return products.reduce((total, product) => total + (product.cantidad * product.precio_compra), 0);
   }
 
@@ -132,11 +132,11 @@ export class StockMinimoComponent implements OnInit {
     );
   }
 
-  removeDuplicates(products: any[]): any[] {
-    const uniqueProducts = new Map<number, any>();
-    products.forEach(product => uniqueProducts.set(product.codigo, product));
-    return Array.from(uniqueProducts.values());
-  }
+ removeDuplicates(products: any[]): any[] {
+  const uniqueProducts = new Map<number, any>();
+  products.forEach(product => uniqueProducts.set(product.codigo, product));
+  return Array.from(uniqueProducts.values());
+}
 
   calculateTotalSelected(): void {
     this.totalSelected = this.selectedProducts.reduce(
@@ -147,10 +147,10 @@ export class StockMinimoComponent implements OnInit {
 
   toggleSelectAll(): void {
     const allSelected = this.productsStock.every(product => product.selected);
-    this.productsStock.forEach(product => product.selected = !allSelected);
-    this.selectedProducts = this.productsStock.filter(product => product.selected);
-    this.calculateTotalSelected();
-    this.isSelectAllActive = !allSelected;
+      this.productsStock.forEach(product => product.selected = !allSelected);
+      this.selectedProducts = this.productsStock.filter(product => product.selected);
+      this.calculateTotalSelected();
+      this.isSelectAllActive = !allSelected;
   }
 
   toggleProductSelection(product: any): void {
