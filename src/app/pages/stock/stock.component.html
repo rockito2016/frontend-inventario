@@ -1,0 +1,57 @@
+<h2>Productos en stock</h2>
+ 
+<div class="flex-container-column">
+  <div class="flex-container">
+    <div class="search-container"> 
+      <div class="search-header">
+        <h2 class="titulo-buscador">Buscar un producto</h2>
+        <input 
+          type="text"
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
+          (input)="onSearch()"
+          placeholder="Buscar por nombre o codigo"
+          class="search-input"
+        />
+      </div>
+    </div>
+    <div class="info-container">
+      <button class="info-box">
+        Total Dinero: {{ totalDinero | currency: 'USD' : 'symbol' : '1.0-0' }}
+      </button>
+      <button class="info-box">Cantidad: {{ totalProductos }}</button>
+    </div>
+  </div>
+</div> 
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proveedor</th>
+        <th>Subcategoria</th>
+        <th>Nombre</th>
+        <th>Formulación</th>
+        <th>Unidad</th>
+        <th>Cantidad</th>
+        <th>Precio Compra</th>
+      </tr> 
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProducts()">
+        <td>{{ product.codigo }}</td>
+        <td>{{ product.proveedor }}</td>
+        <td>{{ product.subcategoria }}</td>
+        <td>{{ product.nombre }}</td>
+        <td>{{ product.formulacion }}</td>
+        <td>{{ product.unidad }}</td>
+        <td>{{ product.cantidad }}</td>
+        <td>{{ product.precio_compra | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+      </tr>
+      <tr *ngIf="filteredProducts().length === 0">
+        <td colspan="8" class="No-resultados">No se encontraron resultados</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

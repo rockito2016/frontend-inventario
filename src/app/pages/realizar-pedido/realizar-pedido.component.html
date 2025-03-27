@@ -1,0 +1,216 @@
+<h2>Realizar pedido</h2>
+
+<div class="flex-container-column">
+    <div class="flex-container">
+        <div class="search-container">
+            <div class="search-header">
+                <h2 class="titulo-buscador">Buscar un producto</h2>
+                <input type="text" [(ngModel)]="searchTerm" name="searchTerm" (input)="onSearch()"
+                    placeholder="Buscar por nombre o código" class="search-input" />
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-header">
+                <h2 class="titulo-buscador">Filtrar por unidad</h2>
+                <select [(ngModel)]="selectedUnit" (change)="onSearch()" class="search-select">
+                    <option value="">Todas</option>
+                    <option *ngFor="let unit of filteredUnits" [value]="unit.nombre">{{ unit.nombre }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-container table1">
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Proveedor</th>
+                <th>Subcategoría</th>
+                <th>Nombre</th>
+                <th>Formulación</th>
+                <th>Unidad</th>
+                <th>Cantidad</th>
+                <th>Precio Compra</th>
+                <th>Agregar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of limitedFilteredProducts(); let i = index">
+                <ng-container *ngIf="!product.noResults; else noResultsRow">
+                    <td>{{ product.codigo }}</td>
+                    <td>{{ product.proveedor }}</td>
+                    <td>{{ product.subcategoria }}</td>
+                    <td>{{ product.nombre }}</td>
+                    <td>{{ product.formulacion }}</td>
+                    <td>{{ product.unidad }}</td>
+                    <td>{{ product.cantidad }}</td>
+                    <td>
+                        {{
+                        product.precio_compra | currency : "USD" : "symbol" : "1.0-0"
+                        }}
+                       
+                    </td>
+                    <td>
+                        <button class="btn btn-success" (click)="onAdd(product)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </td>
+                </ng-container>
+            </tr>
+            <ng-template #noResultsRow>
+                <td colspan="8" class="No-resultados">
+                    No se encontraron resultados
+                </td>
+            </ng-template>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <div *ngFor="let supplier of groupedSuppliersArray">
+        <h3 class="supplier-header">{{ supplier.key }}</h3>
+
+        <div class="container-columns">
+              
+                <div class="column">
+                  <label for="compraId" class="form-label">Compra #</label>
+                  <input
+                    type="text"
+                    id="compraId"
+                    class="form-control"
+                    [value]="compraIdsBySupplier[supplier.key]"
+                    readonly
+                  />
+                </div>
+
+                <div class="column">
+                    <label for="facturaId" class="form-label">Factura #</label>
+                    <input
+                      type="text"
+                      id="facturaId"
+                      class="form-control"
+                      [(ngModel)]="supplierData[supplier.key].facturaNumero"
+                      (ngModelChange)="updateSupplierDataInLocalStorage(supplier.key)"
+                    />
+                  </div>
+                  
+                  <div class="column">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input
+                      type="date"
+                      id="fecha"
+                      class="form-control"
+                      [(ngModel)]="supplierData[supplier.key].fecha"
+                      (ngModelChange)="updateSupplierDataInLocalStorage(supplier.key)"
+                    />
+                  </div>
+                  
+                  <div class="column">
+                    <label for="formaPago" class="form-label">Forma de Pago</label>
+                    <select
+                      id="formaPago"
+                      class="search-select"
+                      [(ngModel)]="supplierData[supplier.key].formaPago"
+                      (ngModelChange)="onFormaPagoChange(supplier.key); updateSupplierDataInLocalStorage(supplier.key)"
+                    >
+                      <option value="">Seleccione</option>
+                      <option *ngFor="let forma of formasPagoList" [value]="forma.id">
+                        {{ forma.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  
+                  <div class="column">
+                    <label for="abonoInicial" class="form-label">Abono Inicial</label>
+                    <input
+                    type="text"
+                    id="abonoInicial"
+                    class="form-control"
+                    [value]="supplierData[supplier.key].abonoInicial | currency: 'USD':'symbol':'1.0-0'"
+                    [disabled]="!supplierData[supplier.key].isAbonoInicialEnabled"
+                    (input)="updateAbonoInicial($event, supplier.key)"
+                    />
+                  </div>
+        </div>
+
+        <table class="table-container table2">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Subcategoría</th>
+                    <th>Nombre</th>
+                    <th>Formulación</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                    <th>Precio Compra</th>
+                    <th>Total</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of supplier.value; let i = index">
+                    <td>{{ product.codigo }}</td>
+                    <td>{{ product.subcategoria }}</td>
+                    <td>{{ product.nombre_producto }}</td>
+                    <td>{{ product.formulacion }}</td>
+                    <td>{{ product.unidad }}</td>
+                    <td>
+                        <div class="quantity-control">
+                          <button class="btn-quantity" (click)="decrementQuantity(product)">-</button>
+                          <span class="quantity-display">{{ product.cantidad }}</span>
+                          <button class="btn-quantity-more" (click)="incrementQuantity(product)">+</button>
+                        </div>
+                      </td>
+                      
+                        <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              [value]="product.precio_compra | currency: 'USD':'symbol':'1.0-0'"
+                              (blur)="formatPrecioCompra(product, $event)"
+                              (focus)="removeCurrencyFormat($event)"
+                            />
+                          </td>
+                          
+                                                
+                    <td>
+                        {{
+                        product.cantidad * product.precio_compra
+                        | currency : "USD" : "symbol" : "1.0-0"
+                        }}
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="removeFromPedido(product)">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="total-table">
+            <tbody>
+                <tr class="total-row">
+                    <td class="label-total">Total del Proveedor:</td>
+                    <td class="value-total">
+                        {{
+                        getTotalTotalPrice(supplier.value)
+                        | currency : "USD" : "symbol" : "1.0-0"
+                        }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="Finalizar-pedido">
+            <button class="btn-exportar" (click)="exportToPDF(supplier.key)">
+                Exportar pedido
+            </button>
+            <button class="btn btn-finalizar" (click)="finalizarPedido(supplier.key)">
+                Finalizar pedido
+            </button>
+        </div>
+    </div>
+</div>

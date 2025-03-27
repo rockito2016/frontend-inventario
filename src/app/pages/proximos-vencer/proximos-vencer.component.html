@@ -1,0 +1,123 @@
+<h2>Productos vencidos</h2> 
+
+<div class="flex-container-column">
+    <div class="flex-container"> 
+        <div class="search-container">
+        <h2 class="titulo-buscador">Vencidos</h2>
+        </div>
+        <div class="info-container">
+        <button class="info-box">
+            {{ totalDinero | currency: 'USD' : 'symbol' : '1.0-0' }}
+        </button>
+        </div>
+    </div>
+</div>
+
+<div *ngFor="let supplier of groupedProducts | keyvalue" class="supplier-container">
+    <div class="supplier-header">
+        <h2 class="supplier-title">{{ getMesEnEspanol(supplier.key) }}</h2>
+    </div>
+   
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha de vencimiento</th>
+            <th>Proveedor</th>
+            <th>Subcategoria</th>
+            <th>Nombre</th>
+            <th>Formulación</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Precio compra</th>
+            <th>Total</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of supplier.value">
+            <td>{{ product.fecha_vencimiento | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ product.proveedor }}</td>
+            <td>{{ product.subcategoria }}</td>
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.formulacion }}</td>
+            <td>{{ product.unidad }}</td>
+            <td>{{ product.cantidad }}</td>
+            <td>{{ product.precio_compra | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+            <td>{{ (product.cantidad * product.precio_compra) | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="total-table-container">
+      <table class="total-table">
+        <tbody>
+          <tr class="total-row">
+            <td>Total</td>
+            <td class="calculo">{{ getTotalTotalPrice(supplier.value) | currency : 'USD' : 'symbol' : '1.0-0' }}</td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<div class="flex-container-column">
+    <div class="flex-container">
+        <div class="search-container">
+        <h2 class="titulo-buscador">Próximos a vencer</h2>
+        </div>
+        <div class="info-container">
+        <button class="info-box2">
+            {{ totalDinero2 | currency: 'USD' : 'symbol' : '1.0-0' }}
+        </button>
+        </div>
+    </div>
+</div>
+
+<div *ngFor="let supplier of groupedProductsProximosAVencer | keyvalue" class="supplier-container">
+    <div class="supplier-header">
+        <h2 class="supplier-title">{{ getMesEnEspanol(supplier.key) }}</h2>
+    </div>
+   
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha de vencimiento</th>
+            <th>Proveedor</th>
+            <th>Subcategoria</th>
+            <th>Nombre</th>
+            <th>Formulación</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Precio compra</th>
+            <th>Total</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of supplier.value">
+            <td>{{ product.fecha_vencimiento | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ product.proveedor }}</td>
+            <td>{{ product.subcategoria }}</td>
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.formulacion }}</td>
+            <td>{{ product.unidad }}</td>
+            <td>{{ product.cantidad }}</td>
+            <td>{{ product.precio_compra | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+            <td>{{ (product.cantidad * product.precio_compra) | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="total-table-container">
+      <table class="total-table">
+        <tbody>
+          <tr class="total-row2">
+            <td>Total</td>
+            <td class="calculo">{{ getTotalTotalPrice(supplier.value) | currency : 'USD' : 'symbol' : '1.0-0' }}</td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

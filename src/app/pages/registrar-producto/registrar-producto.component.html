@@ -1,0 +1,353 @@
+<h2>Registrar un producto</h2> 
+ 
+<div class="flex-container-column">
+    <div class="flex-container">
+        <div class="search-container">
+        <div class="search-header">
+            <h2 class="titulo-buscador">Buscar un producto</h2>
+            <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            name="searchTerm"
+            (input)="onSearch()"
+            placeholder="Buscar por nombre o código"
+            class="search-input"
+            />
+        </div>
+        </div>
+        <div class="info-container">
+        <button class="btn btn-success" (click)="onAdd()">
+            <i class="bi bi-plus-lg"></i>
+        </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showAddModal">
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar producto</h5>
+                    <button type="button" class="btn-close close-button" (click)="closeAddModal()">
+                        <i class="bi bi-x-square-fill"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form (ngSubmit)="onSubmit(productoForm)" #productoForm="ngForm">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">Nombre del Producto:</label>
+                                <input type="text" id="nombre" class="form-control" name="nombre" ngModel required>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoria_id" class="form-label">Categoría:</label>
+                                <select 
+                                id="categoria_id" 
+                                  class="form-control" 
+                                  name="categoria_id" 
+                                  [(ngModel)]="selectedCategoriaId" 
+                                  (change)="onCategoriaChange($event)" 
+                                  required>
+                                  <option *ngFor="let categoria of categoriaList" [value]="categoria.id">{{ categoria.nombre }}</option>
+                                </select>
+                            </div>
+                              
+                            <div class="form-group">
+                                <label for="subcategoria_id" class="form-label">Subcategoría:</label>
+                                <select 
+                                    id="subcategoria_id" 
+                                    class="form-control" 
+                                    name="subcategoria_id" 
+                                    ngModel 
+                                    required>
+                                    <option *ngFor="let subcategoria of subcategoriaList" [value]="subcategoria.id">{{ subcategoria.nombre }}</option>
+                                </select>
+                            </div>                              
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="proveedor_id" class="form-label">Proveedor:</label>
+                                <select id="proveedor_id" class="form-control" name="proveedor_id" ngModel required>
+                                    <option *ngFor="let proveedor of proveedoresList" [value]="proveedor.id">{{ proveedor.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="transportador_id" class="form-label">Transportador:</label>
+                                <select id="transportador_id" class="form-control" name="transportador_id" ngModel required>
+                                    <option *ngFor="let transportador of transportadorList" [value]="transportador.id">{{ transportador.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento:</label>
+                                <input type="date" id="fecha_vencimiento" class="form-control" name="fecha_vencimiento" [(ngModel)]="selectedProducto.fecha_vencimiento" required>
+                            </div>                                                      
+                        </div>
+  
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="precio_compra" class="form-label">Precio de Compra:</label>
+                                <input type="text" id="precio_compra" class="form-control right-align" name="precio_compra" 
+                                       (input)="formatCurrency($event)" ngModel required>
+                            </div>
+                            <div class="form-group">
+                                <label for="precio_venta" class="form-label">Precio de Venta:</label>
+                                <input type="text" id="precio_venta" class="form-control right-align" name="precio_venta" 
+                                       (input)="formatCurrency($event)" ngModel required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cantidad" class="form-label">Cantidad:</label>
+                                <input type="text" id="cantidad" class="form-control right-align" name="cantidad" (input)="validateNumberInput($event)" ngModel required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stock_minimo" class="form-label">Stock Mínimo:</label>
+                                <input type="text" id="stock_minimo" class="form-control right-align" name="stock_minimo" (input)="validateNumberInput($event)" ngModel required>
+                            </div>
+                        </div>                                                
+ 
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formulacion_id" class="form-label">Formulación:</label>
+                                <select id="formulacion_id" class="form-control" name="formulacion_id" ngModel required>
+                                    <option *ngFor="let formulacion of formulacionList" [value]="formulacion.id">{{ formulacion.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="unidad_id" class="form-label">Unidad:</label>
+                                <select id="unidad_id" class="form-control" name="unidad_id" ngModel required>
+                                    <option *ngFor="let unidad of unidadList" [value]="unidad.id">{{ unidad.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="elaborado_id" class="form-label">Elaborado:</label>
+                                <select id="elaborado_id" class="form-control" name="elaborado_id" ngModel required>
+                                    <option *ngFor="let elaborado of elaboradoList" [value]="elaborado.id">{{ elaborado.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="estado_id" class="form-label">Estado:</label>
+                                <select id="estado_id" class="form-control" name="estado_id" ngModel required>
+                                    <option *ngFor="let estado of estadoList" [value]="estado.id">{{ estado.nombre }}</option>
+                                </select>
+                            </div>                            
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" [disabled]="!productoForm.form.valid">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-scroll">
+    <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Modificar</th>
+              <th>Eliminar</th>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Subcategoría</th>
+              <th>Fecha de vencimiento</th>
+              <th>Formulación</th>
+              <th>Unidad</th>
+              <th>Cantidad</th>
+              <th>Precio Compra</th>
+              <th>Precio Venta</th>
+              <th>Stock Mínimo</th>
+              <th>Estado</th>
+              <th>Elaborado</th>
+              <th>Proveedor</th>
+              <th>Transportador</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of filteredProductos()">
+              <td>
+                <button class="buttonModificar" (click)="onEditProducto(producto)">
+                    <i class="bi bi-pen-fill"></i>
+                </button>                
+              </td>
+              <td>
+                <button class="buttonEliminar" (click)="onDelete(producto.codigo)">
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+              </td>          
+              <td>{{ producto.codigo }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.categoria }}</td>
+              <td>{{ producto.subcategoria }}</td>
+              <td>{{ producto.fecha_vencimiento | date:'dd/MM/yyyy' }}</td>
+              <td>{{ producto.formulacion }}</td>
+              <td>{{ producto.unidad }}</td>
+              <td>{{ producto.cantidad }}</td>
+              <td>{{ producto.precio_compra | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+              <td>{{ producto.precio_venta | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+              <td>{{ producto.stock_minimo }}</td>
+              <td>{{ producto.estado }}</td>
+              <td>{{ producto.elaborado }}</td>
+              <td>{{ producto.proveedor }}</td>
+              <td>{{ producto.transportador }}</td>
+            </tr>
+            <tr *ngIf="filteredProductos().length === 0">
+              <td colspan="14" class="No-resultados">No se encontraron resultados</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>      
+</div> 
+
+<div class="modal-overlay" *ngIf="showEditModal">
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modificar Producto</h5>
+                    <button type="button" class="btn-close close-button" (click)="closeEditModalProducto()">
+                        <i class="bi bi-x-square-fill"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form (ngSubmit)="onEditSubmitProducto(productoForm)" #productoForm="ngForm">
+ 
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">Nombre del Producto:</label>
+                                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="selectedProducto.nombre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categoria_id" class="form-label">Categoría:</label>
+                                <select 
+                                    id="categoria_id" 
+                                    class="form-control" 
+                                    name="categoria_id" 
+                                    [(ngModel)]="selectedProducto.categoria_id" 
+                                    (change)="onCategoriaChange($event)"
+                                    required>
+                                    <option *ngFor="let categoria of categoriaList" [value]="categoria.id">{{ categoria.nombre }}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subcategoria_id" class="form-label">Subcategoría:</label>
+                                <select 
+                                    id="subcategoria_id" 
+                                    class="form-control" 
+                                    name="subcategoria_id" 
+                                    [(ngModel)]="selectedProducto.subcategoria_id" 
+                                    required>
+                                    <option *ngFor="let subcategoria of subcategoriaList" [value]="subcategoria.id">{{ subcategoria.nombre }}</option>
+                                </select>
+                            </div>
+                                              
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="proveedor_id" class="form-label">Proveedor:</label>
+                                <select id="proveedor_id" class="form-control" name="proveedor_id" [(ngModel)]="selectedProducto.proveedor_id" required>
+                                    <option *ngFor="let proveedor of proveedoresList" [value]="proveedor.id">{{ proveedor.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="transportador_id" class="form-label">Transportador:</label>
+                                <select id="transportador_id" class="form-control" name="transportador_id" [(ngModel)]="selectedProducto.transportador_id" required>
+                                    <option *ngFor="let transportador of transportadorList" [value]="transportador.id">{{ transportador.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento:</label>
+                                <input type="date" id="fecha_vencimiento" class="form-control" name="fecha_vencimiento" [(ngModel)]="selectedProducto.fecha_vencimiento" required>
+                            </div>                            
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="precio_compra" class="form-label">Precio de Compra:</label>
+                                <input type="text" id="precio_compra" class="form-control right-align" name="precio_compra" 
+                                       [(ngModel)]="selectedProducto.precio_compra" (input)="formatCurrency($event)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="precio_venta" class="form-label">Precio de Venta:</label>
+                                <input type="text" id="precio_venta" class="form-control right-align" name="precio_venta" 
+                                       [(ngModel)]="selectedProducto.precio_venta" (input)="formatCurrency($event)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cantidad" class="form-label">Cantidad:</label>
+                                <input type="text" id="cantidad" class="form-control right-align" name="cantidad" 
+                                       [(ngModel)]="selectedProducto.cantidad" (input)="validateNumberInput($event)" required>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="stock_minimo" class="form-label">Stock Mínimo:</label>
+                                <input type="text" id="stock_minimo" class="form-control right-align" name="stock_minimo" 
+                                       [(ngModel)]="selectedProducto.stock_minimo" (input)="validateNumberInput($event)" required>
+                            </div>                                                     
+                        </div>
+                                            
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formulacion_id" class="form-label">Formulación:</label>
+                                <select id="formulacion_id" class="form-control" name="formulacion_id" [(ngModel)]="selectedProducto.formulacion_id" required>
+                                    <option *ngFor="let formulacion of formulacionList" [value]="formulacion.id">{{ formulacion.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="unidad_id" class="form-label">Unidad:</label>
+                                <select id="unidad_id" class="form-control" name="unidad_id" [(ngModel)]="selectedProducto.unidad_id" required>
+                                    <option *ngFor="let unidad of unidadList" [value]="unidad.id">{{ unidad.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="elaborado_id" class="form-label">Elaborado:</label>
+                                <select id="elaborado_id" class="form-control" name="elaborado_id" [(ngModel)]="selectedProducto.elaborado_id" required>
+                                    <option *ngFor="let elaborado of elaboradoList" [value]="elaborado.id">{{ elaborado.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="estado_id" class="form-label">Estado:</label>
+                                <select id="estado_id" class="form-control" name="estado_id" [(ngModel)]="selectedProducto.estado_id" required>
+                                    <option *ngFor="let estado of estadoList" [value]="estado.id">{{ estado.nombre }}</option>
+                                </select>
+                            </div>                            
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" [disabled]="!productoForm.form.valid">Guardar cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDeleteConfirmation">
+    <div class="modal2" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmación de Eliminación</h5>
+            <button type="button" class="btn-close close-button" (click)="closeDeleteConfirmation()">
+              <i class="bi bi-x-square-fill"></i>
+            </button>
+          </div>
+          <div class="modal-body2">
+            <p>¿Estás seguro de que deseas eliminar este producto?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

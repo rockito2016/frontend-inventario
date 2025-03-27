@@ -1,0 +1,81 @@
+<h2>Balance diario</h2>
+
+<div class="botones">
+  <div class="month-navigation">
+    <button class="arrow-btn" (click)="cambiarMes(-1)">
+      <i class="bi bi-caret-left-fill"></i>
+    </button>
+    <h4>{{ nombreMes }}</h4>
+    <button class="arrow-btn" (click)="cambiarMes(1)">
+      <i class="bi bi-caret-right-fill"></i>
+    </button>
+  </div>   
+  
+  <button class="btn btn-success" (click)="onAdd()">
+    <i class="bi bi-plus-lg"></i> 
+  </button>
+</div>
+
+<div class="modal-overlay" *ngIf="showAddModal">
+  <div class="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar un gasto</h5>
+          <button type="button" class="btn-close close-button" (click)="closeAddModal()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" class="form-control" name="fecha" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="detalle">Detalle:</label>
+                <select id="detalle" class="form-control" name="detalle" ngModel required>
+                  <option *ngFor="let item of detalles" [value]="item.id">{{ item.nombre }}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="text" id="cantidad" class="form-control" name="cantidad" 
+                       [ngModel]="cantidadFormateada" (input)="formatearCantidad($event)" required>
+              </div>              
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Registrar</button>
+            </div>
+          </form> 
+        </div>        
+      </div> 
+    </div>
+  </div>
+</div>
+ 
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Detalle</th>
+        <th>Ingresos</th>
+        <th>Gastos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredBalance">
+        <td>{{ item.fecha | date:'yyyy-MM-dd' }}</td>
+        <td>{{ item.detalle_texto }}</td>
+        <td>{{ item.ingresos ? (item.ingresos | currency : "USD" : "symbol" : "1.0-0") : '' }}</td>
+        <td>{{ item.gastos ? (item.gastos | currency : "USD" : "symbol" : "1.0-0") : '' }}</td>
+      </tr>
+      <tr *ngIf="filteredBalance.length === 0">
+        <td colspan="4" class="No-resultados">No se encontraron resultados</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

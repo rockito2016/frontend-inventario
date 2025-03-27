@@ -1,0 +1,67 @@
+<h2>Detalle de las Ventas</h2>
+
+<div class="flex-container">
+  <div class="search-header">
+    <h2 class="titulo-buscador">Buscar un cliente</h2>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      name="searchTerm"
+      (input)="onSearch()" 
+      placeholder="Buscar por cédula"
+      class="search-input"
+    />
+  </div>  
+</div>
+
+<div *ngIf="ventas.length > 0; else noResults">
+  <div *ngFor="let venta of ventas" class="supplier-container">
+    <div class="supplier-header">
+      <h2 class="supplier-title">Fecha: {{ venta.fecha | date:'yyyy-MM-dd' }} - Cliente: {{ venta.cliente }}</h2>
+    </div>
+     
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Formulación</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detalle of venta.detalles">
+            <td>{{ detalle.producto_codigo }}</td>
+            <td>{{ detalle.producto_nombre }}</td>
+            <td>{{ detalle.formulacion_nombre }}</td>
+            <td>{{ detalle.unidad_nombre }}</td>
+            <td>{{ detalle.cantidad }}</td>
+            <td>{{ detalle.precio_unitario | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+            <td>{{ detalle.subtotal | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="total-table-container">
+      <table class="total-table">
+        <tbody>
+          <tr class="total-row">
+            <td colspan="6">Total</td>
+            <td class="calculo">{{ getTotalSubTotal(venta.detalles) | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+  </div>
+</div>
+
+<ng-template #noResults>
+  <div class="no-results">
+    <p class="No-resultados">No se encontraron resultados</p>
+  </div>
+</ng-template>

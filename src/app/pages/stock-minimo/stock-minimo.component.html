@@ -1,0 +1,120 @@
+<h2>Stock mínimo</h2>
+
+<div class="flex-container-column">
+  <div class="flex-container">
+    <div class="search-container">
+      <h2 class="titulo-buscador">Total a pedir</h2>
+    </div>
+    <div class="info-container">
+      <button class="info-box">
+        {{ totalDinero | currency : "USD" : "symbol" : "1.0-0" }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngFor="let supplier of groupedProducts | keyvalue"
+  class="supplier-container"
+>
+  <div class="supplier-header">
+    <h2 class="supplier-title">{{ supplier.key }}</h2>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Seleccionar</th>
+          <th>Código</th>
+          <th>Subcategoria</th>
+          <th>Nombre</th>
+          <th>Formulación</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+          <th>Precio compra</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of supplier.value">
+          <td>
+            <input 
+            type="checkbox" 
+            [(ngModel)]="product.selected" 
+            (change)="updateSelection(product)" 
+            class="custom-checkbox" 
+          />
+          </td>          
+          <td>{{ product.codigo }}</td>
+          <td>{{ product.subcategoria }}</td>
+          <td>{{ product.nombre_producto }}</td>
+          <td>{{ product.formulacion }}</td>
+          <td>{{ product.unidad }}</td>
+          <td>{{ product.cantidad }}</td>
+          <td>
+            {{ product.precio_compra | currency : "USD" : "symbol" : "1.0-0" }}
+          </td>
+          <td>
+            {{
+              product.cantidad * product.precio_compra
+                | currency : "USD" : "symbol" : "1.0-0"
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+  
+  <div class="total-table-container">
+    <table class="total-table">
+      <tbody>
+        <tr class="total-row">
+          <td>Total</td>
+          <td class="calculo">{{ getTotalTotalPrice(supplier.value) | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="flex-container-column">
+  <div class="flex-container2">
+    <div class="search-container">
+      <h2 class="titulo-buscador">Total Seleccionado</h2>
+    </div>
+    <div class="info-container">
+      <button class="info-box2">
+        {{ getTotalSelected() | currency : "USD" : "symbol" : "1.0-0" }}
+      </button>
+      <button
+      class="info-box3 select-all-button"
+      [class.active]="isSelectAllActive"
+      (click)="toggleSelectAll()"
+      >
+        Seleccionar Todo
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<div class="send-pedido-container">
+  <button
+    class="enviar-pedido-btn"
+    [disabled]="selectedProducts.length === 0 || isSendingPedido"
+    (click)="navigateToRealizarPedido()"
+    [ngClass]="{ sending: isSendingPedido, sent: pedidoEnviado }"
+  >
+    <span class="btn-text" *ngIf="!isSendingPedido && !pedidoEnviado">
+      Enviar pedido
+    </span>
+    <span class="btn-text" *ngIf="isSendingPedido">Enviando...</span>
+    <span class="btn-text" *ngIf="pedidoEnviado">
+      Pedido enviado
+      <i class="fa fa-check" aria-hidden="true"></i>
+    </span>
+    <span class="loader" *ngIf="isSendingPedido"></span>
+  </button>
+</div>

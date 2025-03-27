@@ -1,0 +1,27 @@
+<h2>Balance mensual</h2> 
+
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th>Ingresos</th>
+          <th>Gastos</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of balanceMensual">
+          <td>{{ item.mes }}</td>
+          <td>{{ item.ingresos ? (item.ingresos | currency : "USD" : "symbol" : "1.0-0") : '' }}</td>
+          <td>{{ item.gastos ? (item.gastos | currency : "USD" : "symbol" : "1.0-0") : '' }}</td>
+          <td>{{ item.balance ? (item.balance | currency : "USD" : "symbol" : "1.0-0") : '' }}</td>
+        </tr>
+        <tr *ngIf="balanceMensual.length === 0">
+          <td colspan="4" class="No-resultados">No se encontraron resultados</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  

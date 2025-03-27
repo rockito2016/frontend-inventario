@@ -1,0 +1,45 @@
+<h2>Compras generales</h2>
+
+<div *ngFor="let mesAno of comprasAgrupadasPorMes | keyvalue : compareMesesDesc" class="supplier-container">
+    <div class="supplier-header">
+      <h2 class="supplier-title">{{ getMesEnEspanol(mesAno.key) }}</h2>
+    </div>
+ 
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Cantidad compras a fectivo</th>
+          <th>Subtotal Efectivo</th>
+          <th>Cantidad compras a crédito</th>
+          <th>Subtotal crédito</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compra of mesAno.value">
+          <td>{{ compra.fecha }}</td>
+          <td>{{ compra.efectivoCantidad }}</td>
+          <td>{{ compra.efectivoTotal | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+          <td>{{ compra.creditoCantidad }}</td>
+          <td>{{ compra.creditoTotal | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+ <div class="total-table-container">
+    <table class="total-table">
+      <tbody>
+        <tr class="total-row">
+          <td>Total</td>
+          <td>{{ getTotalCantidadEfectivo(mesAno.value) }}</td>
+          <td class="calculo">{{ getTotalEfectivo(mesAno.value) | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+          <td>{{ getTotalCantidadCredito(mesAno.value) }}</td>
+          <td class="calculo">{{ getTotalCredito(mesAno.value) | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  

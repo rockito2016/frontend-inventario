@@ -1,0 +1,171 @@
+  /* Titulo */
+h2 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Total vencidos y a vencerse */
+.flex-container {
+    display: flex;
+    justify-content: center; 
+    padding-top: 20px;
+  }
+  
+  .search-header {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+  }
+  
+  .titulo-buscador {
+    font-size: 25px; 
+    font-weight: bold;
+    margin: 0;
+    
+  }
+  
+  .info-container {
+    display: flex; 
+    gap: 10px;  
+  }
+  
+  .info-box {
+    padding: 10px 15px; 
+    background-color: rgb(230, 67, 26); 
+    color: white; 
+    font-size: 18px; 
+    font-weight: bold;
+    border: none; 
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  /* Boton total2*/
+  .info-box2 {
+    padding: 10px 15px; 
+    background-color: rgb(230, 149, 26); 
+    color: white; 
+    font-size: 18px; 
+    font-weight: bold;
+    border: none; 
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  /* Nombre del mes */
+.supplier-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    position: relative;
+    border-bottom: 2px solid #28a745;
+    text-align: left;
+    padding-left: 30px; 
+  }
+  
+  /* Icono */
+  .supplier-title::before {
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border: 5px solid green; 
+    border-radius: 50%; 
+    background-color: transparent; 
+  }
+
+  /* Tabla */
+table {
+    margin: 20px 0;
+    font-size: 15px;
+  }
+  
+  th {
+    background-color: green;
+    color: white;
+    border: 1px solid #ddd;
+  }
+  
+  td {
+    
+    border: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  } 
+  
+  tr:hover:not(.total-row, .total-row2) {
+    background-color: #e9ecef;
+  }
+  
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-container th,
+  .table-container td {
+    padding: 10px;
+    text-align: center; 
+    height: 50px;
+  }
+  
+  .table-container td:nth-child(7),
+  .table-container td:nth-child(8),
+  .table-container td:nth-child(9) {
+    text-align: right;
+  }
+  
+  .table-container th:nth-child(1) { width: 9%; } 
+  .table-container th:nth-child(2) { width: 10%; } 
+  .table-container th:nth-child(3) { width: 10%; } 
+  .table-container th:nth-child(4) { width: 16%; } 
+  .table-container th:nth-child(5) { width: 16%; } 
+  .table-container th:nth-child(6) { width: 10%; } 
+  .table-container th:nth-child(7) { width: 8%; } 
+  .table-container th:nth-child(8) { width: 10%; }
+  .table-container th:nth-child(9) { width: 10%; }
+  
+  /* Fila total */
+  .total-table-container {
+    margin-top: -15px;
+  } 
+  
+  .total-table {
+    width: 100%; 
+    border-collapse: collapse;
+  }
+   
+  .total-row {
+    background-color: rgb(230, 67, 26);    
+    font-weight: bold; 
+    color: white; 
+  }
+  
+  .total-table td {
+    padding: 25px;
+  }
+  
+  .total-table td:nth-child(1) {
+    text-align: center;
+    width: 90%;
+    margin-right: 0;
+  }
+  
+  .calculo{
+    text-align: right;
+  }
+  
+  .total-table td:nth-child(2) {
+    padding-right: 10px; 
+  }
+/* Fila total de tabla 2*/
+  .total-row2 {
+    background-color: rgb(230, 149, 26);
+    font-weight: bold; 
+    color: white; 
+  }

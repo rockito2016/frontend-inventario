@@ -1,0 +1,78 @@
+<h2>Facturas</h2> 
+
+<div class="client-info-container">
+    <h4>Registrar facturas</h4>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="form-label">Fecha:</label>
+            <input type="date" class="form-control" [(ngModel)]="fechaSeleccionada">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Factura inicial:</label>
+            <input type="text" class="form-control" [(ngModel)]="facturaInicial">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Factura final:</label>
+            <input type="text" class="form-control" [(ngModel)]="facturaFinal">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="openRegisterConfirmation()">Registrar</button>
+    </div>
+</div>
+
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Factura Inicial</th>
+        <th>Factura Actual</th>
+        <th>Factura Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let factura of facturas">
+        <td>{{ factura.fecha }}</td>
+        <td>{{ factura.numero_factura_inicial }}</td>
+        <td>{{ factura.numero_factura_actual }}</td>
+        <td>{{ factura.numero_factura_final }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal-overlay" *ngIf="showRegisterConfirmation">
+    <div class="modal2">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación de Registro</h5>
+        <button type="button" class="close-button" (click)="closeRegisterConfirmation()">
+          <i class="bi bi-x-square-fill"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">Fecha:</label>
+                <input type="date" class="form-control" [value]="fechaSeleccionada" disabled>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Factura inicial:</label>
+                <input type="text" class="form-control" [value]="facturaInicial" disabled>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Factura final:</label>
+                <input type="text" class="form-control" [value]="facturaFinal" disabled>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-success" (click)="confirmRegister()">Confirmar</button>
+      </div>
+    </div> 
+</div>
+
+
+  
+

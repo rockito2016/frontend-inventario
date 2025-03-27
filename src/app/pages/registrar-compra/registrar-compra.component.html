@@ -1,0 +1,111 @@
+<h2>Registrar compra</h2>
+
+<div *ngFor="let envio of envioData">
+
+  <div class="Finalizar-pedido">
+    <button class="btn btn-finalizar" (click)="registrarCompra(envio)">
+      Registrar compra
+    </button>
+  </div>
+
+  <div class="container-columns-7">
+    <div class="column2">
+      <label class="form-label2">Envío #</label>
+      <input type="text" class="form-control4" [(ngModel)]="envio.id" readonly />
+    </div>
+    <div class="column2">
+      <label class="form-label2">Transportador ID</label>
+      <input type="text" class="form-control3" [(ngModel)]="envio.transportador_id" />
+    </div>
+    <div class="column2">
+      <label class="form-label2">Kilos</label>
+      <input type="text" class="form-control2" [(ngModel)]="envio.kilos" />
+    </div>
+    <div class="column2">
+      <label class="form-label2">Precio Kilo</label>
+      <input type="text" class="form-control2" [(ngModel)]="envio.precio_kilo" />
+    </div>
+    <div class="column2">
+      <label class="form-label2">Total Kilos</label>
+      <input type="text" class="form-control2" [value]="envio.total_kilos | currency:'USD':'symbol':'1.0-0'" readonly />
+    </div>
+    <div class="column2">
+      <label class="form-label2">Total Cajas</label>
+      <input type="text" class="form-control2" [(ngModel)]="envio.total_cajas" />
+    </div>
+    <div class="column2">
+      <label class="form-label2">Total Envío</label>
+      <input type="text" class="form-control2" [value]="envio.total_envio | currency:'USD':'symbol':'1.0-0'" readonly />
+    </div>
+  </div>
+
+  <div *ngFor="let pedido of envio.pedidos">
+    <h3 class="supplier-header"> {{ pedido.proveedor }} </h3>
+
+    <div class="container-columns">
+      <div class="column">
+        <label class="form-label">Compra #</label>
+        <input type="text" class="form-control" [value]="pedido.compraNumero" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Factura #</label>
+        <input type="text" class="form-control" [value]="pedido.facturaNumero" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Fecha</label>
+        <input type="text" class="form-control" [value]="pedido.fecha | date: 'dd/MM/yyyy'" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Forma de Pago</label>
+        <input type="text" class="form-control" 
+               [value]="pedido.formaPago === '1' || pedido.formaPago === 1 ? 'Efectivo' 
+                        : (pedido.formaPago === '2' || pedido.formaPago === 2 ? 'Crédito' : 'Desconocido')" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Abono Inicial</label>
+        <input type="text" class="form-control" [value]="pedido.abonoInicial | currency:'USD':'symbol':'1.0-0'" readonly />
+      </div>
+    </div>
+
+    <table *ngIf="pedido.productos.length" class="table-container table2">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Subcategoría</th>
+          <th>Nombre</th>
+          <th>Formulación</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+          <th>Precio Compra</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of pedido.productos">
+          <td>{{ producto.codigo }}</td>
+          <td>{{ producto.subcategoria }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.formulacion }}</td>
+          <td>{{ producto.unidad }}</td>
+          <td>{{ producto.cantidad }}</td>
+          <td>{{ producto.precioCompra | currency:'USD' }}</td>
+          <td>{{ producto.total | currency:'USD' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="total-table">
+      <tbody>
+        <tr class="total-row">
+          <td class="label-total">Total del Proveedor:</td>
+          <td class="value-total">
+            {{ pedido.total | currency:'USD':'symbol':'1.0-0' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  

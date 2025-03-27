@@ -1,0 +1,239 @@
+<h2>Asignar transportador</h2>
+
+<div *ngFor="let pedido of pedidos">
+  <h3 class="supplier-header">{{ pedido.proveedor }}</h3>
+ 
+  <div class="container-columns">
+    <div class="column">
+      <label class="form-label">Compra #</label>
+      <input type="text" class="form-control" [value]="pedido.compraNumero" readonly />
+    </div>
+    <div class="column">
+      <label class="form-label">Factura #</label>
+      <input type="text" class="form-control" [value]="pedido.facturaNumero" readonly />
+    </div>
+    <div class="column">
+      <label class="form-label">Fecha</label>
+      <input type="text" class="form-control" [value]="pedido.fecha | date: 'dd/MM/yyyy'" readonly />
+    </div>
+    <div class="column">
+      <label class="form-label">Forma de Pago</label>
+      <input type="text" class="form-control" [value]="pedido.formaPago == 1 || pedido.formaPago == '1' ? 'Efectivo' : 
+                 (pedido.formaPago == 2 || pedido.formaPago == '2' ? 'Crédito' : 'Desconocido')" readonly />
+    </div>
+    <div class="column">
+      <label class="form-label">Abono Inicial</label>
+      <input type="text" class="form-control" [value]="pedido.abonoInicial | currency: 'USD':'symbol':'1.0-0'"
+        readonly />
+    </div>
+
+  </div>
+  <table class="table-container table2">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Subcategoría</th>
+        <th>Nombre</th>
+        <th>Formulación</th>
+        <th>Unidad</th>
+        <th>Cantidad</th>
+        <th>Precio Compra</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of pedido.productos">
+        <td>{{ product.codigo }}</td>
+        <td>{{ product.subcategoria }}</td>
+        <td>{{ product.nombre }}</td>
+        <td>{{ product.formulacion }}</td>
+        <td>{{ product.unidad }}</td>
+        <td>{{ product.cantidad }}</td>
+        <td>{{ product.precioCompra | currency: 'USD':'symbol':'1.0-0' }}</td>
+        <td>{{ product.total | currency: 'USD':'symbol':'1.0-0' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="total-table">
+    <tbody>
+      <tr class="total-row">
+        <td class="label-total">Total del Proveedor:</td>
+        <td class="value-total">
+          {{ pedido.total | currency: 'USD':'symbol':'1.0-0' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="Finalizar-pedido">
+    <button class="btn btn-danger" (click)="clearPedido(pedido)">Devolver a pedidos</button>
+    <button class="btn btn-finalizar" (click)="asignarPedido(pedido)">Agregar al envío</button>
+  </div>
+</div>
+
+
+<div class="aleja">
+  <h3>Calcular costo de envio</h3>
+</div>
+
+<div class="container-columns-7">
+  <div class="column2">
+    <label for="envioId" class="form-label2">Envío #</label>
+    <input type="text" id="envioId" class="form-control3" [(ngModel)]="envio.envioNumero" readonly />
+  </div>
+  <div class="column2">
+    <label for="transportador" class="form-label2">Transportador</label>
+    <select 
+      id="transportador" 
+      class="search-select2" 
+      name="transportador" 
+      [(ngModel)]="selectedTransportador" 
+      (ngModelChange)="onTransportadorChange($event)">
+      <option value="" disabled>Seleccione</option>
+      <option *ngFor="let transportador of transportadoresList" [value]="transportador.id">
+        {{ transportador.nombre }}
+      </option>
+    </select>
+  </div>
+  
+  <div class="column2">
+    <label for="kilos" class="form-label2">Kilos</label>
+    <input 
+      type="text" 
+      id="kilos" 
+      class="form-control2" 
+      name="kilos" 
+      [(ngModel)]="envio.kilos" 
+      (input)="updateKilos($event)" 
+    />
+  </div>
+  
+  <div class="column2">
+    <label for="precioKilo" class="form-label2">Precio Kilo</label>
+    <input
+      type="text"
+      id="precioKilo"
+      class="form-control2"
+      name="precioKilo"
+      [(ngModel)]="envio.precioKilo"
+      (input)="updatePrecioKilo($event)"
+      (blur)="formatPrecioKilo($event)"
+    />
+  </div>
+  
+  
+  
+  <div class="column2">
+    <label for="totalKilos" class="form-label2">Total Kilos</label>
+    <input type="text" id="totalKilos" class="form-control2" [value]="getTotalKilos() | currency:'USD':'symbol':'1.0-0'"
+      readonly />
+  </div>
+  <div class="column2">
+    <label for="totalCajas" class="form-label2">Total Cajas</label>
+    <input
+      type="text"
+      id="totalCajas"
+      class="form-control2"
+      name="totalCajas"
+      (input)="updateTotalCajas($event)"
+      (blur)="updateTotalCajas($event)" />
+</div>
+
+
+  
+  <div class="column2">
+    <label for="totalEnvio" class="form-label2">Total Envío</label>
+    <input type="text" id="totalEnvio" class="form-control2" [value]="getTotalEnvio() | currency:'USD':'symbol':'1.0-0'"
+      readonly />
+  </div>
+</div>
+
+<div class="contenedor-asignados">
+  <h3>Pedidos asignados</h3>
+
+  <div class="Finalizar-pedido">
+    <button class="btn-exportar" (click)="cerrarEnvio()">
+      Cerrar envio
+  </button>
+  
+</div>
+
+  <div *ngFor="let pedidoAsignado of pedidosAsignados">
+    <h3 class="supplier-header">{{ pedidoAsignado.proveedor }}</h3>
+
+    <div class="container-columns">
+      <div class="column">
+        <label class="form-label">Compra #</label>
+        <input type="text" class="form-control" [value]="pedidoAsignado.compraNumero" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Factura #</label>
+        <input type="text" class="form-control" [value]="pedidoAsignado.facturaNumero" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Fecha</label>
+        <input type="text" class="form-control" [value]="pedidoAsignado.fecha | date: 'dd/MM/yyyy'" readonly />
+      </div>
+      <div class="column">
+        <label class="form-label">Forma de Pago</label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="pedidoAsignado.formaPago == 1 || pedidoAsignado.formaPago == '1' ? 'Efectivo' : 
+                   (pedidoAsignado.formaPago == 2 || pedidoAsignado.formaPago == '2' ? 'Crédito' : 'Desconocido')"
+          readonly
+        />
+      </div>
+      <div class="column">
+        <label class="form-label">Abono Inicial</label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="pedidoAsignado.abonoInicial | currency: 'USD':'symbol':'1.0-0'"
+          readonly
+        />
+      </div>
+    </div>
+
+    <table class="table-container table2">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Subcategoría</th>
+          <th>Nombre</th>
+          <th>Formulación</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+          <th>Precio Compra</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of pedidoAsignado.productos">
+          <td>{{ product.codigo }}</td>
+          <td>{{ product.subcategoria }}</td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.formulacion }}</td>
+          <td>{{ product.unidad }}</td>
+          <td>{{ product.cantidad }}</td>
+          <td>{{ product.precioCompra | currency: 'USD':'symbol':'1.0-0' }}</td>
+          <td>{{ product.total | currency: 'USD':'symbol':'1.0-0' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="total-table">
+      <tbody>
+        <tr class="total-row">
+          <td class="label-total">Total del Proveedor:</td>
+          <td class="value-total">
+            {{ pedidoAsignado.total | currency: 'USD':'symbol':'1.0-0' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="Finalizar-pedido">
+      <button class="btn btn-danger" (click)="devolverPedido(pedidoAsignado)">Eliminar</button>
+    </div>
+  </div>
+</div>

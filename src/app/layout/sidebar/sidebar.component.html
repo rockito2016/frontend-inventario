@@ -1,0 +1,366 @@
+<div class="container-menu">
+  <div class="cont-menu">
+    <nav>
+      <!-- Menú Inicio -->
+      <div class="menu-item">
+        <a routerLink="/main/inicio" routerLinkActive="active" class="menu-link"
+          >Inicio</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/inicio/analisis"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Análisis</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/inicio/balance-diario"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Balance diario</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/inicio/balance-mensual"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Balance mensual</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Inventario -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/inventario"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Inventario</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/inventario/stock"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Stock</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/inventario/stock-minimo"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Stock Mínimo</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/inventario/lista-precios"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Lista de Precios</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/inventario/proximos-vencer"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Próximos a Vencer</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/inventario/elaborar"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Elaborar un Producto</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Productos -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/producto"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Productos</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/producto/registrar-producto"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Registrar producto</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/producto/categoria"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Categoría</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/producto/formulacion"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Formulación</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/producto/unidad"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Unidad</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/producto/estado"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Estado</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/producto/elaborado"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Elaborado</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Pedidos -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/pedido"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Pedidos</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/pedido/realizar-pedido"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Realizar un pedido</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/pedido/asignar-transportador"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Asignar transportador</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Compras -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/compras"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Compras</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/compras/registrar-compra"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Registrar compra</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/compras/registro-compra-general"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Compras generales</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/compras/registro-compra-detalle"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Compras detalladas</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Ventas -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/ventas"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Ventas</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/ventas/registrar-una-venta"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Registrar una Venta</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/ventas/registro-venta-general"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Ventas generales</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/ventas/registro-venta-detalle"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Ventas detalladas</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/ventas/devolucion-venta"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Devolucion de una venta</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Contactos -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/contactos"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Contactos</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/contactos/clientes"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Clientes</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/contactos/proveedores"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Proveedores</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/contactos/transportadores"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Transportadores</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/contactos/vendedores"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Vendedores</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Créditos -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/creditos"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Créditos</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/creditos/creditos-ventas"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Ventas a crédito</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/creditos/creditos-compras"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Compras a crédito</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menú Extras -->
+      <div class="menu-item">
+        <a
+          routerLink="/main/extras"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="menu-link"
+          >Extras</a
+        >
+        <ul class="submenu">
+          <li>
+            <a
+              routerLink="/main/extras/numeracion-facturas"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Facturas</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/main/extras/cierre-inventario"
+              routerLinkActive="active"
+              class="submenu-link"
+              >Cierre de inventario</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

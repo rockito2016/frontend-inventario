@@ -1,0 +1,312 @@
+.header {
+  width: 100%;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.rol {
+  font-family: 'Montserrat Alternates', 'sans-serif';
+  font-size: 18px;
+}
+
+.sub-rol {
+    font-family: 'Montserrat Alternates', 'sans-serif';
+    font-size: 25px;
+}
+
+.center-text {
+    font-family: 'Montserrat Alternates', 'sans-serif';
+    font-size: 35px;
+}
+
+.example-spacer {
+    flex: auto;
+}
+
+.icon-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.icon-container:hover {
+    opacity: 0.8;
+  }
+
+/* Foto de perfil */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+
+/* boton engrane*/
+.settings-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 35px;
+  color: white;
+}
+
+/* Modal configuraciones */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999 !important;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 600px;
+  height: auto;
+  padding: 30px;
+  animation: fadeIn 0.3s;
+  z-index: 10000 !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo de los inputs en el modal */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  width: 150px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.modal input[type="text"]:not(.password-field),
+.modal input[type="email"],
+.modal input[type="file"] {
+  width: calc(100% - 160px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.modal-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.close-button {
+  position: absolute;
+  top: -3px;
+  right: 0px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #b02a37;
+}
+
+.modal-body .form-row:last-child {
+  margin-bottom: 0;
+}
+
+.modal-footer button {
+  width: auto;
+  text-align: center;
+}
+
+/* Boton guardar cambios*/
+.btn-primary{
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.btn-primary:hover {
+  background-color: rgb(46, 190, 46);
+  color: white;
+}
+
+/* Boton cerrar sesion*/
+.btn-danger {
+  background-color: red;
+  color: white;
+}
+
+.btn-danger {
+  background-color: red;
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.btn-danger:hover {
+  background-color: #b02a37;
+  color: white;
+}
+
+/* texto al lado de seleccionar archivo */
+.file-name {
+  margin-left: 10px;
+}
+
+/*Boton seleccionar archivo*/
+.btn-secondary {
+  background-color: blue;
+  padding: 5px 10px;
+  font-size: 15px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(0, 128, 255);
+  color: white;
+}
+
+/* Modal de eliminar */
+.modal2 {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 800px;
+  height: auto;
+  padding: 30px;
+  animation: fadeIn 0.3s;
+}
+
+.modal-body2 {
+  text-align: center;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+}
+
+.btn-danger {
+  background-color: red;
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.btn-danger:hover {
+  background-color: #b02a37;
+  color: white;
+}
+
+/*Boton seleccionar archivo*/
+.btn-outline-secondary {
+  background-color: blue;
+  padding: 6px 10px;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+ /* Input de contraseña */
+ .password-field {
+  width: 395px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+
+/* Contenedor para el campo de contraseña y el botón */
+.input-group {
+  display: flex;
+  align-items: center;
+}

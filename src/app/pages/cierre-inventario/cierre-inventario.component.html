@@ -1,0 +1,75 @@
+<h2>Cierre de inventario</h2> 
+
+<div class="client-info-container">
+    <h4>Realizar un cierre de inventario</h4>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="form-label">Fecha de inicio:</label>
+            <input type="date" class="form-control" [(ngModel)]="fechaSeleccionadainicio">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Fecha de fin:</label>
+            <input type="date" class="form-control" [(ngModel)]="fechaSeleccionadafin">
+        </div>       
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="openRalizarConfirmation()">Realizar</button>
+    </div>
+</div>
+
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha Inicio</th>
+          <th>Fecha Cierre</th>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Compras</th>
+          <th>Ventas</th>
+          <th>Cantidad Final</th>
+          <th>Precio Unitario</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cierre of cierresInventario">
+          <td>{{ cierre.fecha_inicio | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ cierre.fecha_cierre | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ cierre.codigo }}</td>
+          <td>{{ cierre.nombre }}</td>
+          <td>{{ cierre.compras }}</td>
+          <td>{{ cierre.ventas }}</td>
+          <td>{{ cierre.cantidad_final }}</td>
+          <td>{{ cierre.precio_unitario | currency:'$':'symbol':'1.0-0' }}</td>
+          <td>{{ cierre.total | currency:'$':'symbol':'1.0-0' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="modal-overlay" *ngIf="showRealizarConfirmation">
+    <div class="modal2">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación de cierre</h5>
+        <button type="button" class="close-button" (click)="closeRealizarConfirmation()">
+          <i class="bi bi-x-square-fill"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">Fecha:</label>
+                <input type="date" class="form-control" [value]="fechaSeleccionadainicio" disabled>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Fecha:</label>
+                <input type="date" class="form-control" [value]="fechaSeleccionadafin" disabled>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-success" (click)="confirmRealizar()">Confirmar</button>
+      </div>
+    </div> 
+</div>

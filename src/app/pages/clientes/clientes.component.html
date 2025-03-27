@@ -1,0 +1,169 @@
+<h2>Clientes</h2>
+ 
+<div class="flex-container">
+  <div class="search-header">
+    <h2 class="titulo-buscador">Buscar un cliente</h2>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      name="searchTerm"
+      (input)="onSearch()"
+      placeholder="Buscar por nombre o cédula"
+      class="search-input"
+    />  
+  </div> 
+  <button class="btn btn-success" (click)="onAdd()">
+    <i class="bi bi-plus-lg"></i> 
+  </button> 
+</div>
+
+<div class="modal-overlay" *ngIf="showAddModal">
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar cliente</h5>
+          <button type="button" class="btn-close close-button" (click)="closeAddModal()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="cedula" class="form-label">Cédula:</label>
+                <input type="text" id="cedula" class="form-control" name="cedula" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="celular" class="form-label">Celular:</label>
+                <input type="text" id="celular" class="form-control" name="celular" ngModel required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="correo" class="form-label">Correo Electrónico:</label>
+                <input type="email" id="correo" class="form-control" name="correo" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" id="direccion" class="form-control" name="direccion" ngModel required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Registrar</button>
+            </div>
+          </form> 
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cédula</th>
+        <th>Celular</th>
+        <th>Correo Electrónico</th>
+        <th>Dirección</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of filteredClients()">
+        <td>{{ client.nombre }}</td>
+        <td>{{ formatCedula(client.cedula) }}</td> <!-- Mostrar la cédula formateada -->
+        <td>{{ client.celular }}</td>
+        <td>{{ client.correo }}</td>
+        <td>{{ client.direccion }}</td>
+        <td>
+          <button class="buttonModificar" (click)="onEdit(client)">
+            <i class="bi bi-pen-fill"></i>
+          </button>
+        </td>
+        <td>
+          <button class="buttonEliminar" (click)="onDelete(client.cedula)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="filteredClients().length === 0">
+        <td colspan="7" class="No-resultados">No se encontraron resultados</td>
+      </tr>
+    </tbody>
+  </table> 
+</div>
+ 
+<div class="modal-overlay" *ngIf="selectedClient">
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar datos del cliente</h5>
+          <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close" (click)="closeEditModal()">
+            <i class="bi bi-x-square-fill"></i> 
+          </button> 
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" [(ngModel)]="selectedClient.nombre" name="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="cedula" class="form-label">Cédula:</label>
+                <input type="text" id="cedula" class="form-control" [(ngModel)]="selectedClient.cedula" name="cedula" required readonly>
+              </div>
+              <div class="form-group">
+                <label for="celular" class="form-label">Celular:</label>
+                <input type="text" id="celular" class="form-control" [(ngModel)]="selectedClient.celular" name="celular" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="correo" class="form-label">Correo Electrónico:</label>
+                <input type="email" id="correo" class="form-control" [(ngModel)]="selectedClient.correo" name="correo" required>
+              </div>
+              <div class="form-group">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" id="direccion" class="form-control" [(ngModel)]="selectedClient.direccion" name="direccion" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDeleteConfirmation">
+  <div class="modal2" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación de Eliminación</h5>
+          <button type="button" class="btn-close close-button" (click)="closeDeleteConfirmation()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body2">
+          <p>¿Estás seguro de que deseas eliminar este cliente?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

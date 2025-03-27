@@ -1,0 +1,141 @@
+<h2>Abonar a una compra a credito</h2>
+  
+<div class="flex-container">
+    <div class="search-header">
+      <h2 class="titulo-buscador">Buscar un cliente</h2>
+      <input
+  type="text"
+  [(ngModel)]="searchTerm"
+  name="searchTerm"
+  placeholder="Buscar por nombre o NIT"
+  class="search-input"
+/>
+
+    </div> 
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Numero de compra</th>
+          <th>Fecha</th>
+          <th>Nit</th>
+          <th>Proveedor</th>
+          <th>Abono Inicial</th>
+          <th>Abono</th>
+          <th>Total Abonado</th>
+          <th>Total a Pagar</th>
+          <th>Saldo Pendiente</th>
+          <th>Estado de compra</th>
+          <th>Abonar</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let credito of filteredCreditos()">
+          <td>{{ credito.compra_general_id }}</td>
+          <td>{{ credito.fecha | date:'dd/MM/yyyy' }}</td>
+          <td>{{ credito.nit }}</td>
+          <td>{{ credito.proveedor }}</td>
+          <td>{{ credito.abono_inicial | currency: 'USD':'symbol':'1.0-0' }}</td>
+          <td>{{ credito.abono | currency: 'USD':'symbol':'1.0-0' }}</td>
+          <td>{{ credito.total_abonado | currency: 'USD':'symbol':'1.0-0' }}</td>
+          <td>{{ credito.total_a_pagar | currency: 'USD':'symbol':'1.0-0' }}</td>
+          <td>{{ credito.saldo_pendiente | currency: 'USD':'symbol':'1.0-0' }}</td>
+          <td>{{ credito.estado_pago }}</td>
+          <td>
+            <button *ngIf="mostrarBoton(credito)" 
+            class="buttonAbonar" 
+            (click)="editCredito(credito)">
+            <i class="bi bi-piggy-bank-fill"></i>
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="filteredCreditos().length === 0">
+          <td colspan="11" class="No-resultados">No se encontraron resultados</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-overlay" *ngIf="selectedCredito">
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Abonar a un crédito de compra</h5>
+            <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close" (click)="closeEditModal()">
+              <i class="bi bi-x-square-fill"></i> 
+            </button> 
+          </div>
+          <div class="modal-body">
+            <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
+  
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="numero_compra" class="form-label">Número de Compra:</label>
+                  <input type="text" id="numero_compra" class="form-control" [(ngModel)]="selectedCredito.compra_general_id" name="numero_compra" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="fecha" class="form-label">Fecha:</label>
+                  <input type="date" id="fecha" class="form-control" [(ngModel)]="selectedCredito.fecha" name="fecha">
+                </div>
+                <div class="form-group">
+                  <label for="nit" class="form-label">NIT:</label>
+                  <input type="text" id="nit" class="form-control" [(ngModel)]="selectedCredito.nit" name="nit" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="proveedor" class="form-label">Proveedor:</label>
+                  <input type="text" id="proveedor" class="form-control" [(ngModel)]="selectedCredito.proveedor" name="proveedor" readonly>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="abono_inicial" class="form-label">Abono Inicial:</label>
+                  <input type="text" id="abono_inicial" class="form-control" [value]="selectedCredito.abono_inicial | currency:'USD':'symbol':'1.0-0'" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="abono" class="form-label">Abono:</label>
+                  <input type="text" id="abono" class="form-control" 
+                         name="abono"
+                         (input)="updateAbono($event)" 
+                         placeholder="$0">
+                </div>
+                <div class="form-group">
+                  <label for="total_abonado" class="form-label">Total Abonado:</label>
+                  <input type="text" id="total_abonado" class="form-control" 
+                         [value]="selectedCredito.total_abonado | currency:'USD':'symbol':'1.0-0'" 
+                         readonly>
+                </div>
+                <div class="form-group">
+                  <label for="total_a_pagar" class="form-label">Total a Pagar:</label>
+                  <input type="text" id="total_a_pagar" class="form-control" 
+                         [value]="selectedCredito.total_a_pagar | currency:'USD':'symbol':'1.0-0'" 
+                         readonly>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="saldo_pendiente" class="form-label">Saldo Pendiente:</label>
+                  <input type="text" id="saldo_pendiente" class="form-control" 
+                         [value]="saldoPendiente | currency:'USD':'symbol':'1.0-0'" readonly>
+                </div>
+                
+                <div class="form-group">
+                  <label for="estado_pago" class="form-label">Estado de Pago:</label>
+                  <input type="text" id="estado_pago" class="form-control" 
+                         [(ngModel)]="selectedCredito.estado_pago" 
+                         name="estado_pago" 
+                         readonly>
+                </div>
+              </div>              
+              <button type="button" class="btn btn-primary" (click)="actualizarCredito()" [disabled]="saldoPendiente < 0">Actualizar crédito</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

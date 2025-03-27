@@ -1,0 +1,256 @@
+<div class="container">
+    <h2>Categorias de los productos</h2>
+
+    <div class="horizontal-columns">
+        <div class="column">
+            <h4>Categoría</h4>
+            <button class="btn btn-success" (click)="onAddCategoria()">
+                <i class="bi bi-plus-lg"></i>
+            </button>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let categoria of categoriaList">
+                          <td>{{ categoria.nombre }}</td>
+                          <td>
+                            <button class="buttonModificar" (click)="onEdit(categoria)">
+                              <i class="bi bi-pen-fill"></i>
+                            </button>
+                          </td>
+                          <td>
+                            <button class="buttonEliminar" (click)="onDelete(categoria.id)">
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr *ngIf="categoriaList.length === 0">
+                          <td colspan="3" class="No-resultados">Categorias vacías</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="column">
+          <h4>Subcategoría</h4>
+          <button class="btn btn-success" (click)="onAddSubcategoria()">
+              <i class="bi bi-plus-lg"></i>
+          </button>
+      
+          <div class="table-container table-container-subcategoria"> 
+              <table>
+                  <thead>
+                    <tr>
+                      <th>Categoría</th>
+                      <th>Nombre</th>
+                      <th>Modificar</th>
+                      <th>Eliminar</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let subcategoria of subcategoriaList">
+                          <td>{{ subcategoria.categoria_id }}</td>
+                          <td>{{ subcategoria.subcategoria_nombre }}</td>
+                          <td>
+                              <button class="buttonModificar" (click)="onEditSubcategoria(subcategoria)">
+                                  <i class="bi bi-pen-fill"></i>
+                              </button>
+                          </td>
+                          <td>
+                              <button class="buttonEliminar" (click)="onDeleteSubcategoria(subcategoria.id)">
+                                  <i class="bi bi-trash-fill"></i>
+                              </button>
+                          </td>
+                      </tr>
+                      <tr *ngIf="subcategoriaList.length === 0">
+                          <td colspan="4" class="No-resultados">Subcategorías vacías</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showAddModalCategoria">
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar categoría</h5>
+          <button type="button" class="btn-close close-button" (click)="closeAddModal()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmitSubcategoria(categoryForm)" #categoryForm="ngForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre de la categoría:</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" ngModel required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" [disabled]="!categoryForm.form.valid">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showEditModal">
+  <div class="modal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Modificar datos</h5>
+                  <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close" (click)="closeEditModal()">
+                      <i class="bi bi-x-square-fill"></i> 
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
+                      <div class="form-row">
+                          <div class="form-group">
+                              <label for="nombre" class="form-label">Nombre:</label>
+                              <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="selectedCategoria.nombre" required>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+ 
+<div class="modal-overlay" *ngIf="showDeleteConfirmation">
+  <div class="modal2" tabindex="-1">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Confirmación de Eliminación</h5>
+                  <button type="button" class="btn-close close-button" (click)="closeDeleteConfirmation()">
+                      <i class="bi bi-x-square-fill"></i>
+                  </button>
+              </div>
+              <div class="modal-body2">
+                  <p>¿Estás seguro de que deseas eliminar esta categoría?</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="modal-overlay" *ngIf="showAddModalSubcategoria">
+  <div class="modal2" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Crear subcategoria</h5>
+          <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close" (click)="closeAddModalSubcategoria()">
+            <i class="bi bi-x-square-fill"></i> 
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="onSubmitSubcategoria(editForm)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="categoria_id" class="form-label">Categoría:</label>
+                <select id="categoria_id" class="form-control" name="categoria_id" [(ngModel)]="selectedSubcategoria.categoria_id" required>
+                  <option *ngFor="let categoria of categoriaList" [value]="categoria.id">{{ categoria.nombre }}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="selectedSubcategoria.subcategoria_nombre" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" *ngIf="showEditModalSubcategoria">
+  <div class="modal2" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar Subcategoría</h5>
+          <button type="button" class="btn-close close-button" (click)="closeEditModalSubcategoria()">
+            <i class="bi bi-x-square-fill"></i> 
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="onEditSubmitSubcategoria(editForm)">
+            <div class="form-row"> 
+              <!-- Select para Categoría -->
+              <div class="form-group">
+                <label for="categoria_id" class="form-label">Categoría:</label>
+                <select id="categoria_id" class="form-control" name="categoria_id" [(ngModel)]="selectedSubcategoria.categoria_id" required>
+                  <option *ngFor="let categoria of categoriaList" [value]="categoria.id">{{ categoria.nombre }}</option>
+                </select>
+              </div>
+              <!-- Input para Nombre de Subcategoría -->
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre de la Subcategoría:</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="selectedSubcategoria.subcategoria_nombre" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+<div class="modal-overlay" *ngIf="showDeleteConfirmation">
+  <div class="modal2" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación de Eliminación</h5>
+          <button type="button" class="btn-close close-button" (click)="closeDeleteConfirmationSubcategoria()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body2">
+          <p>¿Estás seguro de que deseas eliminar esta subcategoría?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="confirmDeleteSubcategoria()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

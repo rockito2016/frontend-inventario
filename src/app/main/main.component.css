@@ -1,0 +1,17 @@
+/* Estilo del contenido principal */
+.main-container {
+  flex: 1;
+  padding: 15px;
+  background-color: white;
+  overflow-y: auto; 
+  margin-left: 224px;
+  margin-right: -9px;
+  margin-top: 55px; 
+}
+
+.header{
+  position: relative;
+    z-index: 10;
+}
+
+

@@ -1,0 +1,145 @@
+<h2>Elaborar un producto</h2> 
+
+<div class="flex-container-column">
+    <div class="flex-container">
+        <div class="search-container">
+            <div class="search-header">
+                <h2 class="titulo-buscador">Buscar un producto</h2>
+                <input
+                    type="text"
+                    [(ngModel)]="searchTerm"
+                    name="searchTerm"
+                    (input)="onSearch()"
+                    placeholder="Buscar por nombre o código"
+                    class="search-input"
+                />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-container table1">
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Proveedor</th>
+                <th>Subcategoria</th>
+                <th>Nombre</th>
+                <th>Formulación</th>
+                <th>Unidad</th>
+                <th>Cantidad</th>
+                <th>Precio venta</th>
+                <th>Elaborar</th>
+            </tr>  
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of limitedFilteredProducts(); let i = index">
+                <ng-container *ngIf="!product.noResults; else noResultsRow">
+                    <td>{{ product.codigo }}</td>
+                    <td>{{ product.proveedor }}</td>
+                    <td>{{ product.subcategoria }}</td>
+                    <td>{{ product.nombre }}</td>
+                    <td>{{ product.formulacion }}</td>
+                    <td>{{ product.unidad }}</td>
+                    <td>{{ product.cantidad }}</td>
+                    <td>{{ product.precio_venta ? (product.precio_venta | currency: 'USD' : 'symbol' : '1.0-0') : '' }}</td>
+                    <td>
+                        <button class="btn btn-success" (click)="onElaborar(product)">
+                            <i class="bi bi-hammer"></i>
+                        </button>
+                      </td>                      
+                </ng-container>
+            </tr>
+            <ng-template #noResultsRow>
+                <td colspan="9" class="No-resultados">No se encontraron resultados</td>
+            </ng-template>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal-overlay" *ngIf="selectedProducto">
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Elaborar un producto</h5>
+            <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close" (click)="closeElaborarModal()">
+              <i class="bi bi-x-square-fill"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #editForm="ngForm" (ngSubmit)="onElaborarSubmit(editForm)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="codigo" class="form-label">Código:</label>
+                  <input type="text" id="codigo" class="form-control" [(ngModel)]="selectedProducto.codigo" name="codigo" required readonly>
+                </div>
+                <div class="form-group">
+                  <label for="nombre" class="form-label">Nombre:</label>
+                  <input type="text" id="nombre" class="form-control" [(ngModel)]="selectedProducto.nombre" name="nombre" required readonly>
+                </div>
+                <div class="form-group">
+                  <label for="unidad" class="form-label">Unidad:</label>
+                  <input type="text" id="unidad" class="form-control" [(ngModel)]="selectedProducto.unidad" name="unidad" required readonly>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cantidad" class="form-label">Cantidad actual:</label>
+                  <input type="number" id="cantidad" class="form-control" [(ngModel)]="selectedProducto.cantidad" name="cantidad" required readonly>
+                </div>
+                <div class="form-group">
+                    <label for="elaborado_id" class="form-label">Elaborado:</label>
+                    <select id="elaborado_id" class="form-control" name="elaborado_id" [(ngModel)]="selectedProducto.elaborado_id" required>
+                      <option *ngFor="let elaborado of elaboradoList" [value]="elaborado.id">{{ elaborado.nombre }}</option>
+                    </select>
+                  </div>              
+                  <div class="form-group">
+                    <label for="cantidadElaborar" class="form-label">Cantidad a Elaborar:</label>
+                    <input type="number" id="cantidadElaborar" class="form-control" [(ngModel)]="cantidadElaborar" name="cantidadElaborar" required>
+                  </div>                  
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Elaborar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="titulo-buscador">Productos elaborados</h2>
+
+  <div class="table-container table2">
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Proveedor</th>
+                <th>Subcategoría</th>
+                <th>Nombre</th>
+                <th>Formulación</th>
+                <th>Unidad</th>
+                <th>Cantidad</th>
+                <th>Precio venta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productosElaborados">
+                <td>{{ product.codigo }}</td>
+                <td>{{ product.proveedor }}</td>
+                <td>{{ product.subcategoria }}</td>
+                <td>{{ product.nombre }}</td>
+                <td>{{ product.formulacion }}</td>
+                <td>{{ product.unidad }}</td>
+                <td>{{ product.cantidad }}</td>
+                <td>{{ product.precio_venta | currency: 'USD':'symbol':'1.0-0' }}</td>
+            </tr>
+            <tr *ngIf="productosElaborados.length === 0">
+                <td colspan="9" class="No-resultados">No se encontraron resultados</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

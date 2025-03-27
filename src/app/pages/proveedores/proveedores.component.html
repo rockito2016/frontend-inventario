@@ -1,0 +1,179 @@
+<h2>Proveedores</h2>
+
+<div class="flex-container">
+  <div class="search-header">
+    <h2 class="titulo-buscador">Buscar un proveedor</h2>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      name="searchTerm"
+      (input)="onSearch()"
+      placeholder="Buscar por nombre o nit"
+      class="search-input"
+    />
+  </div>
+  <button class="btn btn-success" (click)="onAdd()">
+    <i class="bi bi-plus-lg"></i> 
+  </button>
+</div>
+
+<div class="modal-overlay" *ngIf="showAddModal">
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar Proveedor</h5>
+          <button type="button" class="btn-close close-button" (click)="closeAddModal()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="nit" class="form-label">NIT:</label>
+                <input type="text" id="nit" class="form-control" name="nit" ngModel required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" ngModel required>
+              </div>
+            </div>
+            <div class="form-row align-items-end">
+              <div class="form-group col-md-4">
+                <label for="celular" class="form-label">Celular:</label>
+                <input type="text" id="celular" class="form-control" name="celular" ngModel required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" id="direccion" class="form-control" name="direccion" ngModel required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="municipio" class="form-label">Municipio:</label>
+                <input type="text" id="municipio" class="form-control" name="municipio" [(ngModel)]="selectedMunicipio" (input)="searchMunicipios()" placeholder="Buscar municipio" required>
+                <ul *ngIf="showMunicipios && municipios.length > 0" class="dropdown-list">
+                  <li *ngFor="let municipio of municipios" (click)="selectMunicipio(municipio)">{{ municipio.nombre }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Nit</th>
+        <th>Nombre</th>
+        <th>Celular</th>
+        <th>Dirección</th>
+        <th>Municipio</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of filteredProveedores()">
+        <td>{{ proveedor.nit }}</td>
+        <td>{{ proveedor.nombre }}</td>
+        <td>{{ proveedor.celular }}</td>
+        <td>{{ proveedor.direccion }}</td>
+        <td>{{ proveedor.municipio_nombre }}</td>
+        <td>
+          <button class="buttonModificar" (click)="onEdit(proveedor)">
+            <i class="bi bi-pen-fill"></i>
+          </button>
+        </td>
+        <td>
+          <button class="buttonEliminar" (click)="onDelete(proveedor.id)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td> 
+      </tr>
+      <tr *ngIf="filteredProveedores().length === 0">
+        <td colspan="7" class="No-resultados">No se encontraron resultados</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal-overlay" *ngIf="selectedProveedor">
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar datos del proveedor</h5>
+          <button type="button" class="btn-close close-button" (click)="closeEditModal()">
+            <i class="bi bi-x-square-fill"></i> 
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="nit" class="form-label">NIT:</label>
+                <input type="text" id="nit" class="form-control" [(ngModel)]="selectedProveedor.nit" name="nit" required readonly>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" [(ngModel)]="selectedProveedor.nombre" name="nombre" required>
+              </div>
+            </div>
+            <div class="form-row align-items-end">
+              <div class="form-group col-md-4">
+                <label for="celular" class="form-label">Celular:</label>
+                <input type="text" id="celular" class="form-control" [(ngModel)]="selectedProveedor.celular" name="celular" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" id="direccion" class="form-control" [(ngModel)]="selectedProveedor.direccion" name="direccion" required>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="municipio" class="form-label">Municipio:</label>
+                <input type="text" id="municipio" class="form-control" name="municipio" [(ngModel)]="selectedMunicipio" (input)="searchMunicipios()" placeholder="Buscar municipio" required>
+                <ul *ngIf="showMunicipios && municipios.length > 0" class="dropdown-list">
+                  <li *ngFor="let municipio of municipios" (click)="selectMunicipio(municipio)">{{ municipio.nombre }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDeleteConfirmation">
+  <div class="modal2" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación de Eliminación</h5>
+          <button type="button" class="btn-close close-button" (click)="closeDeleteConfirmation()">
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body2">
+          <p>¿Estás seguro de que deseas eliminar este proveedor?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

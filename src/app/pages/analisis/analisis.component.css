@@ -1,0 +1,58 @@
+   /* Titulo */
+h2 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+/* Subtitulo*/
+.titulo-buscador {
+    font-size: 25px;  
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-left: 30px;
+  }
+
+/* Grafica dible*/
+.grafica-doble {
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+}
+
+.grafica-doble img {
+    max-width: 100%;  
+    height: auto;  
+}
+
+/*lineas grises*/
+.modal-header {
+    margin-top: 20px;
+    border-bottom: 7px solid #dee2e6; 
+    padding-bottom: 15px; 
+    position: relative; 
+    margin-bottom: 20px; 
+  }
+
+  /*Grafico dos barras*/
+
+  .contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; 
+    align-items: center; 
+    padding: 20px;
+}
+
+.columna {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grafica-dos-barras img {
+    max-width: 100%;
+    height: auto;
+}
+
