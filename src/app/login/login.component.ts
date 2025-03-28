@@ -26,7 +26,7 @@ export class LoginComponent {
       contrasena: this.password
     };
 
-    this.http.post<any>('https://frontend-inventario-blond.vercel.app/api/login', loginData).subscribe(
+    this.http.post<any>('http://localhost:3000/api/login', loginData).subscribe(
       (response) => {
         this.loading = false;
         if (response.success) {
