@@ -40,7 +40,7 @@ export class StockMinimoComponent implements OnInit {
   }
 
   loadProductsStock(): void {
-    this.http.get<any[]>('https://frontend-inventario-ly4m-8deeodh9s-javier-pascuaza-s-projects.vercel.app/inventario/stock-minimo').subscribe(
+    this.http.get<any[]>('http://localhost:3000/inventario/stock-minimo').subscribe(
       (data) => {
         console.log('Datos recibidos del backend:', data);
         let restoredProducts = JSON.parse(localStorage.getItem('stockMinimo') || '[]');
@@ -95,7 +95,7 @@ export class StockMinimoComponent implements OnInit {
     const codigos = this.selectedProducts.map((product) => product.codigo);
     const nuevoEstado = 2;
 
-    this.http.post('https://frontend-inventario-ly4m-8deeodh9s-javier-pascuaza-s-projects.vercel.app/inventario/enviar-pedido', { codigos, estado_id: nuevoEstado }).subscribe(
+    this.http.post('http://localhost:3000/inventario/enviar-pedido', { codigos, estado_id: nuevoEstado }).subscribe(
       (response: any) => {
         console.log(response.message);
 
