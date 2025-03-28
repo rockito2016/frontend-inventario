@@ -26,7 +26,7 @@ export class LoginComponent {
       contrasena: this.password
     };
 
-    this.http.post<any>('http://frontend-inventario-ly4m-8deeodh9s-javier-pascuaza-s-projects.vercel.app/api/login', loginData).subscribe(
+    this.http.post<any>('https://frontend-inventario-ly4m-8deeodh9s-javier-pascuaza-s-projects.vercel.app/api/login', loginData).subscribe(
       (response) => {
         this.loading = false;
         if (response.success) {
