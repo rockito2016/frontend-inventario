@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getRoles() {
-    this.http.get<any>('http://localhost:3000/api/roles').subscribe(
+    this.http.get<any>('https://backend-7ahk2l57r-javier-pascuaza-s-projects.vercel.app/api/roles').subscribe(
       (response) => {
         this.roles = response;
       },
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       rol_id: this.role
     };
 
-    this.http.post<any>('http://localhost:3000/api/register', registerData).subscribe(
+    this.http.post<any>('https://backend-7ahk2l57r-javier-pascuaza-s-projects.vercel.app/api/register', registerData).subscribe(
       (response) => {
         if (response.success) {
           Swal.fire('Registro exitoso', 'El usuario ha sido registrado correctamente', 'success');
