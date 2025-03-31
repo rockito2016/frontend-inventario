@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,4 +9,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent { }
+export class SidebarComponent implements OnInit {
+  userRole: string | null = null;
+
+  ngOnInit(): void {
+    this.userRole = localStorage.getItem('userRole');
+  }
+
+  hasRole(requiredRole: string): boolean {
+    return this.userRole === requiredRole;
+  }
+}

@@ -65,17 +65,19 @@ export const routes: Routes = [
           {
             path: 'analisis',
             canActivate: [AuthGuard],
-            data: { roles: 1 },
+            data: { roles: ['1'] },
             component: AnalisisComponent
           },
           {
             path: 'balance-diario',
             canActivate: [AuthGuard],
-            data: { roles: 1 },
+            data: { roles: ['1'] },
             component: BalanceDiarioComponent
           },
           {
             path: 'balance-mensual',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: BalanceMensualComponent
           }
         ]
@@ -90,22 +92,32 @@ export const routes: Routes = [
           },
           {
             path: 'stock',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: StockComponent
           },
           {
             path: 'stock-minimo',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: StockMinimoComponent
           },
           {
             path: 'lista-precios',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: ListaPreciosComponent
           },
           {
             path: 'proximos-vencer',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: ProximosVencerComponent
           },
           {
             path: 'elaborar',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: ElaborarComponent
           }
         ]
@@ -120,26 +132,38 @@ export const routes: Routes = [
           },
           {
             path: 'registrar-producto',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: RegistrarProductoComponent
           },
           {
             path: 'categoria',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: CategoriaComponent
           },
           {
             path: 'formulacion',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: FormulacionComponent
           },
           {
             path: 'unidad',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: UnidadComponent
           },
           {
             path: 'estado',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: EstadoComponent
           },
           {
             path: 'elaborado',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: ElaboradoComponent
           }
         ]
@@ -154,10 +178,14 @@ export const routes: Routes = [
           },
           {
             path: 'realizar-pedido',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: RealizarPedidoComponent
           },
           {
             path: 'asignar-transportador',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: AsignarTransportadorComponent
           }
         ]
@@ -172,14 +200,20 @@ export const routes: Routes = [
           },
           {
             path: 'registrar-compra',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: RegistrarCompraComponent
           },
           {
             path: 'registro-compra-general',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: RegistroCompraGeneralComponent
           },
           {
             path: 'registro-compra-detalle',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: RegistroCompraDetalleComponent
           }
         ]
@@ -194,18 +228,26 @@ export const routes: Routes = [
           },
           {
             path: 'registrar-una-venta',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: RegistrarUnaVentaComponent
           },
           {
             path: 'registro-venta-general',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: RegistroVentaGeneralComponent
           },
           {
             path: 'registro-venta-detalle',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: RegistroVentaDetalleComponent
           },
           {
             path: 'devolucion-venta',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: DevolucionVentaComponent
           }
         ]
@@ -220,18 +262,26 @@ export const routes: Routes = [
           },
           {
             path: 'clientes',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: ClientesComponent
           },
           {
             path: 'proveedores',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: ProveedoresComponent
           },
           {
             path: 'transportadores',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: TransportadorComponent
           },
           {
             path: 'vendedores',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: VendedoresComponent
           }
         ]
@@ -246,10 +296,14 @@ export const routes: Routes = [
           },
           {
             path: 'creditos-ventas',
+            canActivate: [AuthGuard],
+            data: { roles: ['1', '2'] },
             component: CreditosVentasComponent
           },
           {
             path: 'creditos-compras',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: CreditosComprasComponent
           }
         ]
@@ -264,10 +318,14 @@ export const routes: Routes = [
           },
           {
             path: 'numeracion-facturas',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: NumeracionFacturasComponent
           },
           {
             path: 'cierre-inventario',
+            canActivate: [AuthGuard],
+            data: { roles: ['1'] },
             component: CierreInventarioComponent
           }
         ]

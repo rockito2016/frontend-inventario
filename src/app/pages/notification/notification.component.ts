@@ -82,7 +82,7 @@ export class NotificationComponent implements OnInit {
       icon: 'warning',
       confirmButtonText: 'OK'
     }).then(() => {
-      this.router.navigate(['/main/inventario/stock-minimo']);
+    /*   this.router.navigate(['/main/inventario/stock-minimo']); */
     });
   }
 

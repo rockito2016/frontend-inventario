@@ -77,6 +77,10 @@ export class AuthService {
     }
   }
 
+  getCurrentUser(): User | null {
+    return this.currentUserSubject.value;
+  }
+
   hasRole(role: string): boolean {
     return this.currentUserSubject.value?.roles.includes(role) ?? false;
   }
@@ -100,4 +104,5 @@ export class AuthService {
     return throwError(() => new Error(error.error?.message || defaultMessage));
   }
 }
+
 

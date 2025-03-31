@@ -15,7 +15,7 @@ import { NotificationComponent } from '../../pages/notification/notification.com
 })
 export class HeaderComponent implements OnInit {
   showModal: boolean = false;
-  userImage: string = '';
+  userImage: string | null = null;
   selectedImage: string | null = null;
   selectedFileName: string = '';
   userId: string | null = null;
@@ -41,15 +41,16 @@ export class HeaderComponent implements OnInit {
   }
 
   loadUserImage(): void {
-    const savedImage = localStorage.getItem(`userImage_${this.userId}`);
-    this.userImage = savedImage ? savedImage : 'assets/default-avatar.jpg';
-    this.selectedFileName = localStorage.getItem(`selectedFileName_${this.userId}`) || '';
+    if (this.userId) {
+      this.userImage = localStorage.getItem(`userImage_${this.userId}`);
+      this.selectedFileName = localStorage.getItem(`selectedFileName_${this.userId}`) || '';
+    }
   }
 
   obtenerDatosUsuario(id: number): void {
-    const token = localStorage.getItem('token'); // Obtener el token del localStorage
+    const token = localStorage.getItem('token');
 
-    if (token) { // Verificar que el token no sea null
+    if (token) {
       const headers = new HttpHeaders().set('Authorization', token);
 
       this.http.get<any>(`http://localhost:3000/api/datos-usuarios/${id}`, { headers }).subscribe(

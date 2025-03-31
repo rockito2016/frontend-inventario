@@ -7,7 +7,7 @@
           >Inicio</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/inicio/analisis"
               routerLinkActive="active"
@@ -15,7 +15,7 @@
               >Análisis</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/inicio/balance-diario"
               routerLinkActive="active"
@@ -23,7 +23,7 @@
               >Balance diario</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/inicio/balance-mensual"
               routerLinkActive="active"
@@ -44,7 +44,7 @@
           >Inventario</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/inventario/stock"
               routerLinkActive="active"
@@ -52,7 +52,7 @@
               >Stock</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/inventario/stock-minimo"
               routerLinkActive="active"
@@ -60,7 +60,7 @@
               >Stock Mínimo</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/inventario/lista-precios"
               routerLinkActive="active"
@@ -68,7 +68,7 @@
               >Lista de Precios</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/inventario/proximos-vencer"
               routerLinkActive="active"
@@ -76,7 +76,7 @@
               >Próximos a Vencer</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/inventario/elaborar"
               routerLinkActive="active"
@@ -97,7 +97,7 @@
           >Productos</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/producto/registrar-producto"
               routerLinkActive="active"
@@ -105,7 +105,7 @@
               >Registrar producto</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/producto/categoria"
               routerLinkActive="active"
@@ -113,7 +113,7 @@
               >Categoría</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/producto/formulacion"
               routerLinkActive="active"
@@ -121,7 +121,7 @@
               >Formulación</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/producto/unidad"
               routerLinkActive="active"
@@ -129,7 +129,7 @@
               >Unidad</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/producto/estado"
               routerLinkActive="active"
@@ -137,7 +137,7 @@
               >Estado</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/producto/elaborado"
               routerLinkActive="active"
@@ -158,7 +158,7 @@
           >Pedidos</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/pedido/realizar-pedido"
               routerLinkActive="active"
@@ -166,7 +166,7 @@
               >Realizar un pedido</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/pedido/asignar-transportador"
               routerLinkActive="active"
@@ -187,7 +187,7 @@
           >Compras</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/compras/registrar-compra"
               routerLinkActive="active"
@@ -195,7 +195,7 @@
               >Registrar compra</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/compras/registro-compra-general"
               routerLinkActive="active"
@@ -203,7 +203,7 @@
               >Compras generales</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/compras/registro-compra-detalle"
               routerLinkActive="active"
@@ -224,7 +224,7 @@
           >Ventas</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/ventas/registrar-una-venta"
               routerLinkActive="active"
@@ -232,7 +232,7 @@
               >Registrar una Venta</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/ventas/registro-venta-general"
               routerLinkActive="active"
@@ -240,7 +240,7 @@
               >Ventas generales</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/ventas/registro-venta-detalle"
               routerLinkActive="active"
@@ -248,7 +248,7 @@
               >Ventas detalladas</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/ventas/devolucion-venta"
               routerLinkActive="active"
@@ -269,7 +269,7 @@
           >Contactos</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/contactos/clientes"
               routerLinkActive="active"
@@ -277,7 +277,7 @@
               >Clientes</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/contactos/proveedores"
               routerLinkActive="active"
@@ -285,7 +285,7 @@
               >Proveedores</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/contactos/transportadores"
               routerLinkActive="active"
@@ -293,7 +293,7 @@
               >Transportadores</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/contactos/vendedores"
               routerLinkActive="active"
@@ -314,7 +314,7 @@
           >Créditos</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1' || userRole === '2'">
             <a
               routerLink="/main/creditos/creditos-ventas"
               routerLinkActive="active"
@@ -322,7 +322,7 @@
               >Ventas a crédito</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/creditos/creditos-compras"
               routerLinkActive="active"
@@ -343,7 +343,7 @@
           >Extras</a
         >
         <ul class="submenu">
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/extras/numeracion-facturas"
               routerLinkActive="active"
@@ -351,7 +351,7 @@
               >Facturas</a
             >
           </li>
-          <li>
+          <li *ngIf="userRole === '1'">
             <a
               routerLink="/main/extras/cierre-inventario"
               routerLinkActive="active"

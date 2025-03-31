@@ -26,14 +26,17 @@ export class LoginComponent {
       contrasena: this.password
     };
 
-    this.http.post<any>('https://backend-seven-zeta-97.vercel.app/api/login', loginData).subscribe(
+    this.http.post<any>('http://localhost:3000/api/login', loginData).subscribe(
       (response) => {
         this.loading = false;
         if (response.success) {
           const userId = response.id;
           const token = response.token;
+          const userRole = response.rol_id;
+
           localStorage.setItem('userId', userId);
           localStorage.setItem('token', token);
+          localStorage.setItem('userRole', userRole.toString());
 
           Swal.fire({
             title: '¡Bienvenido!',
