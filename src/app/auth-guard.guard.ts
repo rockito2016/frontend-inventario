@@ -18,33 +18,32 @@ export class AuthGuard implements CanActivate {
     }
 
     const userRole = localStorage.getItem('userRole');
-    const requiredRoles = route.data['roles'];
+    const allowedRoutes = JSON.parse(localStorage.getItem('allowedRoutes') || '[]');
+    const currentRoute = state.url;
 
     console.log('Rol del usuario:', userRole);
-    console.log('Roles requeridos:', requiredRoles);
+    console.log('Rutas permitidas:', allowedRoutes);
+    console.log('Ruta actual:', currentRoute);
 
     if (userRole === '1') {
       return true;
     }
 
-    if (requiredRoles) {
-      const hasRequiredRole = requiredRoles.includes(userRole);
-      if (!hasRequiredRole) {
-        console.warn('Acceso bloqueado: rol no autorizado');
-        Swal.fire({
-          title: 'Acceso Denegado',
-          text: 'No tienes permiso para acceder a esta sección.',
-          icon: 'warning',
-          confirmButtonText: 'Aceptar'
-        }).then(() => {
-          this.showErrorAndReload('Error en el servidor');
-          this.router.navigate(['/login']);
-        });
-        return false;
-      }
+    if (allowedRoutes.some((allowedRoute: string) => currentRoute.startsWith(allowedRoute))) {
+      return true;
     }
 
-    return true;
+    console.warn('Acceso bloqueado: ruta no permitida');
+    Swal.fire({
+      title: 'Acceso Denegado',
+      text: 'No tienes permiso para acceder a esta sección.',
+      icon: 'warning',
+      confirmButtonText: 'Aceptar'
+    }).then(() => {
+      this.showErrorAndReload('Acceso denegado');
+      this.router.navigate(['/login']);
+    });
+    return false;
   }
 
   private showErrorAndReload(message: string) {

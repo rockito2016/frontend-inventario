@@ -33,10 +33,12 @@ export class LoginComponent {
           const userId = response.id;
           const token = response.token;
           const userRole = response.rol_id;
+          const allowedRoutes = response.allowedRoutes;
 
           localStorage.setItem('userId', userId);
           localStorage.setItem('token', token);
           localStorage.setItem('userRole', userRole.toString());
+          localStorage.setItem('allowedRoutes', JSON.stringify(allowedRoutes));
 
           Swal.fire({
             title: '¡Bienvenido!',
@@ -46,7 +48,7 @@ export class LoginComponent {
             timerProgressBar: true,
             showConfirmButton: false,
             willClose: () => {
-              this.router.navigate(['/main/inicio']);
+              this.router.navigate([response.allowedRoutes[0]]);
             }
           });
         } else {
