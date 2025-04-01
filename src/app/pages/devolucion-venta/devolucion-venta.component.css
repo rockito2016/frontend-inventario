@@ -3,7 +3,6 @@ h2 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título */
   animation: fadeIn 1s ease;
 }
 
@@ -19,17 +18,14 @@ h2 {
   font-weight: bold;
   white-space: nowrap;
   color: #30543f;
-  /* Verde oscuro para el título del buscador */
 }
 
 .search-input {
   padding: 10px;
   font-size: 18px;
   border: 2px solid #30543f;
-  /* Verde oscuro para el borde del input */
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
-  /* Sombra suave con verde oscuro */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 260px;
 }
@@ -48,10 +44,8 @@ h2 {
   font-size: 25px;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título del mes */
   position: relative;
   border-bottom: 2px solid #28a745;
-  /* Verde claro para el borde inferior */
   text-align: left;
   padding-left: 30px;
   flex-grow: 1;
@@ -68,7 +62,6 @@ h2 {
   width: 12px;
   height: 12px;
   border: 5px solid #28a745;
-  /* Verde claro para el borde del icono */
   border-radius: 50%;
   background-color: transparent;
 }
@@ -81,7 +74,6 @@ h2 {
   padding: 10px 20px;
   font-size: 1.1em;
   background-color: #30543f;
-  /* Verde oscuro para el botón agregar */
   color: white;
   border: none;
   border-radius: 5px;
@@ -95,7 +87,6 @@ h2 {
 
 .btn-success:hover {
   background-color: darkgreen;
-  /* Verde más oscuro al pasar el ratón */
   transform: scale(1.05);
 }
 
@@ -129,6 +120,7 @@ th,
 td {
   padding: 15px 20px;
   text-align: center;
+  /* Centra todos los datos */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
@@ -137,7 +129,6 @@ td {
 /* Encabezados de la tabla */
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
   font-weight: 600;
 }
@@ -145,26 +136,17 @@ th {
 /* Filas pares de la tabla */
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
 /* Efecto hover en filas de la tabla (excepto fila total) */
 tr:hover:not(.total-row) {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
 }
 
 /* Altura de celdas de la tabla */
 .table-container th,
 .table-container td {
   height: auto;
-}
-
-/* Alineación de columnas 5-7 de la tabla */
-.table-container td:nth-child(5),
-.table-container td:nth-child(6),
-.table-container td:nth-child(7) {
-  text-align: right;
 }
 
 /* Mensaje de "No resultados" */
@@ -220,7 +202,6 @@ tr:hover:not(.total-row) {
 /* Botón de reducir cantidad */
 .btn-quantity {
   background-color: #dc3545;
-  /* Rojo para reducir cantidad */
   color: white;
   padding: 5px 10px;
   font-size: 20px;
@@ -233,7 +214,6 @@ tr:hover:not(.total-row) {
 
 .btn-quantity:hover {
   background-color: #b02a37;
-  /* Rojo más oscuro al pasar el ratón */
   color: white;
   transform: scale(1.05);
 }
@@ -241,7 +221,6 @@ tr:hover:not(.total-row) {
 /* Botón de aumentar cantidad */
 .btn-quantity-more {
   background-color: #007bff;
-  /* Azul para aumentar cantidad */
   color: white;
   padding: 5px 10px;
   font-size: 20px;
@@ -254,7 +233,6 @@ tr:hover:not(.total-row) {
 
 .btn-quantity-more:hover {
   background-color: #0056b3;
-  /* Azul más oscuro al pasar el ratón */
   color: white;
   transform: scale(1.05);
 }
@@ -267,229 +245,4 @@ tr:hover:not(.total-row) {
   padding: 10px 20px;
   font-size: 1.1em;
   background-color: #dc3545;
-  /* Rojo para eliminar */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-danger:hover {
-  background-color: #b02a37;
-  /* Rojo más oscuro al pasar el ratón */
-  transform: scale(1.05);
-}
-
-/* Botón de eliminar (modal) */
-.btn-danger2 {
-  background-color: #dc3545;
-  /* Rojo para eliminar en modal */
-  color: white;
-  margin: 8px;
-  padding: 10px 20px;
-  font-size: 1.1em;
-  width: auto;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-danger2:hover {
-  background-color: #b02a37;
-  /* Rojo más oscuro al pasar el ratón */
-  color: white;
-  transform: scale(1.05);
-}
-
-/* Contenedor de la fila total */
-.total-table-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-/* Tabla de la fila total */
-.total-table {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Fila total */
-.total-row {
-  background-color: #28a745;
-  /* Verde claro para la fila total */
-  font-weight: bold;
-  color: white;
-}
-
-/* Celdas de la fila total */
-.total-table td {
-  padding: 15px 20px;
-  text-align: right;
-}
-
-/* Alineación y ancho de celdas de la fila total */
-.total-table td:nth-child(1) {
-  text-align: center;
-  width: 80%;
-}
-
-.total-table td:nth-child(2) {
-  padding-right: 10px;
-  text-align: right;
-  width: 20%;
-}
-
-/* Contenedor del botón finalizar venta */
-.final {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Botón finalizar venta */
-.btn-finalizar {
-  margin: 8px;
-  padding: 10px 20px;
-  font-size: 25px;
-  width: auto;
-  background-color: #30543f;
-  /* Verde oscuro para finalizar venta */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-finalizar:hover {
-  background-color: darkgreen;
-  /* Verde más oscuro al pasar el ratón */
-  transform: scale(1.05);
-}
-
-/* Modal para editar */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* Cabecera del modal */
-.modal-header {
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 15px;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-/* Pie del modal */
-.modal-footer {
-  border-top: 1px solid #dee2e6;
-  padding-top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Animación de aparición del modal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-/* Título del modal */
-.modal-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  color: #30543f;
-  /* Verde oscuro para el título del modal */
-}
-
-/* Botón cerrar modal */
-.close-button {
-  position: absolute;
-  top: -3px;
-  right: 0px;
-  background: none;
-  border: none;
-  font-size: 40px;
-  color: #dc3545;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-close-button:hover {
-  color: #b02a37;
-}
-
-/* Botón eliminar en modal */
-.btn-eliminar {
-  margin: 8px;
-  padding: 10px 20px;
-  font-size: 1.1em;
-  width: auto;
-  background-color: #30543f;
-  /* Azul para eliminar en modal */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: -10px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-eliminar:hover {
-  background-color: darkgreen;
-  /* Azul más oscuro al pasar el ratón */
-  transform: scale(1.05);
-}
-
-/* Contenedor del modal */
-.modal2 {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(48, 84, 63, 0.3);
-  width: 750px;
-  padding: 30px;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Cuerpo del modal */
-.modal-body2 {
-  text-align: center;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

@@ -3,7 +3,6 @@ h2 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título */
   animation: fadeIn 1s ease;
 }
 
@@ -27,7 +26,6 @@ h2 {
   font-weight: bold;
   margin: 0;
   color: #30543f;
-  /* Verde oscuro para el título del buscador */
 }
 
 /* Input del buscador */
@@ -35,10 +33,8 @@ h2 {
   padding: 10px;
   font-size: 18px;
   border: 2px solid #30543f;
-  /* Verde oscuro para el borde del input */
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
-  /* Sombra suave con verde oscuro */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 260px;
 }
@@ -46,10 +42,12 @@ h2 {
 /* Tabla principal */
 table {
   margin: 20px auto;
-  font-size: 16px;
+  font-size: 14px;
+  /* Reducir el tamaño de la fuente para mejor ajuste */
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
+  /* Cambiar a auto para permitir flexibilidad */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
   animation: fadeIn 1.5s ease;
   border-radius: 8px;
@@ -59,11 +57,14 @@ table {
 /* Encabezados y celdas de la tabla */
 th,
 td {
-  padding: 15px 20px;
+  padding: 12px 15px;
+  /* Reducir el padding para mejor ajuste */
   text-align: center;
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
+  word-wrap: break-word;
+  /* Permite que el texto largo se ajuste */
 }
 
 /* Encabezados de la tabla */
@@ -89,15 +90,6 @@ tr:hover {
   height: auto;
 }
 
-/* Alineación de columnas de la tabla */
-.table-container td:nth-child(5),
-.table-container td:nth-child(6),
-.table-container td:nth-child(7),
-.table-container td:nth-child(8),
-.table-container td:nth-child(9) {
-  text-align: right;
-}
-
 /* Estilos de botones en la tabla */
 .table-container button {
   background-color: transparent;
@@ -108,7 +100,8 @@ tr:hover {
 
 /* Ancho de columnas de la tabla */
 .table-container th:nth-child(1) {
-  width: 8%;
+  width: 6%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(2) {
@@ -116,44 +109,54 @@ tr:hover {
 }
 
 .table-container th:nth-child(3) {
-  width: 8%;
+  width: 15%;
+  /* Aumentar para el Nit */
 }
 
 .table-container th:nth-child(4) {
   width: 20%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(5) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(6) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(7) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(8) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(9) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(10) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 .table-container th:nth-child(11) {
-  width: 10%;
+  width: 8%;
+  /* Reducir el ancho */
 }
 
 /* Botón abonar */
 .buttonAbonar {
-  font-size: 30px;
+  font-size: 24px;
+  /* Reducir el tamaño del icono */
   color: #007bff;
   background-color: #e0f7fa;
   border: none;
@@ -233,7 +236,6 @@ tr:hover {
   font-weight: bold;
   font-size: 40px;
   color: #30543f;
-  /* Verde oscuro para el título del modal */
 }
 
 /* Botón cerrar modal */

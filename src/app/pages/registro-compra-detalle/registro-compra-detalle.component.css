@@ -107,6 +107,7 @@ td {
   padding: 15px;
   /* Aumentado el padding */
   text-align: center;
+  /* Centra el texto aquí */
   border: 1px solid #e0e0e0;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -140,11 +141,12 @@ tr:hover:not(.total-row) {
   height: 50px;
 }
 
-.table-container td:nth-child(5),
+/* Comentado o eliminado para centrar el contenido */
+/*.table-container td:nth-child(5),
 .table-container td:nth-child(6),
 .table-container td:nth-child(7) {
   text-align: right;
-}
+}*/
 
 .No-resultados {
   font-weight: bold;

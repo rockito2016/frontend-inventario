@@ -3,7 +3,6 @@ h2 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título */
   animation: fadeIn 1s ease;
 }
 
@@ -23,7 +22,6 @@ h4 {
   margin-top: -15px;
   margin-bottom: 30px;
   color: #30543f;
-  /* Verde oscuro para el subtítulo */
 }
 
 .form-row {
@@ -38,7 +36,6 @@ h4 {
   align-self: flex-start;
   margin-left: 10%;
   color: #30543f;
-  /* Verde oscuro para las etiquetas */
 }
 
 .form-group {
@@ -53,7 +50,6 @@ h4 {
   width: 80%;
   padding: 15px;
   border: 1px solid #30543f;
-  /* Verde oscuro para el borde del input */
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
@@ -79,7 +75,6 @@ h4 {
   font-size: 1.1em;
   width: auto;
   background-color: #30543f;
-  /* Verde oscuro para el botón principal */
   color: white;
   border: none;
   border-radius: 4px;
@@ -95,16 +90,18 @@ h4 {
 
 .btn-primary:hover {
   background-color: darkgreen;
-  /* Verde más oscuro al pasar el ratón */
   transform: scale(1.05);
 }
 
 /* Tabla */
 table {
   margin: 20px auto;
-  font-size: 16px;
+  font-size: 14px;
+  /* Reducir el tamaño de la fuente para mejor ajuste */
   width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
+  /* Cambiar a auto para permitir flexibilidad */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
   animation: fadeIn 1.5s ease;
   border-radius: 8px;
@@ -114,10 +111,14 @@ table {
 th,
 td {
   border-bottom: 1px solid #e0e0e0;
-  padding: 15px 20px;
+  padding: 12px 15px;
+  /* Reducir el padding para mejor ajuste */
   text-align: center;
+  /* Centrar todos los datos */
   vertical-align: middle;
   transition: background-color 0.3s ease;
+  word-wrap: break-word;
+  /* Permite que el texto largo se ajuste */
 }
 
 th {
@@ -207,7 +208,6 @@ tr:hover {
   font-weight: bold;
   font-size: 40px;
   color: #30543f;
-  /* Verde oscuro para el título del modal */
 }
 
 .close-button {
@@ -229,7 +229,6 @@ tr:hover {
 /* Botón de confirmación */
 .btn-success {
   background-color: #30543f;
-  /* Verde oscuro para el botón de confirmación */
   margin: 8px;
   padding: 10px 20px;
   font-size: 1.1em;
@@ -249,7 +248,6 @@ tr:hover {
 
 .btn-success:hover {
   background-color: darkgreen;
-  /* Verde más oscuro al pasar el ratón */
   transform: scale(1.05);
 }
 

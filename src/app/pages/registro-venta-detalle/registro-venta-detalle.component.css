@@ -3,7 +3,6 @@ h2 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título */
   animation: fadeIn 1s ease;
 }
 
@@ -27,7 +26,6 @@ h2 {
   font-weight: bold;
   margin: 0;
   color: #30543f;
-  /* Verde oscuro para el título del buscador */
 }
 
 /* Input del buscador */
@@ -35,10 +33,8 @@ h2 {
   padding: 10px;
   font-size: 18px;
   border: 2px solid #30543f;
-  /* Verde oscuro para el borde del input */
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
-  /* Sombra suave con verde oscuro */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 260px;
 }
@@ -48,10 +44,8 @@ h2 {
   font-size: 25px;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título del mes */
   position: relative;
   border-bottom: 2px solid #28a745;
-  /* Verde claro para el borde inferior */
   text-align: left;
   padding-left: 30px;
   margin-bottom: 20px;
@@ -67,7 +61,6 @@ h2 {
   width: 12px;
   height: 12px;
   border: 5px solid #28a745;
-  /* Verde claro para el borde del icono */
   border-radius: 50%;
   background-color: transparent;
 }
@@ -102,6 +95,7 @@ th,
 td {
   padding: 15px 20px;
   text-align: center;
+  /* Centra todos los datos */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
@@ -110,7 +104,6 @@ td {
 /* Encabezados de la tabla */
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
   font-weight: 600;
 }
@@ -118,26 +111,17 @@ th {
 /* Filas pares de la tabla */
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
 /* Efecto hover en filas de la tabla (excepto fila total) */
 tr:hover:not(.total-row) {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
 }
 
 /* Altura de celdas de la tabla */
 .table-container th,
 .table-container td {
   height: auto;
-}
-
-/* Alineación de columnas 5-7 de la tabla */
-.table-container td:nth-child(5),
-.table-container td:nth-child(6),
-.table-container td:nth-child(7) {
-  text-align: right;
 }
 
 /* Mensaje de "No resultados" */
@@ -197,7 +181,6 @@ tr:hover:not(.total-row) {
 /* Fila total */
 .total-row {
   background-color: #28a745;
-  /* Verde claro para la fila total */
   font-weight: bold;
   color: white;
 }
@@ -205,7 +188,8 @@ tr:hover:not(.total-row) {
 /* Celdas de la fila total */
 .total-table td {
   padding: 15px 20px;
-  text-align: right;
+  text-align: center;
+  /* Centra todos los datos */
 }
 
 /* Alineación y ancho de celdas de la fila total */
@@ -216,7 +200,7 @@ tr:hover:not(.total-row) {
 
 .total-table td:nth-child(2) {
   padding-right: 10px;
-  text-align: right;
+  text-align: center;
   width: 20%;
 }
 
@@ -233,7 +217,6 @@ tr:hover:not(.total-row) {
   font-weight: bold;
   font-size: 25px;
   color: #30543f;
-  /* Verde oscuro para el mensaje "No hay resultados" */
 }
 
 /* Animaciones */

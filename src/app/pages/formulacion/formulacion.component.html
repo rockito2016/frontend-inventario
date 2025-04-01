@@ -1,117 +1,161 @@
 <h2>Formulació de los productos</h2>
 
 <div class="container">
-    <button class="btn btn-success" (click)="onAdd()">
-        <i class="bi bi-plus-lg"></i>
-    </button>
+  <button class="btn btn-success" (click)="onAdd()">
+    <i class="bi bi-plus-lg"></i>
+  </button>
 </div>
 
 <div class="modal-overlay" *ngIf="showAddModal">
-    <div class="modal" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Registrar formulación</h5>
-            <button type="button" class="btn-close close-button" (click)="closeAddModal()">
-              <i class="bi bi-x-square-fill"></i>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form (ngSubmit)="onSubmit(formulacionForm)" #formulacionForm="ngForm">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="nombre" class="form-label">Nombre de la formulación:</label>
-                  <input type="text" id="nombre" class="form-control" name="nombre" ngModel required>
-                </div>
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar formulación</h5>
+          <button
+            type="button"
+            class="btn-close close-button"
+            (click)="closeAddModal()"
+          >
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form
+            (ngSubmit)="onSubmit(formulacionForm)"
+            #formulacionForm="ngForm"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label"
+                  >Nombre de la formulación:</label
+                >
+                <input
+                  type="text"
+                  id="nombre"
+                  class="form-control"
+                  name="nombre"
+                  ngModel
+                  required
+                />
               </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" [disabled]="!formulacionForm.form.valid">Registrar</button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!formulacionForm.form.valid"
+              >
+                Registrar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
 
 <div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let formulacion of formulacionList">
-                <td>{{ formulacion.nombre }}</td>
-                <td>
-                <button class="buttonModificar" (click)="onEdit(formulacion)">
-                    <i class="bi bi-pen-fill"></i>
-                </button>
-                </td>
-                <td>
-                <button class="buttonEliminar" (click)="onDelete(formulacion.id)">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
-                </td>
-            </tr>
-            <tr *ngIf="formulacionList.length === 0">
-                <td colspan="3" class="No-resultados">Formulaciones vacías</td>
-            </tr>
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let formulacion of formulacionList">
+        <td>{{ formulacion.nombre }}</td>
+        <td>
+          <button class="buttonModificar" (click)="onEdit(formulacion)">
+            <i class="bi bi-pen-fill"></i>
+          </button>
+        </td>
+        <td>
+          <button class="buttonEliminar" (click)="onDelete(formulacion.id)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="formulacionList.length === 0">
+        <td colspan="3" class="No-resultados">Formulaciones vacías</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="modal-overlay" *ngIf="showEditModal">
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modificar datos</h5>
-                    <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close" (click)="closeEditModal()">
-                        <i class="bi bi-x-square-fill"></i> 
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nombre" class="form-label">Nombre:</label>
-                                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="selectedFormulacion.nombre" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar datos</h5>
+          <button
+            type="button"
+            class="btn-close close-button"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="closeEditModal()"
+          >
+            <i class="bi bi-x-square-fill"></i>
+          </button>
         </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  class="form-control"
+                  name="nombre"
+                  [(ngModel)]="selectedFormulacion.nombre"
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">
+                Guardar Cambios
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="modal-overlay" *ngIf="showDeleteConfirmation">
-    <div class="modal2" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirmación de Eliminación</h5>
-                    <button type="button" class="btn-close close-button" (click)="closeDeleteConfirmation()">
-                        <i class="bi bi-x-square-fill"></i>
-                    </button>
-                </div>
-                <div class="modal-body2">
-                    <p>¿Estás seguro de que deseas eliminar esta formulación?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
-                </div>
-            </div>
+<div class="modal-overlay" *ngIf="showDeleteConfirmation">
+  <div class="modal2" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación de Eliminación</h5>
+          <button
+            type="button"
+            class="btn-close close-button"
+            (click)="closeDeleteConfirmation()"
+          >
+            <i class="bi bi-x-square-fill"></i>
+          </button>
         </div>
+        <div class="modal-body2">
+          <p>¿Estás seguro de que deseas eliminar esta formulación?</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="confirmDelete()"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  
-  
+</div>
