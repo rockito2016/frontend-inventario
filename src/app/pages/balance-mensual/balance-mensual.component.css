@@ -55,8 +55,8 @@ tr:hover {
   }
 }
 
-/* Estilo para la columna de Gastos */
-td.gastos {
-  color: #dc3545;
+/* Estilo para balance negativo */
+td.balance.negativo {
+  color: red;
   font-weight: bold;
 }

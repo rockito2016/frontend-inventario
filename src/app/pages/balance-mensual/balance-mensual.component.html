@@ -27,7 +27,7 @@
               : ""
           }}
         </td>
-        <td class="balance">
+        <td class="balance" [class.negativo]="item.balance < 0">
           {{
             item.balance
               ? (item.balance | currency : "USD" : "symbol" : "1.0-0")

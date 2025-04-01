@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './balance-mensual.component.html',
   styleUrl: './balance-mensual.component.css'
 })
-export class BalanceMensualComponent implements OnInit{
+export class BalanceMensualComponent implements OnInit {
   balanceMensual: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.obtenerBalanceMensual();
@@ -24,11 +24,10 @@ export class BalanceMensualComponent implements OnInit{
       data => {
         this.balanceMensual = data.map(item => ({
           ...item,
-          mes: item.mes.charAt(0).toUpperCase() + item.mes.slice(1) 
+          mes: item.mes.charAt(0).toUpperCase() + item.mes.slice(1)
         }));
       },
       error => console.error('Error al obtener el balance mensual:', error)
     );
   }
 }
- 
