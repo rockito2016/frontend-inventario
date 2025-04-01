@@ -1,24 +1,27 @@
-/* Titulo */
+/* Título principal */
 h2 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
   /* Verde oscuro para el título */
+  animation: fadeIn 1s ease;
 }
 
-/* Bucador y datos */
+/* Contenedor del buscador y datos */
 .flex-container {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
 }
 
+/* Cabecera del buscador */
 .search-header {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
+/* Título del buscador */
 .titulo-buscador {
   font-size: 25px;
   font-weight: bold;
@@ -27,6 +30,7 @@ h2 {
   /* Verde oscuro para el título del buscador */
 }
 
+/* Input del buscador */
 .search-input {
   padding: 10px;
   font-size: 18px;
@@ -39,48 +43,53 @@ h2 {
   width: 260px;
 }
 
-/* Tabla */
+/* Tabla principal */
 table {
-  margin: 20px 0;
-  font-size: 15px;
+  margin: 20px auto;
+  font-size: 16px;
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  animation: fadeIn 1.5s ease;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
+/* Encabezados y celdas de la tabla */
 th,
 td {
-  padding: 10px;
+  padding: 15px 20px;
   text-align: center;
-  border: 1px solid #e0e0e0;
-  /* Borde más suave */
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones suaves */
+  vertical-align: middle;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
 }
 
+/* Encabezados de la tabla */
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
+  font-weight: 600;
 }
 
+/* Filas pares de la tabla */
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
+/* Efecto hover en filas de la tabla */
 tr:hover {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Altura de celdas de la tabla */
 .table-container th,
 .table-container td {
-  height: 50px;
+  height: auto;
 }
 
+/* Alineación de columnas de la tabla */
 .table-container td:nth-child(5),
 .table-container td:nth-child(6),
 .table-container td:nth-child(7),
@@ -89,6 +98,7 @@ tr:hover {
   text-align: right;
 }
 
+/* Estilos de botones en la tabla */
 .table-container button {
   background-color: transparent;
   border: none;
@@ -96,6 +106,7 @@ tr:hover {
   padding: 0;
 }
 
+/* Ancho de columnas de la tabla */
 .table-container th:nth-child(1) {
   width: 8%;
 }
@@ -140,13 +151,11 @@ tr:hover {
   width: 10%;
 }
 
-/* Boton abonar */
+/* Botón abonar */
 .buttonAbonar {
   font-size: 30px;
   color: #007bff;
-  /* Azul para abonar */
   background-color: #e0f7fa;
-  /* Azul claro para el fondo */
   border: none;
   cursor: pointer;
   font-weight: bold;
@@ -156,17 +165,13 @@ tr:hover {
 .buttonAbonar:hover {
   color: #0056b3;
   background-color: #b3e5fc;
-  /* Azul claro más oscuro al pasar el ratón */
 }
 
 /* Modal para editar */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,15 +179,15 @@ tr:hover {
 }
 
 .modal {
-  background-color: white;
+  background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  width: 900px;
-  height: auto;
+  box-shadow: 0 4px 12px rgba(48, 84, 63, 0.3);
+  width: 700px;
   padding: 30px;
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Cabecera del modal */
 .modal-header {
   border-bottom: 1px solid #dee2e6;
   padding-bottom: 15px;
@@ -190,6 +195,7 @@ tr:hover {
   margin-bottom: 20px;
 }
 
+/* Pie del modal */
 .modal-footer {
   border-top: 1px solid #dee2e6;
   padding-top: 15px;
@@ -198,6 +204,7 @@ tr:hover {
   align-items: center;
 }
 
+/* Animación de aparición del modal */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -208,11 +215,11 @@ tr:hover {
   }
 }
 
-/* Estilo de los inputs en el modal */
+/* Estilos de inputs en el modal */
 .modal input[type="text"],
 .modal input[type="email"],
 .modal input[type="date"] {
-  width: calc(100% - 20px);
+  width: calc(100% - 40px);
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -220,6 +227,7 @@ tr:hover {
   box-sizing: border-box;
 }
 
+/* Título del modal */
 .modal-title {
   text-align: center;
   font-weight: bold;
@@ -228,6 +236,7 @@ tr:hover {
   /* Verde oscuro para el título del modal */
 }
 
+/* Botón cerrar modal */
 .close-button {
   position: absolute;
   top: -3px;
@@ -237,18 +246,21 @@ tr:hover {
   font-size: 40px;
   color: #dc3545;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .close-button:hover {
   color: #b02a37;
 }
 
+/* Contenedor de filas de formulario en el modal */
 .form-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
 }
 
+/* Grupo de formulario */
 .form-group {
   flex: 1;
   margin-right: 15px;
@@ -258,21 +270,43 @@ tr:hover {
   margin-right: 0;
 }
 
+/* Última fila de formulario en el modal */
 .modal-body .form-row:last-child {
   margin-bottom: 0;
 }
 
+/* Botones genéricos en el modal */
 .btn:not(.btn-success, .btn-danger) {
   margin: 8px;
   padding: 10px 20px;
   font-size: 1.1em;
   width: auto;
-  background-color: #28a745;
-  /* Verde claro para botones en modal */
+  background-color: #30543f;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:not(.btn-success, .btn-danger):hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

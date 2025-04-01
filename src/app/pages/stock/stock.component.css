@@ -24,51 +24,74 @@ h2 {
 }
 
 .search-input {
-  padding: 10px;
+  padding: 12px;
+  /* Aumentado el padding para mejor visualización */
   font-size: 18px;
   border: 2px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.3);
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
   transition: border-color 0.3s ease;
-  /* Transición suave */
-  width: 260px;
+  width: 280px;
+  /* Aumentado el ancho */
+}
+
+.search-input:focus {
+  border-color: #2ecc71;
+  /* Color verde al enfocar */
+  outline: none;
 }
 
 .info-container {
   display: flex;
-  gap: 10px;
+  gap: 15px;
+  /* Aumentado el gap para mejor separación */
 }
 
 .info-box {
-  padding: 10px 15px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   background-color: #30543f;
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 /* Tabla */
 table {
   margin: 20px 0;
-  font-size: 15px;
+  font-size: 16px;
+  /* Aumentado el tamaño de fuente */
   border-collapse: collapse;
   width: 100%;
+  border-radius: 8px;
+  /* Bordes redondeados */
+  overflow: hidden;
+  /* Evita que los bordes redondeados se desborden */
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 th,
 td {
-  padding: 10px;
+  padding: 15px 20px;
+  /* Aumentado el padding */
   text-align: center;
   border: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
-  /* Transición suave */
 }
 
 th {
   background-color: #30543f;
   color: white;
+  font-weight: 600;
+  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -78,14 +101,13 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #e6f7ec;
   transform: translateY(-2px);
-  /* Ligero desplazamiento hacia arriba */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
 }
 
 .table-container th,
 .table-container td {
-  padding: 10px;
+  padding: 15px 20px;
+  /* Aumentado el padding */
   text-align: center;
   height: 50px;
 }

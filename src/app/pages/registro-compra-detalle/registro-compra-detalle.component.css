@@ -1,10 +1,10 @@
-/* Titulo */
+/* Título principal */
 h2 {
   text-align: center;
   font-weight: bold;
 }
 
-/* Bucador y datos */
+/* Buscador y datos */
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -26,18 +26,26 @@ h2 {
 }
 
 .search-input {
-  padding: 10px;
+  padding: 12px;
+  /* Aumentado el padding */
   font-size: 18px;
   border: 2px solid #30543f;
   /* Verde oscuro para el borde del input */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
-  /* Sombra suave con verde oscuro */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 260px;
+  box-sizing: border-box;
+  /* Asegura que el padding no afecte el ancho */
 }
 
-/* Nombre del mes */
+.search-input:focus {
+  border-color: #28a745;
+  box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Título del mes (Proveedor) */
 .supplier-title {
   font-size: 25px;
   font-weight: bold;
@@ -48,9 +56,11 @@ h2 {
   /* Verde claro para el borde inferior */
   text-align: left;
   padding-left: 30px;
+  margin-bottom: 20px;
+  /* Añadido margen inferior para separar de la tabla */
 }
 
-/* Icono */
+/* Icono del título del mes */
 .supplier-title::before {
   content: "";
   left: 0;
@@ -65,19 +75,26 @@ h2 {
   background-color: transparent;
 }
 
-/* Tabla */
+/* Contenedor de la tabla */
 .table-container {
   display: flex;
   justify-content: center;
 }
 
+/* Tabla principal */
 table {
   max-width: 100%;
   width: auto;
   margin: 20px 0;
-  font-size: 15px;
+  font-size: 16px;
+  /* Aumentado el tamaño de fuente */
   border-collapse: collapse;
-  /* Añadido para colapsar los bordes */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  overflow: hidden;
+  /* Evita que los bordes redondeados se desborden */
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 .table-container table {
@@ -87,18 +104,19 @@ table {
 
 th,
 td {
-  padding: 10px;
+  padding: 15px;
+  /* Aumentado el padding */
   text-align: center;
   border: 1px solid #e0e0e0;
-  /* Borde más suave */
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones suaves */
 }
 
 th {
   background-color: #30543f;
   /* Verde oscuro para encabezados */
   color: white;
+  font-weight: 600;
+  /* Añadido para consistencia */
 }
 
 td {
@@ -162,18 +180,20 @@ tr:hover:not(.total-row) {
   width: 15%;
 }
 
-/* Fila total */
+/* Contenedor de la fila total */
 .total-table-container {
   margin-top: -35px;
   display: flex;
   justify-content: center;
 }
 
+/* Tabla de la fila total */
 .total-table {
   width: 100%;
   border-collapse: collapse;
 }
 
+/* Fila total */
 .total-row {
   background-color: #28a745;
   /* Verde claro para la fila total */
@@ -197,7 +217,7 @@ tr:hover:not(.total-row) {
   width: 20%;
 }
 
-/* si no hay resultados */
+/* Mensaje "No hay resultados" */
 .no-results {
   display: flex;
   justify-content: center;

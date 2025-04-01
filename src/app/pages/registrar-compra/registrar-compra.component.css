@@ -1,4 +1,4 @@
-/* Titulo */
+/* Títulos */
 h2,
 .supplier-header {
   text-align: center;
@@ -7,7 +7,7 @@ h2,
   /* Verde oscuro para títulos */
 }
 
-/* Boton finalizar */
+/* Botón finalizar */
 .Finalizar-pedido {
   display: flex;
   align-items: center;
@@ -17,25 +17,27 @@ h2,
 .btn-finalizar {
   margin-top: 20px;
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   font-size: 20px;
   background-color: #30543f;
-  /* Verde oscuro para el botón */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease;
-  /* Transición suave */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Transición suave con transformación */
 }
 
 .btn-finalizar:hover {
   background-color: #28a745;
-  /* Verde más claro al pasar el ratón */
+  transform: scale(1.05);
+  /* Ligera escala al hacer hover */
 }
 
-/* Contenedor de 7 columnas */
+/* Contenedores de 7 y 5 columnas */
 .container-columns-7,
 .container-columns {
   display: grid;
@@ -75,14 +77,16 @@ h2,
 .form-control4,
 .form-control,
 .search-select {
-  padding: 10px;
+  padding: 12px;
+  /* Aumentado el padding */
   font-size: 18px;
   border: 2px solid #30543f;
-  /* Verde oscuro para los bordes */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
-  /* Sombra suave con verde oscuro */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  /* Asegura que el padding no afecte el ancho */
 }
 
 .form-control2 {
@@ -115,24 +119,32 @@ h2,
 /* Tabla */
 table {
   margin: 20px 0;
-  font-size: 15px;
+  font-size: 16px;
+  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
+  border-radius: 8px;
+  /* Bordes redondeados */
+  overflow: hidden;
+  /* Evita que los bordes redondeados se desborden */
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 th,
 td {
-  padding: 10px;
+  padding: 15px;
+  /* Aumentado el padding */
   text-align: center;
   border: 1px solid #e0e0e0;
-  /* Borde más suave */
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
+  font-weight: 600;
+  /* Añadido para consistencia */
 }
 
 td {
@@ -141,12 +153,10 @@ td {
 
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
 .table-container tr:hover {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -217,7 +227,6 @@ tr:nth-child(even) {
 
 .total-row {
   background-color: #28a745;
-  /* Verde más claro para la fila total */
   font-weight: bold;
   color: white;
 }

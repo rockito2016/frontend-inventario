@@ -3,7 +3,6 @@ h2 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para el título */
 }
 
 /* Buscador y datos */
@@ -24,24 +23,31 @@ h2 {
   font-weight: bold;
   margin: 0;
   color: #30543f;
-  /* Verde oscuro para el título del buscador */
 }
 
 .search-input {
-  padding: 10px;
+  padding: 12px;
+  /* Aumentado el padding para mejor visualización */
   font-size: 18px;
   border: 2px solid #30543f;
-  /* Verde oscuro para el borde del input */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
-  /* Sombra suave con verde oscuro */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  width: 260px;
+  width: 280px;
+  /* Aumentado el ancho */
+}
+
+.search-input:focus {
+  border-color: #2ecc71;
+  /* Color verde al enfocar */
+  outline: none;
 }
 
 .info-container {
   display: flex;
-  gap: 10px;
+  gap: 15px;
+  /* Aumentado el gap para mejor separación */
 }
 
 /* Botón */
@@ -56,20 +62,24 @@ button {
 /* Estilo del botón de agregar */
 .btn-success {
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   font-size: 1.1em;
   background-color: #28a745;
-  /* Verde claro para el botón agregar */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Transición suave con transformación */
 }
 
 .btn-success:hover {
   background-color: #218838;
-  /* Verde ligeramente más oscuro al pasar el ratón */
+  transform: scale(1.05);
+  /* Ligera escala al hacer hover */
 }
 
 /* Tabla */
@@ -85,35 +95,40 @@ button {
 table {
   width: auto;
   margin: 20px 0;
-  font-size: 15px;
+  font-size: 16px;
+  /* Aumentado el tamaño de fuente */
   border-collapse: collapse;
+  border-radius: 8px;
+  /* Bordes redondeados */
+  overflow: hidden;
+  /* Evita que los bordes redondeados se desborden */
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   border: 1px solid #e0e0e0;
-  /* Borde más suave */
-  padding: 10px;
+  padding: 15px 20px;
+  /* Aumentado el padding */
   text-align: center;
   height: 50px;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones suaves */
 }
 
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
+  font-weight: 600;
+  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
 tr:hover {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -135,7 +150,6 @@ tr:hover {
 .buttonModificar {
   font-size: 30px;
   color: #007bff;
-  /* Azul para modificar */
 }
 
 .buttonModificar:hover {
@@ -145,7 +159,6 @@ tr:hover {
 .buttonEliminar {
   font-size: 30px;
   color: #dc3545;
-  /* Rojo para eliminar */
 }
 
 .buttonEliminar:hover {
@@ -243,11 +256,12 @@ table-container th:nth-child(17) {
 .modal {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  /* Sombra con verde oscuro */
   width: 800px;
   height: auto;
   padding: 30px;
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-header {
@@ -295,7 +309,6 @@ table-container th:nth-child(17) {
   font-weight: bold;
   font-size: 30px;
   color: #30543f;
-  /* Verde oscuro para el título del modal */
 }
 
 .close-button {
@@ -307,6 +320,7 @@ table-container th:nth-child(17) {
   font-size: 40px;
   color: #dc3545;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .close-button:hover {
@@ -340,28 +354,38 @@ table-container th:nth-child(17) {
 
 .btn:not(.btn-success, .btn-danger) {
   margin: 8px;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   background-color: #28a745;
-  /* Verde claro para botones en modal */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Transición suave con transformación */
+}
+
+.btn:not(.btn-success, .btn-danger):hover {
+  background-color: #218838;
+  transform: scale(1.05);
+  /* Ligera escala al hacer hover */
 }
 
 /* Modal de eliminar */
 .modal2 {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  /* Sombra con verde oscuro */
   width: 750px;
   height: auto;
   padding: 30px;
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-body2 {
@@ -370,20 +394,24 @@ table-container th:nth-child(17) {
 
 .btn-danger {
   background-color: #dc3545;
-  /* Rojo para botones de eliminar */
   color: white;
   margin: 8px;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Transición suave con transformación */
 }
 
 .btn-danger:hover {
   background-color: #b02a37;
-  color: white;
+  transform: scale(1.05);
+  /* Ligera escala al hacer hover */
 }

@@ -1,10 +1,13 @@
-/* Titulo */
+/* Título principal */
 h2 {
   text-align: center;
   font-weight: bold;
+  color: #30543f;
+  /* Verde oscuro para el título */
+  animation: fadeIn 1s ease;
 }
 
-/* Nombre del mes */
+/* Título del proveedor (mes) */
 .supplier-title {
   font-size: 25px;
   font-weight: bold;
@@ -15,9 +18,10 @@ h2 {
   /* Verde claro para el borde inferior */
   text-align: left;
   padding-left: 30px;
+  margin-bottom: 20px;
 }
 
-/* Icono */
+/* Icono del título del proveedor */
 .supplier-title::before {
   content: "";
   left: 0;
@@ -32,19 +36,24 @@ h2 {
   background-color: transparent;
 }
 
-/* Tabla */
+/* Contenedor de la tabla */
 .table-container {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
+/* Tabla principal */
 table {
   max-width: 70%;
-  width: auto;
-  margin: 20px 0;
-  font-size: 15px;
+  width: 100%;
+  margin: 20px auto;
+  font-size: 16px;
   border-collapse: collapse;
-  /* Añadido para colapsar los bordes */
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  animation: fadeIn 1.5s ease;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .table-container table {
@@ -52,47 +61,48 @@ table {
   table-layout: fixed;
 }
 
+/* Encabezados y celdas de la tabla */
 th,
 td {
-  padding: 10px;
+  padding: 15px 20px;
   text-align: center;
-  border: 1px solid #e0e0e0;
-  /* Borde más suave */
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones suaves */
+  vertical-align: middle;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
 }
 
+/* Encabezados de la tabla */
 th {
   background-color: #30543f;
   /* Verde oscuro para encabezados */
   color: white;
+  font-weight: 600;
 }
 
-td {
-  border: 1px solid #e0e0e0;
-}
-
+/* Filas pares de la tabla */
 tr:nth-child(even) {
   background-color: #f2f9f5;
   /* Verde claro para filas pares */
 }
 
+/* Efecto hover en filas de la tabla (excepto fila total) */
 tr:hover:not(.total-row) {
   background-color: #e6f7ec;
   /* Verde claro al pasar el ratón */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Altura de celdas de la tabla */
 .table-container th,
 .table-container td {
-  height: 50px;
+  height: auto;
 }
 
+/* Alineación de la primera columna de la tabla */
 .table-container td:nth-child(1) {
   text-align: center;
 }
 
+/* Alineación de las columnas 2-5 de la tabla */
 .table-container td:nth-child(2),
 .table-container td:nth-child(3),
 .table-container td:nth-child(4),
@@ -100,12 +110,15 @@ tr:hover:not(.total-row) {
   text-align: right;
 }
 
+/* Mensaje de "No resultados" */
 .No-resultados {
   font-weight: bold;
   font-size: 15px;
   text-align: center;
+  margin-top: 20px;
 }
 
+/* Ancho de columnas de la tabla */
 .table-container th:nth-child(1),
 .table-container th:nth-child(2),
 .table-container th:nth-child(3),
@@ -114,18 +127,24 @@ tr:hover:not(.total-row) {
   width: 20%;
 }
 
-/* Fila total */
+/* Contenedor de la fila total */
 .total-table-container {
-  margin-top: -35px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-}
-
-.total-table {
   width: 100%;
-  border-collapse: collapse;
 }
 
+/* Tabla de la fila total */
+.total-table {
+  width: 70%;
+  border-collapse: collapse;
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Fila total */
 .total-row {
   background-color: #28a745;
   /* Verde claro para la fila total */
@@ -133,19 +152,33 @@ tr:hover:not(.total-row) {
   color: white;
 }
 
+/* Celdas de la fila total */
 .total-table td {
-  padding: 25px;
+  padding: 15px 20px;
+  text-align: right;
 }
 
+/* Alineación y ancho de celdas de la fila total */
 .total-table td:nth-child(1),
 .total-table td:nth-child(2),
 .total-table td:nth-child(3),
 .total-table td:nth-child(4),
 .total-table td:nth-child(5) {
-  text-align: right;
   width: 20%;
 }
 
+/* Alineación de la primera celda de la fila total */
 .total-table td:nth-child(1) {
   text-align: center;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

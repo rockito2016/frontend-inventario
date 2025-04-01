@@ -25,19 +25,23 @@ h2 {
 
 .info-container {
   display: flex;
-  gap: 10px;
+  gap: 15px;
+  /* Aumentado el gap para mejor separación */
 }
 
 .info-box {
-  padding: 10px 15px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   background-color: #30543f;
-  /* Verde oscuro */
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   margin-left: 10px;
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 /* Nombre del proveedor */
@@ -61,7 +65,6 @@ h2 {
   width: 12px;
   height: 12px;
   border: 5px solid #30543f;
-  /* Verde oscuro */
   border-radius: 50%;
   background-color: transparent;
 }
@@ -69,46 +72,48 @@ h2 {
 /* Tabla */
 table {
   margin: 20px 0;
-  font-size: 15px;
+  font-size: 16px;
+  /* Aumentado el tamaño de fuente */
   width: 100%;
-  /* Añadido para que la tabla ocupe todo el ancho */
   border-collapse: collapse;
-  /* Añadido para colapsar los bordes */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  overflow: hidden;
+  /* Evita que los bordes redondeados se desborden */
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 th,
 td {
-  padding: 10px;
+  padding: 15px 20px;
+  /* Aumentado el padding */
   text-align: center;
   border: 1px solid #e0e0e0;
-  /* Borde más suave */
   transition: background-color 0.3s ease;
-  /* Transición suave */
 }
 
 th {
   background-color: #30543f;
-  /* Verde oscuro */
   color: white;
+  font-weight: 600;
+  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
 tr:hover:not(.total-row) {
   background-color: #e6f7ec;
-  /* Verde claro para hover */
   transform: translateY(-2px);
-  /* Ligero desplazamiento hacia arriba */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
 }
 
 .table-container th,
 .table-container td {
-  padding: 10px;
+  padding: 15px 20px;
+  /* Aumentado el padding */
   text-align: center;
   height: 50px;
 }
@@ -167,7 +172,6 @@ tr:hover:not(.total-row) {
 
 .total-row {
   background-color: #30543f;
-  /* Verde oscuro */
   font-weight: bold;
   color: white;
 }
@@ -384,35 +388,39 @@ tr:hover:not(.total-row) {
 }
 
 .info-box2 {
-  padding: 10px 15px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   background-color: #30543f;
-  /* Verde oscuro */
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   margin-right: 680px;
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 /* boton selecionar todo */
 .info-box3 {
-  padding: 10px 15px;
+  padding: 12px 20px;
+  /* Aumentado el padding */
   background-color: #30543f;
-  /* Verde oscuro */
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  /* Bordes redondeados */
   margin-left: 10px;
   transition: background-color 0.3s ease;
-  /* Transición suave */
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
 }
 
 /* Botón en estado alternativo */
 .info-box3.active {
   background-color: #2ecc71;
-  /* Verde brillante */
 }

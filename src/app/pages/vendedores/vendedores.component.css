@@ -1,22 +1,25 @@
-/* Titulo */
+/* Título principal */
 h2 {
   text-align: center;
   font-weight: bold;
+  animation: fadeIn 1s ease;
 }
 
-/* Bucador y datos */
+/* Contenedor del buscador y datos */
 .flex-container {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
 }
 
+/* Cabecera del buscador */
 .search-header {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
+/* Título del buscador */
 .titulo-buscador {
   font-size: 25px;
   font-weight: bold;
@@ -25,6 +28,7 @@ h2 {
   /* Verde oscuro para el título del buscador */
 }
 
+/* Input del buscador */
 .search-input {
   padding: 10px;
   font-size: 18px;
@@ -37,71 +41,80 @@ h2 {
   width: 260px;
 }
 
-/* Estilo del botón de agregar */
+/* Botón de agregar */
 .btn-success {
-  margin-left: 10px;
-  padding: 10px 20px;
-  font-size: 1.1em;
-  background-color: #28a745;
-  /* Verde claro para el botón agregar */
+  background-color: #30543f;
   color: white;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
+  font-size: 18px;
   cursor: pointer;
-  font-weight: bold;
+  margin-left: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn-success:hover {
-  background-color: #218838;
-  /* Verde ligeramente más oscuro al pasar el ratón */
+  background-color: darkgreen;
+  transform: scale(1.1);
 }
 
-/* Tabla */
+/* Tabla principal */
 table {
-  margin: 20px 0;
-  font-size: 15px;
+  margin: 20px auto;
+  font-size: 16px;
   width: 100%;
   border-collapse: collapse;
+  box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
+  animation: fadeIn 1.5s ease;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
+/* Encabezados y celdas de la tabla */
 th,
 td {
-  padding: 10px;
+  padding: 15px 20px;
   text-align: center;
-  border: 1px solid #e0e0e0;
-  /* Borde más suave */
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones suaves */
+  vertical-align: middle;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
 }
 
+/* Encabezados de la tabla */
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
+  font-weight: 600;
 }
 
+/* Filas pares de la tabla */
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
+/* Efecto hover en filas de la tabla */
 tr:hover {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Altura de celdas de la tabla */
 .table-container th,
 .table-container td {
-  height: 50px;
+  height: auto;
 }
 
+/* Alineación de columnas de la tabla */
 .table-container td:nth-child(5),
 .table-container td:nth-child(6) {
   text-align: center;
 }
 
+/* Estilos de botones en la tabla */
 .table-container button {
   background-color: transparent;
   border: none;
@@ -109,32 +122,35 @@ tr:hover {
   padding: 0;
 }
 
+/* Botón de modificar en la tabla */
 .buttonModificar {
   font-size: 30px;
   color: #007bff;
-  /* Azul para modificar */
 }
 
 .buttonModificar:hover {
   color: #0056b3;
 }
 
+/* Botón de eliminar en la tabla */
 .buttonEliminar {
   font-size: 30px;
   color: #dc3545;
-  /* Rojo para eliminar */
 }
 
 .buttonEliminar:hover {
   color: #b02a37;
 }
 
+/* Mensaje de "No resultados" */
 .No-resultados {
   font-weight: bold;
   font-size: 15px;
   text-align: center;
+  padding: 20px;
 }
 
+/* Ancho de columnas de la tabla */
 .table-container th:nth-child(1) {
   width: 26%;
 }
@@ -162,11 +178,8 @@ tr:hover {
 /* Modal para editar */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,15 +187,15 @@ tr:hover {
 }
 
 .modal {
-  background-color: white;
+  background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  width: 900px;
-  height: auto;
+  box-shadow: 0 4px 12px rgba(48, 84, 63, 0.3);
+  width: 700px;
   padding: 30px;
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Cabecera del modal */
 .modal-header {
   border-bottom: 1px solid #dee2e6;
   padding-bottom: 15px;
@@ -190,6 +203,7 @@ tr:hover {
   margin-bottom: 20px;
 }
 
+/* Pie del modal */
 .modal-footer {
   border-top: 1px solid #dee2e6;
   padding-top: 15px;
@@ -198,6 +212,7 @@ tr:hover {
   align-items: center;
 }
 
+/* Animación de aparición del modal */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -208,11 +223,11 @@ tr:hover {
   }
 }
 
-/* Estilo de los inputs en el modal */
+/* Estilos de inputs en el modal */
 .modal input[type="text"],
 .modal input[type="email"],
 .modal input[type="password"] {
-  width: calc(100% - 20px);
+  width: calc(100% - 40px);
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -220,12 +235,14 @@ tr:hover {
   box-sizing: border-box;
 }
 
+/* Título del modal */
 .modal-title {
   text-align: center;
   font-weight: bold;
   font-size: 40px;
 }
 
+/* Botón cerrar modal */
 .close-button {
   position: absolute;
   top: -3px;
@@ -235,18 +252,21 @@ tr:hover {
   font-size: 40px;
   color: #dc3545;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .close-button:hover {
   color: #b02a37;
 }
 
+/* Contenedor de filas de formulario en el modal */
 .form-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
 }
 
+/* Grupo de formulario */
 .form-group {
   flex: 1;
   margin-right: 15px;
@@ -256,23 +276,34 @@ tr:hover {
   margin-right: 0;
 }
 
+/* Última fila de formulario en el modal */
 .modal-body .form-row:last-child {
   margin-bottom: 0;
 }
 
+/* Botones genéricos en el modal */
 .btn:not(.btn-success, .btn-danger) {
   margin: 8px;
   padding: 10px 20px;
   font-size: 1.1em;
   width: auto;
-  background-color: #28a745;
-  /* Verde claro para botones en modal */
+  background-color: #30543f;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:not(.btn-success, .btn-danger):hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
 }
 
 /* Modal de eliminar */
@@ -286,13 +317,14 @@ tr:hover {
   animation: fadeIn 0.3s;
 }
 
+/* Cuerpo del modal de eliminar */
 .modal-body2 {
   text-align: center;
 }
 
+/* Botón de eliminar en el modal */
 .btn-danger {
   background-color: #dc3545;
-  /* Rojo para botones de eliminar */
   color: white;
   margin: 8px;
   padding: 10px 20px;
@@ -308,4 +340,15 @@ tr:hover {
 .btn-danger:hover {
   background-color: #b02a37;
   color: white;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
