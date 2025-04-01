@@ -62,7 +62,6 @@ th,
 td {
   padding: 15px 20px;
   text-align: center;
-  /* Centra todos los datos */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
@@ -136,7 +135,6 @@ tr:hover:not(.total-row) {
 .total-table td {
   padding: 15px 20px;
   text-align: center;
-  /* Centra todos los datos */
 }
 
 /* Alineación y ancho de celdas de la fila total */

@@ -7,7 +7,8 @@ h2 {
 /* Buscador */
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* Centrar el buscador */
   align-items: center;
   padding-top: 20px;
 }
@@ -29,15 +30,12 @@ h2 {
 .search-select,
 .form-control {
   padding: 12px;
-  /* Aumentado el padding */
   font-size: 18px;
   border: 2px solid #30543f;
   border-radius: 8px;
-  /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.2);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el ancho */
 }
 
 .search-input:focus,
@@ -95,23 +93,20 @@ h2 {
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -119,18 +114,14 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
-}
-
-td {
-  border: 1px solid #e0e0e0;
 }
 
 tr:nth-child(even) {
   background-color: #f2f9f5;
 }
 
-tr:hover {
+/* Aplicar hover solo a las filas de datos, no a la fila total */
+.table-container tr:not(.total-row):hover {
   background-color: #e6f7ec;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -143,7 +134,8 @@ tr:hover {
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8) {
-  text-align: right;
+  text-align: center;
+  /* Centrar las columnas 7 y 8 */
 }
 
 .No-resultados {
@@ -192,23 +184,19 @@ tr:hover {
 .btn-success {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   background-color: #30543f;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-success:hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Subtitulo de cada proveedor*/
@@ -283,13 +271,11 @@ tr:hover {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-quantity:hover {
   background-color: #b02a37;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Botón de aumentar cantidad */
@@ -303,13 +289,11 @@ tr:hover {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-quantity-more:hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Contenedor del número */
@@ -327,23 +311,19 @@ tr:hover {
   color: white;
   margin: 8px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-danger:hover {
   background-color: #b02a37;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Boton finalizar venta*/
@@ -357,16 +337,13 @@ tr:hover {
 .btn-exportar {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 20px;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-finalizar {
@@ -376,7 +353,6 @@ tr:hover {
 .btn-finalizar:hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 .btn-exportar {
@@ -386,7 +362,6 @@ tr:hover {
 .btn-exportar:hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Fila total */
@@ -404,10 +379,13 @@ tr:hover {
 
 .total-table td {
   padding: 25px;
+  text-align: center;
+  /* Centrar todo el texto */
 }
 
 .calculo {
-  text-align: right;
+  text-align: center;
+  /* Centrar el cálculo */
 }
 
 .total-table td:nth-child(2) {
@@ -416,10 +394,10 @@ tr:hover {
 
 .total-table td:nth-child(1) {
   width: 81%;
-  text-align: center;
 }
 
 .total-table td:nth-child(2) {
   width: 19%;
-  text-align: right;
+  text-align: center;
+  /* Centrar la columna 2 */
 }

@@ -27,27 +27,22 @@ h2 {
 
 .search-input {
   padding: 12px;
-  /* Aumentado el padding para mejor visualización */
   font-size: 18px;
   border: 2px solid #30543f;
   border-radius: 8px;
-  /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 280px;
-  /* Aumentado el ancho */
 }
 
 .search-input:focus {
   border-color: #2ecc71;
-  /* Color verde al enfocar */
   outline: none;
 }
 
 .info-container {
   display: flex;
   gap: 15px;
-  /* Aumentado el gap para mejor separación */
 }
 
 /* Botón */
@@ -63,23 +58,19 @@ button {
 .btn-success {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   background-color: #28a745;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-success:hover {
   background-color: #218838;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Tabla */
@@ -96,22 +87,19 @@ table {
   width: auto;
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
-  border: 1px solid #e0e0e0;
+  border: none;
+  /* Eliminar bordes */
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
+  /* Centrar todo el texto */
   height: 50px;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -120,7 +108,6 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -257,7 +244,6 @@ table-container th:nth-child(17) {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  /* Sombra con verde oscuro */
   width: 800px;
   height: auto;
   padding: 30px;
@@ -355,25 +341,21 @@ table-container th:nth-child(17) {
 .btn:not(.btn-success, .btn-danger) {
   margin: 8px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   background-color: #28a745;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn:not(.btn-success, .btn-danger):hover {
   background-color: #218838;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Modal de eliminar */
@@ -381,7 +363,6 @@ table-container th:nth-child(17) {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  /* Sombra con verde oscuro */
   width: 750px;
   height: auto;
   padding: 30px;
@@ -397,21 +378,17 @@ table-container th:nth-child(17) {
   color: white;
   margin: 8px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-danger:hover {
   background-color: #b02a37;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }

@@ -17,23 +17,19 @@ button {
 .btn-success {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   background-color: #30543f;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-success:hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Tabla */
@@ -44,17 +40,12 @@ button {
 
 table {
   max-width: 60%;
-  /* Aumentado el ancho máximo para mejor visualización */
   width: auto;
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 .table-container table {
@@ -66,9 +57,10 @@ table {
 th,
 td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease;
 }
 
@@ -76,7 +68,6 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -92,15 +83,9 @@ tr:hover {
 .table-container th,
 .table-container td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
+  /* Centrar todo el texto */
   height: 50px;
-}
-
-.table-container td:nth-child(1),
-.table-container td:nth-child(2),
-.table-container td:nth-child(3) {
-  text-align: center;
 }
 
 .table-container button {
@@ -164,7 +149,6 @@ tr:hover {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
   width: 600px;
   height: auto;
   padding: 30px;
@@ -255,25 +239,21 @@ tr:hover {
 .btn:not(.btn-success, .btn-danger) {
   margin: 8px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   background-color: #30543f;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn:not(.btn-success, .btn-danger):hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Modal de eliminar */
@@ -281,7 +261,6 @@ tr:hover {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
   width: 750px;
   height: auto;
   padding: 30px;
@@ -297,21 +276,17 @@ tr:hover {
   color: white;
   margin: 8px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-danger:hover {
   background-color: #b02a37;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }

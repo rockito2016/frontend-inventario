@@ -7,7 +7,8 @@ h2 {
 /* Buscador */
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* Centrar el buscador */
   align-items: center;
   padding-top: 20px;
 }
@@ -26,21 +27,16 @@ h2 {
 
 .search-input {
   padding: 12px;
-  /* Aumentado el padding para mejor visualización */
   font-size: 18px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
   transition: border-color 0.3s ease;
   width: 280px;
-  /* Aumentado el ancho */
 }
 
 .search-input:focus {
   border-color: #2ecc71;
-  /* Color verde al enfocar */
   outline: none;
 }
 
@@ -56,47 +52,40 @@ h2 {
 .btn-success {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   background-color: #30543f;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-success:hover {
   background-color: #28a745;
   color: white;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Tabla */
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease;
 }
 
@@ -104,7 +93,6 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -120,14 +108,15 @@ tr:nth-child(even) {
 .table-container th,
 .table-container td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
+  /* Centrar todo el texto */
   height: 50px;
 }
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8) {
-  text-align: right;
+  text-align: center;
+  /* Centrar las columnas 7 y 8 */
 }
 
 .No-resultados {
@@ -215,7 +204,8 @@ tr:nth-child(even) {
 }
 
 .table2 td:nth-child(9) {
-  text-align: right;
+  text-align: center;
+  /* Centrar la columna 9 */
 }
 
 /* Modal para editar */
@@ -236,7 +226,6 @@ tr:nth-child(even) {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
   width: 900px;
   height: auto;
   padding: 30px;
@@ -324,23 +313,19 @@ tr:nth-child(even) {
 .btn:not(.btn-success, .btn-danger) {
   margin: 8px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   width: auto;
   background-color: #30543f;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn:not(.btn-success, .btn-danger):hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }

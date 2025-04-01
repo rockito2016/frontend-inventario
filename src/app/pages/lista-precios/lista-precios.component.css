@@ -7,11 +7,9 @@ h2 {
 /* Buscador */
 .search-container {
   display: flex;
-  /* Cambiado a flex para mejor control del centrado */
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  /* Añadido margen inferior para separar del contenido */
 }
 
 .search-header {
@@ -28,21 +26,16 @@ h2 {
 
 .search-input {
   padding: 12px;
-  /* Aumentado el padding para mejor visualización */
   font-size: 18px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
   transition: border-color 0.3s ease;
   width: 280px;
-  /* Aumentado el ancho */
 }
 
 .search-input:focus {
   border-color: #2ecc71;
-  /* Color verde al enfocar */
   outline: none;
 }
 
@@ -50,23 +43,20 @@ h2 {
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease;
 }
 
@@ -74,7 +64,6 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -90,14 +79,15 @@ tr:hover {
 .table-container th,
 .table-container td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
+  /* Centrar todo el texto */
   height: 50px;
 }
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8) {
-  text-align: right;
+  text-align: center;
+  /* Centrar las columnas 7 y 8 */
 }
 
 .No-resultados {

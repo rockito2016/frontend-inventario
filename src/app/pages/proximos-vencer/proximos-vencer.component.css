@@ -26,38 +26,31 @@ h2 {
 .info-container {
   display: flex;
   gap: 15px;
-  /* Aumentado el gap para mejor separación */
 }
 
 .info-box {
   padding: 12px 20px;
-  /* Aumentado el padding */
   background-color: #c63f25;
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   margin-left: 10px;
   box-shadow: 0 4px 8px rgba(198, 63, 37, 0.3);
-  /* Sombra con color ajustado */
 }
 
 /* Boton total2 */
 .info-box2 {
   padding: 12px 20px;
-  /* Aumentado el padding */
   background-color: #d17a25;
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   margin-left: 10px;
   box-shadow: 0 4px 8px rgba(209, 122, 37, 0.3);
-  /* Sombra con color ajustado */
 }
 
 /* Nombre del mes */
@@ -89,23 +82,20 @@ h2 {
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease;
 }
 
@@ -113,7 +103,6 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -129,15 +118,16 @@ tr:hover:not(.total-row, .total-row2) {
 .table-container th,
 .table-container td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
+  /* Centrar todo el texto */
   height: 50px;
 }
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8),
 .table-container td:nth-child(9) {
-  text-align: right;
+  text-align: center;
+  /* Centrar las columnas 7, 8 y 9 */
 }
 
 .table-container th:nth-child(1) {
@@ -194,16 +184,17 @@ tr:hover:not(.total-row, .total-row2) {
 
 .total-table td {
   padding: 25px;
+  text-align: center;
+  /* Centrar el texto en las celdas de total */
 }
 
 .total-table td:nth-child(1) {
-  text-align: center;
   width: 90%;
-  margin-right: 0;
 }
 
 .calculo {
-  text-align: right;
+  text-align: center;
+  /* Centrar el cálculo */
 }
 
 .total-table td:nth-child(2) {

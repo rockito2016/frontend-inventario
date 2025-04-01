@@ -7,7 +7,8 @@ h2 {
 /* Buscador */
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* Centrar el buscador */
   align-items: center;
   padding-top: 20px;
 }
@@ -23,22 +24,17 @@ h2 {
   font-weight: bold;
   margin: 0;
   color: #30543f;
-  /* Verde oscuro para el título del buscador */
 }
 
 .search-input,
 .search-select {
   padding: 12px;
-  /* Aumentado el padding */
   font-size: 18px;
   border: 2px solid #30543f;
-  /* Verde oscuro para los bordes */
   border-radius: 8px;
-  /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el ancho */
 }
 
 .search-input {
@@ -73,18 +69,14 @@ h2 {
 .btn-finalizar {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 1.1em;
   background-color: #28a745;
-  /* Verde claro para botones de éxito */
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-success:hover,
@@ -94,56 +86,43 @@ h2 {
 .btn:not(.btn-success, .btn-danger, .btn-quantity, .btn-finalizar):hover,
 .btn-finalizar:hover {
   background-color: #218838;
-  /* Verde más oscuro al pasar el ratón */
   color: white;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Tabla */
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 th {
   background-color: #30543f;
-  /* Verde oscuro para encabezados */
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
-}
-
-td {
-  border: 1px solid #e0e0e0;
 }
 
 tr:nth-child(even) {
   background-color: #f2f9f5;
-  /* Verde claro para filas pares */
 }
 
 .table-container table:not(.total-table) tr:hover {
   background-color: #e6f7ec;
-  /* Verde claro al pasar el ratón */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -155,7 +134,8 @@ tr:nth-child(even) {
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8) {
-  text-align: right;
+  text-align: center;
+  /* Centrar las columnas 7 y 8 */
 }
 
 .No-resultados {
@@ -215,7 +195,8 @@ tr:nth-child(even) {
 }
 
 .table2 td:nth-child(9) {
-  text-align: right;
+  text-align: center;
+  /* Centrar la columna 9 */
 }
 
 /* Control de cantidad */
@@ -231,7 +212,6 @@ tr:nth-child(even) {
 .btn-quantity,
 .btn-danger {
   background-color: #dc3545;
-  /* Rojo para botones de peligro */
   color: white;
   padding: 5px 10px;
   font-size: 20px;
@@ -241,16 +221,13 @@ tr:nth-child(even) {
   font-weight: bold;
   margin: 8px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-quantity:hover,
 .btn-danger:hover {
   background-color: #c82333;
-  /* Rojo más oscuro al pasar el ratón */
   color: white;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Fila total */
@@ -265,17 +242,19 @@ tr:nth-child(even) {
 
 .total-row {
   background-color: #28a745;
-  /* Verde claro para la fila total */
   font-weight: bold;
   color: white;
 }
 
 .total-table td {
   padding: 25px;
+  text-align: center;
+  /* Centrar todo el texto */
 }
 
 .calculo {
-  text-align: right;
+  text-align: center;
+  /* Centrar el cálculo */
 }
 
 .total-table td:nth-child(2) {
@@ -289,7 +268,8 @@ tr:nth-child(even) {
 
 .total-table td:nth-child(2) {
   width: 19%;
-  text-align: right;
+  text-align: center;
+  /* Centrar la columna 2 */
 }
 
 /* Subtítulo */
@@ -372,23 +352,18 @@ h4 {
 .client-info-body .data-field {
   padding: 8px;
   font-size: 1.2rem;
-  /* Aumentar el tamaño de la fuente */
   border: 1px solid #30543f;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(48, 84, 63, 0.1);
   background-color: #f1f1f1;
   box-sizing: border-box;
   width: 100%;
-  /* Asegurar que ocupe el ancho completo */
   height: auto;
-  /* Permitir que la altura se ajuste al contenido */
   min-height: unset;
-  /* Eliminar la altura mínima */
   max-height: unset;
-  /* Eliminar la altura máxima */
 }
 
-.form-group:not(.venta-info-body) {
+form-group:not(.venta-info-body) {
   flex: 1;
   margin-right: 15px;
   display: flex;
@@ -424,12 +399,10 @@ h4 {
   font-size: 1rem;
   margin-top: 10px;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el ancho */
 }
 
 .close-button:hover {
   background-color: #218838;
-  /* Verde más oscuro al pasar el ratón */
   color: white;
 }
 
@@ -501,7 +474,6 @@ h4 {
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #30543f;
-  /* Verde oscuro para los bordes */
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -526,7 +498,6 @@ h4 {
 
 .close-button:hover {
   color: #c82333;
-  /* Rojo más oscuro al pasar el ratón */
 }
 
 .form-row {
@@ -600,7 +571,6 @@ h4 {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #30543f;
-  /* Verde oscuro para los bordes */
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
   min-height: 25px;
@@ -608,7 +578,6 @@ h4 {
   max-width: 140px;
   text-align: center;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el ancho */
 }
 
 .venta-info-container .venta-readonly {
@@ -644,7 +613,6 @@ h4 {
 /* Color verde cuando el botón está activo */
 .venta-info-container .btn-payment.activo {
   background-color: #28a745;
-  /* Verde claro para el botón activo */
   color: white;
 }
 
@@ -692,13 +660,11 @@ h4 {
   padding: 10px;
   font-size: 18px;
   border: 1px solid #30543f;
-  /* Verde oscuro para los bordes */
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
   max-width: 140px;
   text-align: center;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el ancho */
 }
 
 .modal-pago .data-field3,
@@ -710,7 +676,6 @@ h4 {
 /* Otros botones */
 .btn:not(.btn-success, .btn-danger, .btn-quantity, .btn-finalizar) {
   background-color: #28a745;
-  /* Verde claro para otros botones */
 }
 
 /* Titulo datos de la venta */

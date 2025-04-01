@@ -26,22 +26,18 @@ h2 {
 .info-container {
   display: flex;
   gap: 15px;
-  /* Aumentado el gap para mejor separación */
 }
 
 .info-box {
   padding: 12px 20px;
-  /* Aumentado el padding */
   background-color: #30543f;
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   margin-left: 10px;
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 /* Nombre del proveedor */
@@ -73,23 +69,20 @@ h2 {
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  /* Centrar todo el texto */
+  border: none;
+  /* Eliminar bordes */
   transition: background-color 0.3s ease;
 }
 
@@ -97,7 +90,6 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
 }
 
 tr:nth-child(even) {
@@ -113,15 +105,16 @@ tr:hover:not(.total-row) {
 .table-container th,
 .table-container td {
   padding: 15px 20px;
-  /* Aumentado el padding */
   text-align: center;
+  /* Centrar todo el texto */
   height: 50px;
 }
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8),
 .table-container td:nth-child(9) {
-  text-align: right;
+  text-align: center;
+  /* Centrar las columnas 7, 8 y 9 */
 }
 
 .table-container th:nth-child(1) {
@@ -389,35 +382,29 @@ tr:hover:not(.total-row) {
 
 .info-box2 {
   padding: 12px 20px;
-  /* Aumentado el padding */
   background-color: #30543f;
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   margin-right: 680px;
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 /* boton selecionar todo */
 .info-box3 {
   padding: 12px 20px;
-  /* Aumentado el padding */
   background-color: #30543f;
   color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   margin-left: 10px;
   transition: background-color 0.3s ease;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 /* Botón en estado alternativo */
