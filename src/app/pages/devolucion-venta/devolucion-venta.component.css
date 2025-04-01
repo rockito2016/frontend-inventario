@@ -73,8 +73,10 @@ h2 {
   top: 15px;
   padding: 10px 20px;
   font-size: 1.1em;
-  background-color: #30543f;
+  background-color: #28a745;
+  /* Cambiado a verde */
   color: white;
+  /* Texto blanco para mejor contraste */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -87,6 +89,7 @@ h2 {
 
 .btn-success:hover {
   background-color: darkgreen;
+  /* Verde más oscuro al pasar el ratón */
   transform: scale(1.05);
 }
 
@@ -120,7 +123,6 @@ th,
 td {
   padding: 15px 20px;
   text-align: center;
-  /* Centra todos los datos */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
@@ -245,4 +247,34 @@ tr:hover:not(.total-row) {
   padding: 10px 20px;
   font-size: 1.1em;
   background-color: #dc3545;
+}
+
+/* Fila total */
+.total-row {
+  background-color: #28a745;
+  /* Cambia a verde */
+  font-weight: bold;
+  color: white;
+}
+
+.total-table td {
+  padding: 25px;
+  text-align: center;
+}
+
+.calculo {
+  text-align: center;
+}
+
+.total-table td:nth-child(2) {
+  padding-right: 10px;
+}
+
+.total-table td:nth-child(1) {
+  width: 81%;
+}
+
+.total-table td:nth-child(2) {
+  width: 19%;
+  text-align: center;
 }
