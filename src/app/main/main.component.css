@@ -3,15 +3,20 @@
   flex: 1;
   padding: 15px;
   background-color: white;
-  overflow-y: auto; 
-  margin-left: 224px;
-  margin-right: -9px;
-  margin-top: 55px; 
-}
-
-.header{
+  overflow-y: auto;
+  margin-left: 250px;
+  /* Ajuste para el ancho del sidebar */
+  margin-top: 72px;
+  /* Ajuste para la altura del header */
   position: relative;
-    z-index: 10;
+  /* Para asegurar que el contenido esté correctamente posicionado */
 }
 
-
+.header {
+  position: fixed;
+  /* Cambiado a fixed para que se mantenga en la parte superior */
+  z-index: 1000;
+  /* Asegura que esté encima del sidebar y el contenido */
+  width: 100%;
+  /* Asegura que ocupe todo el ancho */
+}

@@ -4,86 +4,92 @@ h2 {
   font-weight: bold;
 }
 
-/* Bucador y datos */
+/* Buscador y datos */
 .flex-container {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding-top: 20px;
 }
 
 .search-header {
   display: flex;
-  align-items: center; 
-  gap: 20px; 
+  align-items: center;
+  gap: 20px;
 }
 
 .titulo-buscador {
-  font-size: 25px;  
+  font-size: 25px;
   font-weight: bold;
   margin: 0;
 }
- 
+
 .search-input {
-  padding: 10px; 
-  font-size: 18px; 
-  border: 2px solid #ccc; 
-  border-radius: 5px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-  transition: border-color 0.3s; 
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.3);
+  transition: border-color 0.3s ease;
+  /* Transición suave */
   width: 260px;
 }
 
 .info-container {
-  display: flex; 
-  gap: 10px; 
+  display: flex;
+  gap: 10px;
 }
 
 .info-box {
-  padding: 10px 15px; 
-  background-color: rgb(28, 209, 31); 
-  color: white; 
-  font-size: 18px; 
+  padding: 10px 15px;
+  background-color: #30543f;
+  color: white;
+  font-size: 18px;
   font-weight: bold;
-  border: none; 
-  border-radius: 5px; 
+  border: none;
+  border-radius: 5px;
 }
 
 /* Tabla */
 table {
   margin: 20px 0;
   font-size: 15px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+  /* Transición suave */
 }
 
 th {
-  background-color: green;
+  background-color: #30543f;
   color: white;
-  border: 1px solid #ddd;
-}
-
-td {
-  
-  border: 1px solid #ddd;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
- 
-tr:hover {
-  background-color: #e9ecef;
+  background-color: #f2f9f5;
 }
 
-.table-container table {
-  border-collapse: collapse;
+tr:hover {
+  background-color: #e6f7ec;
+  transform: translateY(-2px);
+  /* Ligero desplazamiento hacia arriba */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
 }
 
 .table-container th,
 .table-container td {
   padding: 10px;
-  text-align: center; 
+  text-align: center;
   height: 50px;
 }
- 
+
 .table-container td:nth-child(7),
 .table-container td:nth-child(8) {
   text-align: right;
@@ -92,18 +98,37 @@ tr:hover {
 .No-resultados {
   font-weight: bold;
   font-size: 15px;
+  text-align: center;
 }
- 
-.table-container th:nth-child(1) { width: 9%; } 
-.table-container th:nth-child(2) { width: 12%; } 
-.table-container th:nth-child(3) { width: 15%; } 
-.table-container th:nth-child(4) { width: 20%; } 
-.table-container th:nth-child(5) { width: 15%; } 
-.table-container th:nth-child(6) { width: 10%; } 
-.table-container th:nth-child(7) { width: 8%; } 
-.table-container th:nth-child(8) { width: 10%; }
 
+.table-container th:nth-child(1) {
+  width: 9%;
+}
 
+.table-container th:nth-child(2) {
+  width: 12%;
+}
 
+.table-container th:nth-child(3) {
+  width: 15%;
+}
 
+.table-container th:nth-child(4) {
+  width: 20%;
+}
 
+.table-container th:nth-child(5) {
+  width: 15%;
+}
+
+.table-container th:nth-child(6) {
+  width: 10%;
+}
+
+.table-container th:nth-child(7) {
+  width: 8%;
+}
+
+.table-container th:nth-child(8) {
+  width: 10%;
+}

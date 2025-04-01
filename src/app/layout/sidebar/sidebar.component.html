@@ -1,11 +1,14 @@
 <div class="container-menu">
   <div class="cont-menu">
     <nav>
-      <!-- Menú Inicio -->
       <div class="menu-item">
-        <a routerLink="/main/inicio" routerLinkActive="active" class="menu-link"
-          >Inicio</a
+        <a
+          routerLink="/main/inicio"
+          routerLinkActive="active"
+          class="menu-link"
         >
+          Inicio
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1'">
             <a
@@ -34,15 +37,15 @@
         </ul>
       </div>
 
-      <!-- Menú Inventario -->
       <div class="menu-item">
         <a
           routerLink="/main/inventario"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Inventario</a
         >
+          Inventario
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1' || userRole === '2'">
             <a
@@ -87,15 +90,15 @@
         </ul>
       </div>
 
-      <!-- Menú Productos -->
       <div class="menu-item">
         <a
           routerLink="/main/producto"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Productos</a
         >
+          Productos
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1'">
             <a
@@ -148,15 +151,15 @@
         </ul>
       </div>
 
-      <!-- Menú Pedidos -->
       <div class="menu-item">
         <a
           routerLink="/main/pedido"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Pedidos</a
         >
+          Pedidos
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1'">
             <a
@@ -177,15 +180,15 @@
         </ul>
       </div>
 
-      <!-- Menú Compras -->
       <div class="menu-item">
         <a
           routerLink="/main/compras"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Compras</a
         >
+          Compras
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1'">
             <a
@@ -214,15 +217,15 @@
         </ul>
       </div>
 
-      <!-- Menú Ventas -->
       <div class="menu-item">
         <a
           routerLink="/main/ventas"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Ventas</a
         >
+          Ventas
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1' || userRole === '2'">
             <a
@@ -259,15 +262,15 @@
         </ul>
       </div>
 
-      <!-- Menú Contactos -->
       <div class="menu-item">
         <a
           routerLink="/main/contactos"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Contactos</a
         >
+          Contactos
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1' || userRole === '2'">
             <a
@@ -304,15 +307,15 @@
         </ul>
       </div>
 
-      <!-- Menú Créditos -->
       <div class="menu-item">
         <a
           routerLink="/main/creditos"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Créditos</a
         >
+          Créditos
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1' || userRole === '2'">
             <a
@@ -333,15 +336,15 @@
         </ul>
       </div>
 
-      <!-- Menú Extras -->
       <div class="menu-item">
         <a
           routerLink="/main/extras"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           class="menu-link"
-          >Extras</a
         >
+          Extras
+        </a>
         <ul class="submenu">
           <li *ngIf="userRole === '1'">
             <a

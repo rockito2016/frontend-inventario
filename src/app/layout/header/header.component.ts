@@ -14,24 +14,22 @@ import { NotificationComponent } from '../../pages/notification/notification.com
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  showModal: boolean = false;
+  showModal = false;
   userImage: string | null = null;
   selectedImage: string | null = null;
-  selectedFileName: string = '';
+  selectedFileName = '';
   userId: string | null = null;
-  showDeleteConfirmation: boolean = false;
   showLogoutConfirmationModal = false;
-  showPassword: boolean = false;
-  rol: string = '';
-  nombre: string = '';
-  usuario: string = '';
-  contrasena: string = '';
+  showPassword = false;
+  rol = '';
+  nombre = '';
+  usuario = '';
+  contrasena = '';
 
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
-
     if (this.userId) {
       this.obtenerDatosUsuario(Number(this.userId));
       this.loadUserImage();
@@ -49,20 +47,18 @@ export class HeaderComponent implements OnInit {
 
   obtenerDatosUsuario(id: number): void {
     const token = localStorage.getItem('token');
-
     if (token) {
       const headers = new HttpHeaders().set('Authorization', token);
-
-      this.http.get<any>(`http://localhost:3000/api/datos-usuarios/${id}`, { headers }).subscribe(
-        (data) => {
+      this.http.get<any>(`http://localhost:3000/api/datos-usuarios/${id}`, { headers }).subscribe({
+        next: (data) => {
           this.rol = data.rol;
           this.nombre = data.nombre;
           this.usuario = data.usuario;
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al obtener los datos del usuario:', error);
         }
-      );
+      });
     } else {
       console.error('No se encontró el token de autorización');
     }
@@ -81,8 +77,6 @@ export class HeaderComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.selectedFileName = file.name;
-      localStorage.setItem(`selectedFileName_${this.userId}`, this.selectedFileName);
-
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedImage = reader.result as string;
@@ -92,11 +86,11 @@ export class HeaderComponent implements OnInit {
   }
 
   saveChanges(): void {
-    if (this.selectedImage) {
+    if (this.selectedImage && this.userId) {
       this.userImage = this.selectedImage;
       localStorage.setItem(`userImage_${this.userId}`, this.userImage);
     }
-    if (this.selectedFileName) {
+    if (this.selectedFileName && this.userId) {
       localStorage.setItem(`selectedFileName_${this.userId}`, this.selectedFileName);
     }
     this.closeModal();
@@ -107,15 +101,15 @@ export class HeaderComponent implements OnInit {
     fileInput.click();
   }
 
-  showLogoutConfirmation() {
+  showLogoutConfirmation(): void {
     this.showLogoutConfirmationModal = true;
   }
 
-  closeLogoutConfirmation() {
+  closeLogoutConfirmation(): void {
     this.showLogoutConfirmationModal = false;
   }
 
-  confirmLogout() {
+  confirmLogout(): void {
     this.showLogoutConfirmationModal = false;
     localStorage.removeItem('userId');
     this.router.navigate(['/login']);

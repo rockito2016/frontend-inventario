@@ -1,132 +1,157 @@
 /* Titulo */
 h2 {
-    text-align: center;
-    font-weight: bold;
-  }
-
-/* Carcatetisticas*/
-  .container {
-    text-align: center;
-  }
-  
-  .horizontal-columns {
-    display: flex;
-    justify-content: space-around; 
-    margin-top: 20px;
-  }
-  
-  .column {
-    flex: 1;
-    text-align: center; 
-    margin: 0 20px; 
-    margin-bottom: 20px; 
+  text-align: center;
+  font-weight: bold;
 }
 
-  
-  h4 {
-    font-weight: bold; 
-  }
-  
-  button {
-    margin-top: 10px;
-  }
+/* Caracteristicas */
+.container {
+  text-align: center;
+}
 
-  /* Estilo del botón de agregar */
+.horizontal-columns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.column {
+  flex: 1;
+  text-align: center;
+  margin: 0 20px;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+}
+
+/* Estilo del botón de agregar */
 .btn-success {
-    margin-left: 10px; 
-    padding: 10px 20px;
-    font-size: 1.1em;
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background-color: #30543f;
+  /* Verde oscuro */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  /* Transición suave */
+}
 
-  
+.btn-success:hover {
+  background-color: #28a745;
+  /* Verde más claro para hover */
+  color: white;
+}
+
 /* Tabla */
 table {
-    margin: 20px 0;
-    font-size: 15px;
-    width: 100%;
-  }
-  
-  .table-container table {
-    border-collapse: collapse;
-    width: 100%; 
-    table-layout: fixed;
-  }
-  
-  th {
-    background-color: green;
-    color: white;
-    border: 1px solid #ddd;
-  }
-  
-  td {
-    
-    border: 1px solid #ddd;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  tr:hover {
-    background-color: #e9ecef;
-  }
-  
-  .table-container table {
-    border-collapse: collapse;
-  }
-  
-  .table-container th,
-  .table-container td { 
-    padding: 10px;
-    text-align: center; 
-    height: 50px;
-  }
-  
-  .table-container td:nth-child(1),
-  .table-container td:nth-child(2),
-  .table-container td:nth-child(3){
-    text-align: center;
-  }
-  
-  .table-container button {
-    background-color: transparent; 
-    border: none; 
-    cursor: pointer; 
-    padding: 0; 
-  }
-  
-  .buttonModificar {
-    font-size: 30px; 
-    color: blue; 
-  }
-  
-  .buttonModificar:hover {
-    color: darkblue; 
-  }
-  
-  .buttonEliminar {
-    font-size: 30px; 
-    color: red; 
-  }
-  
-  .buttonEliminar:hover {
-    color: darkred; 
-  }
-  
-  .No-resultados {
-    font-weight: bold;
-    font-size: 15px;
-  }
-  
-  .table-container th:nth-child(1) { width: 68%; } 
-  .table-container th:nth-child(2) { width: 16%; } 
-  .table-container th:nth-child(3) { width: 16%; }
+  margin: 20px 0;
+  font-size: 15px;
+  width: 100%;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  /* Borde más suave */
+  transition: background-color 0.3s ease;
+  /* Transición suave */
+}
+
+th {
+  background-color: #30543f;
+  /* Verde oscuro */
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f9f5;
+  /* Verde claro para filas pares */
+}
+
+tr:hover {
+  background-color: #e6f7ec;
+  /* Verde claro para hover */
+  transform: translateY(-2px);
+  /* Ligero desplazamiento hacia arriba */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+}
+
+.table-container th,
+.table-container td {
+  padding: 10px;
+  text-align: center;
+  height: 50px;
+}
+
+.table-container td:nth-child(1),
+.table-container td:nth-child(2),
+.table-container td:nth-child(3) {
+  text-align: center;
+}
+
+.table-container button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.buttonModificar {
+  font-size: 30px;
+  color: #30543f;
+  /* Verde oscuro */
+}
+
+.buttonModificar:hover {
+  color: #28a745;
+  /* Verde más claro para hover */
+}
+
+.buttonEliminar {
+  font-size: 30px;
+  color: red;
+}
+
+.buttonEliminar:hover {
+  color: darkred;
+}
+
+.No-resultados {
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+.table-container th:nth-child(1) {
+  width: 68%;
+}
+
+.table-container th:nth-child(2) {
+  width: 16%;
+}
+
+.table-container th:nth-child(3) {
+  width: 16%;
+}
 
 /* Modal para editar */
 .modal-overlay {
@@ -135,59 +160,61 @@ table {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center; 
-  z-index: 1000; 
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal {
   background-color: white;
-  border-radius: 10px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-  width: 550px; 
-  height: auto; 
-  padding: 30px; 
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
+  width: 550px;
+  height: auto;
+  padding: 30px;
   animation: fadeIn 0.3s;
 }
 
 .modal-header {
-  border-bottom: 1px solid #dee2e6; 
-  padding-bottom: 15px; 
-  position: relative; 
-  margin-bottom: 20px; 
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .modal-footer {
-  border-top: 1px solid #dee2e6; 
-  padding-top: 15px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  border-top: 1px solid #dee2e6;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0; 
+    opacity: 0;
   }
+
   to {
-    opacity: 1; 
+    opacity: 1;
   }
 }
 
 /* Estilo de los inputs en el modal */
-
 .modal input[type="text"],
 .modal input[type="email"],
 .modal select {
-  width: calc(100% - 50px); 
-  padding: 15px; 
+  width: calc(100% - 50px);
+  padding: 15px;
   margin: 0 auto 10px auto;
-  margin-bottom: 15px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
+
 .modal-title {
   text-align: center;
   font-weight: bold;
@@ -195,81 +222,85 @@ table {
 }
 
 .close-button {
-  position: absolute; 
-  top: -3px; 
-  right: 0px; 
-  background: none; 
-  border: none; 
-  font-size: 40px; 
-  color: #dc3545; 
-  cursor: pointer; 
+  position: absolute;
+  top: -3px;
+  right: 0px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #dc3545;
+  cursor: pointer;
 }
 
 .close-button:hover {
-  color: #b02a37; 
+  color: #b02a37;
 }
 
 .form-row {
-  display: flex;  
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   margin-bottom: 15px;
   width: 100%;
 }
 
 .form-group {
-  flex: 1; 
-  max-width: 300px; 
-  margin-right: 15px; 
+  flex: 1;
+  max-width: 300px;
+  margin-right: 15px;
 }
 
 .form-group:last-child {
-  margin-right: 0; 
+  margin-right: 0;
 }
 
 .modal-body .form-row:last-child {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
-.btn:not(.btn-success, .btn-danger)  {
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
-  background-color: green;
+.btn:not(.btn-success, .btn-danger) {
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
+  background-color: #30543f;
+  /* Verde oscuro */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   margin-bottom: -10px;
+  transition: background-color 0.3s ease;
+  /* Transición suave */
+}
+
+.btn:not(.btn-success, .btn-danger):hover {
+  background-color: #28a745;
+  /* Verde más claro para hover */
 }
 
 /* Modal de eliminar */
 .modal2 {
-  background-color: white; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-  width: 750px; 
-  height: auto; 
-  padding: 30px; 
-  animation: fadeIn 0.3s; 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(48, 84, 63, 0.3);
+  /* Sombra con verde oscuro */
+  width: 750px;
+  height: auto;
+  padding: 30px;
+  animation: fadeIn 0.3s;
 }
 
 .modal-body2 {
   text-align: center;
 }
-  
-.btn-danger {
-  background-color: red; 
-  color: white; 
-}
 
 .btn-danger {
-  background-color: red; 
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
+  background-color: red;
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
   color: white;
   border: none;
   border-radius: 4px;
@@ -279,27 +310,37 @@ table {
 }
 
 .btn-danger:hover {
-  background-color: #b02a37; 
-  color: white; 
+  background-color: #b02a37;
+  color: white;
 }
 
-/* Tabla subcategoria*/
-.table-container-subcategoria th:nth-child(1) { width: 34%; } 
-.table-container-subcategoria th:nth-child(2) { width: 34%; } 
-.table-container-subcategoria th:nth-child(3) { width: 16%; }
-.table-container-subcategoria th:nth-child(4) { width: 16%; } 
+/* Tabla subcategoria */
+.table-container-subcategoria th:nth-child(1) {
+  width: 34%;
+}
+
+.table-container-subcategoria th:nth-child(2) {
+  width: 34%;
+}
+
+.table-container-subcategoria th:nth-child(3) {
+  width: 16%;
+}
+
+.table-container-subcategoria th:nth-child(4) {
+  width: 16%;
+}
 
 /* Modal agregar para subcategoria */
-
 .modal2 input[type="text"],
 .modal2 input[type="email"],
 .modal2 select {
-  width: calc(100% - 50px); 
-  padding: 15px; 
+  width: calc(100% - 50px);
+  padding: 15px;
   margin: 0 auto 10px auto;
-  margin-bottom: 15px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .modal2-title {
@@ -307,4 +348,3 @@ table {
   font-weight: bold;
   font-size: 40px;
 }
-  

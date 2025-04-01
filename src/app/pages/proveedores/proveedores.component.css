@@ -7,38 +7,43 @@ h2 {
 /* Bucador y datos */
 .flex-container {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding-top: 20px;
 }
 
 .search-header {
   display: flex;
-  align-items: center; 
-  gap: 20px; 
+  align-items: center;
+  gap: 20px;
 }
 
 .titulo-buscador {
-  font-size: 25px; 
+  font-size: 25px;
   font-weight: bold;
   margin: 0;
+  color: #30543f;
+  /* Verde oscuro para el título del buscador */
 }
 
 .search-input {
-  padding: 10px; 
-  font-size: 18px; 
-  border: 2px solid #ccc; 
-  border-radius: 5px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-  transition: border-color 0.3s; 
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #30543f;
+  /* Verde oscuro para el borde del input */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
+  /* Sombra suave con verde oscuro */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 260px;
 }
 
 /* Estilo del botón de agregar */
 .btn-success {
-  margin-left: 10px; 
+  margin-left: 10px;
   padding: 10px 20px;
   font-size: 1.1em;
-  background-color: blue;
+  background-color: #28a745;
+  /* Verde claro para el botón agregar */
   color: white;
   border: none;
   border-radius: 5px;
@@ -46,44 +51,49 @@ h2 {
   font-weight: bold;
 }
 
+.btn-success:hover {
+  background-color: #218838;
+  /* Verde ligeramente más oscuro al pasar el ratón */
+}
+
 /* Tabla */
 table {
   margin: 20px 0;
   font-size: 15px;
   width: 100%;
+  border-collapse: collapse;
 }
 
-.table-container table {
-  border-collapse: collapse;
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  /* Borde más suave */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
 }
 
 th {
-  background-color: green;
+  background-color: #30543f;
+  /* Verde oscuro para encabezados */
   color: white;
-  border: 1px solid #ddd;
-}
-
-td {
-  
-  border: 1px solid #ddd;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f9f5;
+  /* Verde claro para filas pares */
 }
 
 tr:hover {
-  background-color: #e9ecef;
-}
-
-.table-container table {
-  border-collapse: collapse;
+  background-color: #e6f7ec;
+  /* Verde claro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .table-container th,
 .table-container td {
-  padding: 10px;
-  text-align: center; 
   height: 50px;
 }
 
@@ -93,43 +103,65 @@ tr:hover {
 }
 
 .table-container button {
-  background-color: transparent; 
-  border: none; 
-  cursor: pointer; 
-  padding: 0; 
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .buttonModificar {
-  font-size: 30px; 
-  color: blue; 
+  font-size: 30px;
+  color: #007bff;
+  /* Azul para modificar */
 }
 
 .buttonModificar:hover {
-  color: darkblue; 
+  color: #0056b3;
 }
 
 .buttonEliminar {
-  font-size: 30px; 
-  color: red; 
+  font-size: 30px;
+  color: #dc3545;
+  /* Rojo para eliminar */
 }
 
 .buttonEliminar:hover {
-  color: darkred; 
+  color: #b02a37;
 }
 
 .No-resultados {
   font-weight: bold;
   font-size: 15px;
+  text-align: center;
 }
 
-.table-container th:nth-child(1) { width: 10%; } 
-.table-container th:nth-child(2) { width: 20%; } 
-.table-container th:nth-child(3) { width: 10%; } 
-.table-container th:nth-child(4) { width: 20%; } 
-.table-container th:nth-child(5) { width: 10%; } 
-.table-container th:nth-child(6) { width: 8%; } 
-.table-container th:nth-child(7) { width: 8%; } 
+.table-container th:nth-child(1) {
+  width: 10%;
+}
 
+.table-container th:nth-child(2) {
+  width: 20%;
+}
+
+.table-container th:nth-child(3) {
+  width: 10%;
+}
+
+.table-container th:nth-child(4) {
+  width: 20%;
+}
+
+.table-container th:nth-child(5) {
+  width: 10%;
+}
+
+.table-container th:nth-child(6) {
+  width: 8%;
+}
+
+.table-container th:nth-child(7) {
+  width: 8%;
+}
 
 /* Modal para editar */
 .modal-overlay {
@@ -138,57 +170,59 @@ tr:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center; 
-  z-index: 1000; 
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal {
   background-color: white;
-  border-radius: 10px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-  width: 900px; 
-  height: auto; 
-  padding: 30px; 
-  animation: fadeIn 0.3s; 
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 900px;
+  height: auto;
+  padding: 30px;
+  animation: fadeIn 0.3s;
 }
 
 .modal-header {
-  border-bottom: 1px solid #dee2e6; 
-  padding-bottom: 15px; 
-  position: relative; 
-  margin-bottom: 20px; 
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .modal-footer {
-  border-top: 1px solid #dee2e6; 
-  padding-top: 15px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  border-top: 1px solid #dee2e6;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0; 
+    opacity: 0;
   }
+
   to {
-    opacity: 1; 
+    opacity: 1;
   }
 }
 
 /* Estilo de los inputs en el modal */
 .modal input[type="text"],
 .modal input[type="email"] {
-  width: calc(100% - 20px); 
-  padding: 15px; 
-  margin-bottom: 15px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
-  box-sizing: border-box; 
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
+
 .modal-title {
   text-align: center;
   font-weight: bold;
@@ -196,45 +230,46 @@ tr:hover {
 }
 
 .close-button {
-  position: absolute; 
-  top: -3px; 
-  right: 0px; 
-  background: none; 
-  border: none; 
-  font-size: 40px; 
-  color: #dc3545; 
-  cursor: pointer; 
+  position: absolute;
+  top: -3px;
+  right: 0px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #dc3545;
+  cursor: pointer;
 }
 
 .close-button:hover {
-  color: #b02a37; 
+  color: #b02a37;
 }
 
 .form-row {
-  display: flex; 
-  justify-content: space-between; 
-  margin-bottom: 15px; 
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .form-group {
-  flex: 1; 
-  margin-right: 15px; 
+  flex: 1;
+  margin-right: 15px;
 }
 
 .form-group:last-child {
-  margin-right: 0; 
+  margin-right: 0;
 }
 
 .modal-body .form-row:last-child {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
-.btn:not(.btn-success, .btn-danger)  {
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
-  background-color: green;
+.btn:not(.btn-success, .btn-danger) {
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
+  background-color: #28a745;
+  /* Verde claro para botones en modal */
   color: white;
   border: none;
   border-radius: 4px;
@@ -244,57 +279,52 @@ tr:hover {
 }
 
 /* Menu desplegable de municipios */
-
 .dropdown-list {
   list-style-type: none;
   padding: 0;
-  margin: -15px 0 0 0px; 
+  margin: -15px 0 0 0px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  max-height: 150px; 
-  overflow-y: auto; 
-  position: absolute; 
-  background-color: white; 
-  z-index: 1000; 
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
   width: 270px;
 }
 
 .dropdown-list li {
-  padding: 10px; 
-  cursor: pointer; 
+  padding: 10px;
+  cursor: pointer;
 }
 
 .dropdown-list li:hover {
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
 /* Modal de eliminar */
 .modal2 {
-  background-color: white; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-  width: 750px; 
-  height: auto; 
-  padding: 30px; 
-  animation: fadeIn 0.3s; 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 750px;
+  height: auto;
+  padding: 30px;
+  animation: fadeIn 0.3s;
 }
 
 .modal-body2 {
   text-align: center;
 }
- 
-.btn-danger {
-  background-color: red; 
-  color: white; 
-}
 
 .btn-danger {
-  background-color: red; 
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
+  background-color: #dc3545;
+  /* Rojo para botones de eliminar */
   color: white;
+  margin: 8px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  width: auto;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -303,6 +333,6 @@ tr:hover {
 }
 
 .btn-danger:hover {
-  background-color: #b02a37; 
-  color: white; 
+  background-color: #b02a37;
+  color: white;
 }

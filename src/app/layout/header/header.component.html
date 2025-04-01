@@ -1,6 +1,10 @@
 <mat-toolbar class="header">
   <div class="profile-container">
-    <img [src]="userImage || 'default-avatar.jpg'" class="profile-img" />
+    <img
+      [src]="userImage || 'default-avatar.jpg'"
+      class="profile-img"
+      alt="Profile Image"
+    />
   </div>
 
   <div class="rol">
@@ -10,7 +14,7 @@
   <span class="example-spacer"></span>
   <div class="center-text">Distribuidora San Francisco</div>
   <span class="example-spacer"></span>
-  <notification-stock-minimo> </notification-stock-minimo>
+  <notification-stock-minimo></notification-stock-minimo>
   <div class="icon-container">
     <button
       type="button"
@@ -138,7 +142,6 @@
   </div>
 </div>
 
-<!-- Modal de confirmación de cierre de sesión -->
 <div class="modal-overlay" *ngIf="showLogoutConfirmationModal">
   <div class="modal2" tabindex="-1">
     <div class="modal-dialog" role="document">

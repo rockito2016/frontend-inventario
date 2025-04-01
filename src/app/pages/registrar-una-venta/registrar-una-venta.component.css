@@ -7,42 +7,44 @@ h2 {
 /* Buscador */
 .flex-container {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   padding-top: 20px;
 }
 
 .search-header {
   display: flex;
-  align-items: center; 
-  gap: 20px; 
+  align-items: center;
+  gap: 20px;
 }
 
 .titulo-buscador {
-  font-size: 25px; 
+  font-size: 25px;
   font-weight: bold;
   margin: 0;
+  color: #30543f;
+  /* Verde oscuro para el título del buscador */
+}
+
+.search-input,
+.search-select {
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #30543f;
+  /* Verde oscuro para los bordes */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
+  /* Sombra suave con verde oscuro */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-input {
-  padding: 10px; 
-  font-size: 18px; 
-  border: 2px solid #ccc; 
-  border-radius: 5px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-  transition: border-color 0.3s; 
   width: 260px;
 }
 
-.search-select { 
-  padding: 10px;
-  font-size: 18px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
+.search-select {
   width: 180px;
-  margin-top: 5px; 
+  margin-top: 5px;
 }
 
 /* Botón */
@@ -51,14 +53,20 @@ h2 {
 }
 
 .container button {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
-.btn-success {
-  margin-left: 10px; 
+.btn-success,
+.btn-quantity-more,
+.btn-select,
+.btn-primary,
+.btn:not(.btn-success, .btn-danger, .btn-quantity, .btn-finalizar),
+.btn-finalizar {
+  margin-left: 10px;
   padding: 10px 20px;
   font-size: 1.1em;
-  background-color: blue;
+  background-color: #28a745;
+  /* Verde claro para botones de éxito */
   color: white;
   border: none;
   border-radius: 5px;
@@ -66,8 +74,14 @@ h2 {
   font-weight: bold;
 }
 
-.btn-success:hover {
-  background-color: rgb(2, 2, 201);
+.btn-success:hover,
+.btn-quantity-more:hover,
+.btn-select:hover,
+.btn-primary:hover,
+.btn:not(.btn-success, .btn-danger, .btn-quantity, .btn-finalizar):hover,
+.btn-finalizar:hover {
+  background-color: #218838;
+  /* Verde más oscuro al pasar el ratón */
   color: white;
 }
 
@@ -76,35 +90,44 @@ table {
   margin: 20px 0;
   font-size: 15px;
   width: 100%;
+  border-collapse: collapse;
+  /* Añadido para colapsar los bordes */
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  /* Borde más suave */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
 }
 
 th {
-  background-color: green;
+  background-color: #30543f;
+  /* Verde oscuro para encabezados */
   color: white;
-  border: 1px solid #ddd;
 }
 
 td {
-  border: 1px solid #ddd;
-  text-align: center; 
+  border: 1px solid #e0e0e0;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f9f5;
+  /* Verde claro para filas pares */
 }
 
 .table-container table:not(.total-table) tr:hover {
-  background-color: #e9ecef;
+  background-color: #e6f7ec;
+  /* Verde claro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.table-container table {
-  border-collapse: collapse;
-}
-
-.table-container th, 
+.table-container th,
 .table-container td {
-  padding: 10px;
-  text-align: center; 
   height: 50px;
 }
 
@@ -116,30 +139,58 @@ tr:nth-child(even) {
 .No-resultados {
   font-weight: bold;
   font-size: 15px;
+  text-align: center;
 }
 
-/* Ancho de columnas para la tabla 1 */
-.table1 th:nth-child(1) { width: 7%; } 
-.table1 th:nth-child(2) { width: 10%; } 
-.table1 th:nth-child(3) { width: 10%; } 
-.table1 th:nth-child(4) { width: 20%; } 
-.table1 th:nth-child(5) { width: 11%; } 
-.table1 th:nth-child(6) { width: 10%; } 
-.table1 th:nth-child(7) { width: 7%; } 
-.table1 th:nth-child(8) { width: 10%; }
-.table1 th:nth-child(9) { width: 7%; }
+/* Ancho de columnas para la tabla 1 y 2 */
+.table1 th:nth-child(1),
+.table2 th:nth-child(1) {
+  width: 7%;
+}
 
-/* Ancho de columnas para la tabla 2 */
-.table2 th:nth-child(1) { width: 1%; } 
-.table2 th:nth-child(2) { width: 5%; } 
-.table2 th:nth-child(3) { width: 5%; } 
-.table2 th:nth-child(4) { width: 15%; } 
-.table2 th:nth-child(5) { width: 5%; } 
-.table2 th:nth-child(6) { width: 5%; } 
-.table2 th:nth-child(7) { width: 1%; } 
-.table2 th:nth-child(8) { width: 10%; }
-.table2 th:nth-child(9) { width: 10%; }
-.table2 th:nth-child(10) { width: 2%; }
+.table1 th:nth-child(2),
+.table2 th:nth-child(2) {
+  width: 10%;
+}
+
+.table1 th:nth-child(3),
+.table2 th:nth-child(3) {
+  width: 10%;
+}
+
+.table1 th:nth-child(4),
+.table2 th:nth-child(4) {
+  width: 20%;
+}
+
+.table1 th:nth-child(5),
+.table2 th:nth-child(5) {
+  width: 11%;
+}
+
+.table1 th:nth-child(6),
+.table2 th:nth-child(6) {
+  width: 10%;
+}
+
+.table1 th:nth-child(7),
+.table2 th:nth-child(7) {
+  width: 7%;
+}
+
+.table1 th:nth-child(8),
+.table2 th:nth-child(8) {
+  width: 10%;
+}
+
+.table1 th:nth-child(9),
+.table2 th:nth-child(9) {
+  width: 7%;
+}
+
+.table2 th:nth-child(10) {
+  width: 2%;
+}
 
 .table2 td:nth-child(9) {
   text-align: right;
@@ -147,103 +198,72 @@ tr:nth-child(even) {
 
 /* Control de cantidad */
 .quantity-control {
-  display: flex;                  
-  align-items: center;            
-  justify-content: center;        
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  width: max-content;             
+  width: max-content;
 }
 
 /* Botón de reducir cantidad */
-.btn-quantity {
-  background-color: red;
-  color: white;
-  padding: 5px 10px;
-  font-size: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-quantity:hover {
-  background-color: #b02a37;
-  color: white;
-}
-
-/* Botón de aumentar cantidad */
-.btn-quantity-more {
-  background-color: blue;
-  color: white;
-  padding: 5px 10px;
-  font-size: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-quantity-more:hover {
-  background-color: rgb(2, 2, 201);
-  color: white;
-}
-
-/* Botón de eliminar */
+.btn-quantity,
 .btn-danger {
-  background-color: red; 
-  color: white; 
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
+  background-color: #dc3545;
+  /* Rojo para botones de peligro */
+  color: white;
+  padding: 5px 10px;
+  font-size: 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: -10px;
+  margin: 8px;
 }
 
+.btn-quantity:hover,
 .btn-danger:hover {
-  background-color: #b02a37; 
-  color: white; 
+  background-color: #c82333;
+  /* Rojo más oscuro al pasar el ratón */
+  color: white;
 }
 
 /* Fila total */
 .total-table-container {
   margin-top: -15px;
-} 
+}
 
 .total-table {
-  width: 100%; 
+  width: 100%;
   border-collapse: collapse;
 }
- 
+
 .total-row {
-  background-color: rgb(28, 209, 31);  
-  font-weight: bold; 
-  color: white; 
+  background-color: #28a745;
+  /* Verde claro para la fila total */
+  font-weight: bold;
+  color: white;
 }
 
 .total-table td {
   padding: 25px;
 }
 
-.calculo{
+.calculo {
   text-align: right;
 }
 
 .total-table td:nth-child(2) {
-  padding-right: 10px; 
+  padding-right: 10px;
 }
 
 .total-table td:nth-child(1) {
-  width: 81%;   
-  text-align: center; 
+  width: 81%;
+  text-align: center;
 }
 
 .total-table td:nth-child(2) {
-  width: 19%;   
-  text-align: right; 
+  width: 19%;
+  text-align: right;
 }
 
 /* Subtitulo */
@@ -252,66 +272,41 @@ h4 {
   font-weight: bold;
 }
 
-/* Titulo buscador*/
-
+/* Titulo buscador cliente*/
 .client-container {
   display: flex;
   justify-content: center;
-  gap: 2rem; 
+  gap: 2rem;
   padding: 1rem;
 }
 
-.client-column-left, .client-column-right {
+.client-column-left,
+.client-column-right {
   flex: 1;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
 
 .client-row {
   display: flex;
-  align-items: center; 
-  gap: 0.5rem; 
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .client-title {
   margin: 0;
   font-size: 25px;
   font-weight: bold;
-  
 }
 
 .client-btn {
-  width: 40px; 
+  width: 40px;
   height: 40px;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.client-btn {
-  width: 40px; 
-  height: 40px;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-primary {
-  width: 40px; 
-  height: 40px;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: green;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
 /* Contenedor principal de datos del cliente */
@@ -349,14 +344,15 @@ h4 {
 }
 
 .client-info-body .data-field {
-  padding: 10px;  
+  padding: 10px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: 2px solid #30543f;
+  /* Verde oscuro para los bordes */
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
-  min-height: 25px;  
-  max-height: 25px;  
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  min-height: 25px;
+  max-height: 25px;
   background-color: #f1f1f1;
 }
 
@@ -368,7 +364,6 @@ h4 {
 }
 
 /* Modal para buscar clientes*/
-
 .search-client-modal-header {
   display: flex;
   align-items: center;
@@ -379,47 +374,41 @@ h4 {
   font-weight: bold;
   font-size: 1.5rem;
   margin: 0;
-  flex: 0 0 auto; 
+  flex: 0 0 auto;
 }
 
 .search-input-container2 {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 300px;
   margin: 0 auto;
   margin-bottom: -15px;
 }
 
 .search-input2 {
-  width: 60%; 
-  max-width: 300px; 
+  width: 60%;
+  max-width: 300px;
   padding: 5px;
   font-size: 1rem;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .close-button:hover {
-  background-color: rgb(0, 179, 0);
+  background-color: #218838;
+  /* Verde más oscuro al pasar el ratón */
   color: white;
 }
 
+.client-search-table th:nth-child(1) {
+  width: 50%;
+}
 
-.client-search-table th:nth-child(1) {width: 50%;}
-.client-search-table th:nth-child(2) {width: 30%;}
-.client-search-table th:nth-child(3) {width: 20%;}
+.client-search-table th:nth-child(2) {
+  width: 30%;
+}
 
-.btn-select{
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
-  background-color: blue;
-  color: white; 
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: -10px;
+.client-search-table th:nth-child(3) {
+  width: 20%;
 }
 
 /* Modal para crear clientes*/
@@ -429,117 +418,100 @@ h4 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center; 
-  z-index: 1000; 
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal {
   background-color: white;
-  border-radius: 10px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-  width: 900px; 
-  height: auto; 
-  padding: 30px; 
-  animation: fadeIn 0.3s; 
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 900px;
+  height: auto;
+  padding: 30px;
+  animation: fadeIn 0.3s;
 }
 
 .modal-header {
-  border-bottom: 1px solid #dee2e6; 
-  padding-bottom: 15px; 
-  position: relative; 
-  margin-bottom: 20px; 
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .modal-footer {
-  border-top: 1px solid #dee2e6; 
-  padding-top: 15px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  border-top: 1px solid #dee2e6;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0; 
+    opacity: 0;
   }
+
   to {
-    opacity: 1; 
+    opacity: 1;
   }
 }
 
 /* Estilo de los inputs en el modal */
 .modal input[type="text"],
 .modal input[type="email"] {
-  width: calc(100% - 20px); 
-  padding: 15px; 
-  margin-bottom: 15px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
-  box-sizing: border-box; 
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #30543f;
+  /* Verde oscuro para los bordes */
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.modal-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-}
-
+.modal-title,
 .modal-title2 {
   text-align: center;
   font-weight: bold;
   font-size: 40px;
-  margin: 0 auto;
 }
 
 .close-button {
-  position: absolute; 
-  top: -3px; 
-  right: 0px; 
-  background: none; 
-  border: none; 
-  font-size: 40px; 
-  color: #dc3545; 
-  cursor: pointer; 
+  position: absolute;
+  top: -3px;
+  right: 0px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #dc3545;
+  cursor: pointer;
 }
 
 .close-button:hover {
-  color: #b02a37; 
+  color: #c82333;
+  /* Rojo más oscuro al pasar el ratón */
 }
 
 .form-row {
-  display: flex; 
-  justify-content: space-between; 
-  margin-bottom: 15px; 
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .form-group {
-  flex: 1; 
-  margin-right: 15px; 
+  flex: 1;
+  margin-right: 15px;
 }
 
 .form-group:last-child {
-  margin-right: 0; 
+  margin-right: 0;
 }
 
 .modal-body .form-row:last-child {
-  margin-bottom: 0; 
-}
-
-.btn:not(.btn-success, .btn-danger)  {
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
-  background-color: green;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: -10px;
+  margin-bottom: 0;
 }
 
 /*Datos de la factura*/
@@ -555,21 +527,21 @@ h4 {
 
 .venta-info-container .venta-info-body {
   display: flex;
-  width: 100%; 
+  width: 100%;
 }
 
 /* Columna izquierda */
 .venta-info-container .form-column-left {
   flex: 1;
   padding-right: 20px;
-  position: relative; 
+  position: relative;
 }
 
 .venta-info-container .form-column-left::after {
   content: '';
   position: absolute;
   top: 0;
-  right: 0; 
+  right: 0;
   width: 1px;
   height: 100%;
   background-color: #ccc;
@@ -577,14 +549,14 @@ h4 {
 
 .venta-info-container .form-row {
   display: flex;
-  align-items: baseline; 
+  align-items: baseline;
   justify-content: center;
   margin-bottom: 15px;
 }
 
 .venta-info-container .form-label {
   font-weight: bold;
-  min-width: 120px; 
+  min-width: 120px;
   color: #333;
   font-size: 18px;
   margin-right: -30px;
@@ -593,12 +565,13 @@ h4 {
 .venta-info-container .data-field {
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #30543f;
+  /* Verde oscuro para los bordes */
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
   min-height: 25px;
   width: 100%;
-  max-width: 140px; 
+  max-width: 140px;
   text-align: center;
 }
 
@@ -608,9 +581,9 @@ h4 {
 }
 
 /*Forma de pago*/
-.venta-info-container .form-label-FormaPago{
+.venta-info-container .form-label-FormaPago {
   font-weight: bold;
-  min-width: 120px; 
+  min-width: 120px;
   color: #333;
   font-size: 18px;
 }
@@ -634,10 +607,10 @@ h4 {
 
 /* Color verde cuando el botón está activo */
 .venta-info-container .btn-payment.activo {
-  background-color: green;
+  background-color: #28a745;
+  /* Verde claro para el botón activo */
   color: white;
 }
-
 
 /* Columna derecha */
 .venta-info-container .form-column-right {
@@ -655,57 +628,7 @@ h4 {
 }
 
 /* Estilo específico para los campos dentro del modal de pago */
-.modal-pago .form-row {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 15px;
-}
-
-/* Etiquetas del modal */
-.modal-pago .form-label {
-  font-weight: bold;
-  color: #333;
-  font-size: 18px;
-  margin-right: 10px;
-  min-width: 120px;
-}
-
-/* Campos de entrada del modal */
-.modal-pago .data-field {
-  padding: 10px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 140px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
-
-.modal-pago .data-field2 {
-  padding: 11px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 140px;
-  text-align: center;
-}
-
-.modal-pago .data-field3 {
-  padding: 11px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 140px;
-  text-align: center;
-  background-color: #f1f1f1;
-  margin-left: 15px;
-}
-
-/* Modal de credito*/
+.modal-pago .form-row,
 .modal-credito .form-row {
   display: flex;
   align-items: center;
@@ -713,7 +636,8 @@ h4 {
   margin-bottom: 15px;
 }
 
-/* Etiquetas del modal de crédito */
+/* Etiquetas del modal */
+.modal-pago .form-label,
 .modal-credito .form-label {
   font-weight: bold;
   color: #333;
@@ -722,93 +646,48 @@ h4 {
   min-width: 120px;
 }
 
-/* Campos de entrada del modal de crédito */
-.modal-credito .data-field {
+/* Campos de entrada del modal */
+.modal-pago .data-field,
+.modal-pago .data-field2,
+.modal-pago .data-field3,
+.modal-credito .data-field,
+.modal-credito .data-field2,
+.modal-credito .data-field3 {
   padding: 10px;
   font-size: 18px;
-  border: 1px solid #ccc;
+  border: 1px solid #30543f;
+  /* Verde oscuro para los bordes */
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
   max-width: 140px;
   text-align: center;
-  background-color: #f1f1f1;
 }
 
-.modal-credito .data-field2 {
-  padding: 11px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 140px;
-  text-align: center;
-  margin-left: 2px;
-}
-
+.modal-pago .data-field3,
 .modal-credito .data-field3 {
-  padding: 11px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 140px;
-  text-align: center;
   background-color: #f1f1f1;
-  margin-left: 10px;
+  margin-left: 15px;
 }
- 
+
 /* Otros botones */
 .btn:not(.btn-success, .btn-danger, .btn-quantity, .btn-finalizar) {
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 1.1em; 
-  width: auto; 
-  background-color: green;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: -10px;
-}
-
-/* Boton finalizar venta*/
-.final{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.btn-finalizar{
-  margin: 8px; 
-  padding: 10px 20px; 
-  font-size: 25px; 
-  width: auto; 
-  background-color: green;
-  color: white;
-  border: none; 
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-} 
- 
-.btn-finalizar:hover{
-  background-color: rgb(0, 179, 0);
+  background-color: #28a745;
+  /* Verde claro para otros botones */
 }
 
 /*Titulo datos de la venta*/
-
 .contenedor-venta {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin-bottom: 20px;
 }
 
 .venta-info {
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .titulo-venta {
@@ -828,9 +707,3 @@ h4 {
   display: inline-block;
   min-width: 50px;
 }
-
-
-
-
-
-

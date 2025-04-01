@@ -1,130 +1,105 @@
-  /* Titulo */
-h2 {
-    text-align: center;
-    font-weight: bold;
-  }
-
-/* Caracteristicas del pedido */
-.container-columns-7 {
-    display: flex;
-    grid-template-columns: repeat(7, 1fr); 
-    gap: 20px; 
-    margin-top: 20px; 
-  }
-  
-  .column2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .form-label2 {
-    font-size: 20px; 
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
-  }
-  
-  .form-control2 {
-    padding: 10px;
-    font-size: 18px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
-    width: 130px;
-    text-align: right;
-  }
-
-  .form-control3 {
-    padding: 10px;
-    font-size: 18px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
-    width: 130px;
-    text-align: center;
-  }
-  
-  .search-select2 {
-    padding: 10px;
-    font-size: 18px;
-    border: 2px solid #ccc;
-    border-radius: 5px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
-    width: 220px;
-    text-align: left;
-  }
-  
-input[type="number"]::-webkit-inner-spin-button, 
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none; 
-    margin: 0; 
+/* Titulo */
+h2,
+h3 {
+  text-align: center;
+  font-weight: bold;
+  color: #30543f;
+  /* Verde oscuro para los títulos */
 }
 
-.contenedor-asignados{
-    margin-top: 25px;
-}
-
-  /* Subitulo */
-  h3 {
-    text-align: center;
-    font-weight: bold;
-  }
-
-/* Caracteristicas del pedido */
+/* Caracteristicas del pedido (7 columnas) */
+.container-columns-7,
 .container-columns {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 20px; 
-  margin-top: 20px; 
+  gap: 20px;
+  margin-top: 20px;
 }
 
+.container-columns-7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.container-columns {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.column2,
 .column {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
+.form-label2,
 .form-label {
-  font-size: 25px; 
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
-  text-align: center; 
+  text-align: center;
+  color: #30543f;
+  /* Verde oscuro para las etiquetas */
 }
 
-.form-control {
-  padding: 10px; 
-  font-size: 18px; 
-  border: 2px solid #ccc; 
-  border-radius: 5px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-  transition: border-color 0.3s; 
-  width: 150px;
-  text-align: center; 
-}
-
+.form-control2,
+.form-control3,
+.form-control,
+.search-select2,
 .search-select {
   padding: 10px;
   font-size: 18px;
-  border: 2px solid #ccc;
+  border: 2px solid #30543f;
+  /* Verde oscuro para los bordes */
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
+  box-shadow: 0 2px 5px rgba(48, 84, 63, 0.1);
+  /* Sombra suave con verde oscuro */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control2,
+.form-control3 {
+  width: 130px;
+}
+
+.form-control {
+  width: 150px;
+  text-align: center;
+}
+
+.form-control2 {
+  text-align: right;
+}
+
+.form-control3 {
+  text-align: center;
+}
+
+.search-select2,
+.search-select {
+  width: 220px;
+  text-align: left;
+}
+
+.search-select {
   width: 180px;
-  margin-top: 5px; 
-  text-align: center; 
+  margin-top: 5px;
   text-align-last: center;
 }
 
 .search-select option {
-  text-align: left; 
+  text-align: left;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.contenedor-asignados,
+.aleja {
+  margin-top: 25px;
 }
 
 /* Tabla */
@@ -132,35 +107,42 @@ table {
   margin: 20px 0;
   font-size: 15px;
   width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  /* Borde más suave */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 th {
-  background-color: green;
+  background-color: #30543f;
+  /* Verde oscuro para encabezados */
   color: white;
-  border: 1px solid #ddd;
 }
 
 td {
-  border: 1px solid #ddd;
-  text-align: center; 
+  border: 1px solid #e0e0e0;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f9f5;
+  /* Verde claro para filas pares */
 }
 
 .table-container tr:hover {
-  background-color: #e9ecef;
-}
-
-.table-container table {
-  border-collapse: collapse;
+  background-color: #e6f7ec;
+  /* Verde claro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .table-container th,
 .table-container td {
-  padding: 10px;
-  text-align: center; 
   height: 50px;
 }
 
@@ -172,67 +154,106 @@ tr:nth-child(even) {
 .No-resultados {
   font-weight: bold;
   font-size: 15px;
+  text-align: center;
 }
 
-/* Ancho de columnas para la tabla 1 */
-.table1 th:nth-child(1) { width: 7%; } 
-.table1 th:nth-child(2) { width: 10%; } 
-.table1 th:nth-child(3) { width: 10%; } 
-.table1 th:nth-child(4) { width: 20%; } 
-.table1 th:nth-child(5) { width: 11%; } 
-.table1 th:nth-child(6) { width: 10%; } 
-.table1 th:nth-child(7) { width: 7%; } 
-.table1 th:nth-child(8) { width: 10%; }
-.table1 th:nth-child(9) { width: 7%; }
+/* Ancho de columnas para las tablas */
+.table1 th:nth-child(1),
+.table2 th:nth-child(1) {
+  width: 7%;
+}
 
-.btn-success {
-  margin-left: 10px; 
+.table1 th:nth-child(2),
+.table2 th:nth-child(2) {
+  width: 10%;
+}
+
+.table1 th:nth-child(3),
+.table2 th:nth-child(3) {
+  width: 10%;
+}
+
+.table1 th:nth-child(4),
+.table2 th:nth-child(4) {
+  width: 20%;
+}
+
+.table1 th:nth-child(5),
+.table2 th:nth-child(5) {
+  width: 11%;
+}
+
+.table1 th:nth-child(6),
+.table2 th:nth-child(6) {
+  width: 10%;
+}
+
+.table1 th:nth-child(7),
+.table2 th:nth-child(7) {
+  width: 7%;
+}
+
+.table1 th:nth-child(8),
+.table2 th:nth-child(8) {
+  width: 10%;
+}
+
+.table1 th:nth-child(9),
+.table2 th:nth-child(9) {
+  width: 7%;
+}
+
+.btn-success,
+.btn-finalizar,
+.btn-exportar,
+.btn-quantity-more {
+  margin-left: 10px;
   padding: 10px 20px;
-  font-size: 1.1em;
-  background-color: blue;
+  font-size: 20px;
+  background-color: #30543f;
+  /* Verde oscuro para los botones */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-/* Subtitulo de cada proveedor*/
-.supplier-header{
+.btn-success {
+  font-size: 1.1em;
+}
+
+.btn-success:hover,
+.btn-finalizar:hover,
+.btn-exportar:hover,
+.btn-quantity-more:hover {
+  background-color: #28a745;
+  /* Verde más claro al pasar el ratón */
+}
+
+/* Subtitulo de cada proveedor */
+.supplier-header {
   font-size: 45px;
   font-weight: bold;
   text-align: center;
   margin-top: 40px;
-}
-
-/* tabla2 */
-
-/* Ancho de columnas para la tabla 2 */
-.table2 th:nth-child(1) { width: 7%; } 
-.table2 th:nth-child(2) { width: 10%; } 
-.table2 th:nth-child(3) { width: 20%; } 
-.table2 th:nth-child(4) { width: 10%; } 
-.table2 th:nth-child(5) { width: 10%; } 
-.table2 th:nth-child(6) { width: 7%; } 
-.table2 th:nth-child(7) { width: 10%; } 
-.table2 th:nth-child(8) { width: 10%; }
-.table2 th:nth-child(9) { width: 7%; }
-
-.table-container {
-  border-collapse: collapse;
+  color: #30543f;
+  /* Verde oscuro para el subtítulo */
 }
 
 /* Control de cantidad */
 .quantity-control {
-  display: flex;                  
-  align-items: center;            
-  justify-content: center;        
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  width: max-content;             
+  width: max-content;
 }
 
-/* Botón de reducir cantidad */
-.btn-quantity {
+/* Botones de cantidad y eliminar */
+.btn-quantity,
+.btn-danger {
   background-color: red;
   color: white;
   padding: 5px 10px;
@@ -241,134 +262,55 @@ tr:nth-child(even) {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-.btn-quantity:hover {
+.btn-quantity:hover,
+.btn-danger:hover {
   background-color: #b02a37;
-  color: white;
-}
-
-/* Botón de aumentar cantidad */
-.btn-quantity-more {
-  background-color: blue;
-  color: white;
-  padding: 5px 10px;
-  font-size: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-quantity-more:hover {
-  background-color: rgb(0, 68, 255);
-  color: white;
 }
 
 /* Contenedor del número */
 .quantity-display {
-  width: 20px; 
-  text-align: center; 
+  width: 20px;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Boton finalizar*/
-
-.Finalizar-pedido{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-finalizar{
-  margin-left: 10px; 
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-finalizar:hover{
-  background-color: rgb(0, 110, 255);
-}
-
-.btn-danger{
-  margin-left: 10px; 
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-danger:hover{
-  background-color: #b02a37;
-}
-
-.btn-exportar{
-  margin-left: 10px; 
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: green;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-} 
- 
-.btn-exportar:hover{
-  background-color: rgb(0, 179, 0);
 }
 
 /* Fila total */
-
 .total-table {
-  width: 100%; 
+  width: 100%;
   border-collapse: collapse;
   margin-top: -15px;
 }
- 
+
 .total-row {
-  background-color: rgb(28, 209, 31);  
-  font-weight: bold; 
-  color: white; 
+  background-color: #28a745;
+  /* Verde más claro para la fila total */
+  font-weight: bold;
+  color: white;
 }
 
 .total-table td {
   padding: 25px;
 }
 
-.calculo{
+.calculo {
   text-align: right;
 }
 
 .total-table td:nth-child(2) {
-  padding-right: 10px; 
+  padding-right: 10px;
 }
 
 .total-table td:nth-child(1) {
-  width: 81%;   
-  text-align: center; 
+  width: 81%;
+  text-align: center;
 }
 
 .total-table td:nth-child(2) {
-  width: 19%;   
-  text-align: right; 
+  width: 19%;
+  text-align: right;
 }
-
-.aleja{
-  margin-top: 25px;
-}
-
-
-
