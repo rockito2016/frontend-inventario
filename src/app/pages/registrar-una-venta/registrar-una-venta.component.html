@@ -1,155 +1,214 @@
-<h2>Realizar una venta</h2> 
+<h2>Realizar una venta</h2>
 
 <h2 class="titulo-buscador">Datos del cliente</h2>
- 
+
 <div class="client-container">
-    <div class="client-column-left">
-        <div class="client-row">
-        <h2 class="client-title" for="select-client">Seleccionar Cliente</h2>
-        <button class="client-btn btn-primary" (click)="openSearchClient()">+</button>
-        </div>
+  <div class="client-column-left">
+    <div class="client-row">
+      <h2 class="client-title" for="select-client">Seleccionar Cliente</h2>
+      <button class="client-btn btn-primary" (click)="openSearchClient()">
+        +
+      </button>
     </div>
-    <div class="client-column-right">
-        <div class="client-row">
-        <h2 class="client-title" for="create-client">Crear Cliente</h2>
-        <button class="client-btn btn-success" (click)="onAddCliente()">+</button>
-        </div>
+  </div>
+  <div class="client-column-right">
+    <div class="client-row">
+      <h2 class="client-title" for="create-client">Crear Cliente</h2>
+      <button class="client-btn btn-success" (click)="onAddCliente()">+</button>
     </div>
+  </div>
 </div>
 
 <div class="modal-overlay" *ngIf="showSearchClientModal">
-    <div class="modal" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Buscar Cliente</h5>
-            <div class="search-input-container2">
-              <input
-                type="text"
-                class="form-control search-input"
-                placeholder="Buscar por cédula"
-                [(ngModel)]="searchCedula"
-                (input)="onSearchClient()"
-              />
-            </div>
-            <button type="button" class="btn-close close-button" (click)="closeSearchClientModal()">
-              <i class="bi bi-x-square-fill"></i>
-            </button>
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Buscar Cliente</h5>
+          <div class="search-input-container2">
+            <input
+              type="text"
+              class="form-control search-input"
+              placeholder="Buscar por cédula"
+              [(ngModel)]="searchCedula"
+              (input)="onSearchClient()"
+            />
           </div>
-          <div class="modal-body">
-            <div class="table-container">
-              <table class="client-search-table">
-                <thead>
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Cédula</th>
-                    <th>Seleccionar</th>
+          <button
+            type="button"
+            class="btn-close close-button"
+            (click)="closeSearchClientModal()"
+          >
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="table-container">
+            <table class="client-search-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Cédula</th>
+                  <th>Seleccionar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let client of limitedFilteredClients()">
+                  <tr *ngIf="!client.noResults">
+                    <td>{{ client.nombre }}</td>
+                    <td>{{ client.cedula }}</td>
+                    <td>
+                      <button
+                        *ngIf="client.showIcon"
+                        class="btn-select"
+                        (click)="selectClient(client)"
+                      >
+                        <i class="bi bi-check2"></i>
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody> 
-                  <ng-container *ngFor="let client of limitedFilteredClients()">
-                    <tr *ngIf="!client.noResults">
-                      <td>{{ client.nombre }}</td>
-                      <td>{{ client.cedula }}</td>
-                      <td>
-                        <button *ngIf="client.showIcon" class="btn-select" (click)="selectClient(client)">
-                          <i class="bi bi-check2"></i>
-                        </button>                        
-                      </td>                      
-                    </tr>
-                    <tr *ngIf="client.noResults">
-                      <td colspan="3" class="No-resultados">No se encontraron resultados</td>
-                    </tr>
-                  </ng-container>
-                </tbody>                           
-              </table>
-              <div class="modal-footer"></div>
-            </div>
+                  <tr *ngIf="client.noResults">
+                    <td colspan="3" class="No-resultados">
+                      No se encontraron resultados
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+            <div class="modal-footer"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
 <div class="modal-overlay" *ngIf="showAddModal">
-    <div class="modal" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title2">Registrar cliente</h5>
-            <button type="button" class="btn-close close-button" (click)="closeAddModalCliente()">
-              <i class="bi bi-x-square-fill"></i>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form (ngSubmit)="onSubmitClientes(userForm)" #userForm="ngForm">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="nombre" class="form-label">Nombre:</label>
-                  <input type="text" id="nombre" class="form-control" name="nombre" ngModel required>
-                </div>
-                <div class="form-group">
-                  <label for="cedula" class="form-label">Cédula:</label>
-                  <input type="text" id="cedula" class="form-control" name="cedula" ngModel required>
-                </div>
-                <div class="form-group">
-                  <label for="celular" class="form-label">Celular:</label>
-                  <input type="text" id="celular" class="form-control" name="celular" ngModel required>
-                </div>
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title2">Registrar cliente</h5>
+          <button
+            type="button"
+            class="btn-close close-button"
+            (click)="closeAddModalCliente()"
+          >
+            <i class="bi bi-x-square-fill"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmitClientes(userForm)" #userForm="ngForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  class="form-control"
+                  name="nombre"
+                  ngModel
+                  required
+                />
               </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="correo" class="form-label">Correo Electrónico:</label>
-                  <input type="email" id="correo" class="form-control" name="correo" ngModel required>
-                </div>
-                <div class="form-group">
-                  <label for="direccion" class="form-label">Dirección:</label>
-                  <input type="text" id="direccion" class="form-control" name="direccion" ngModel required>
-                </div>
+              <div class="form-group">
+                <label for="cedula" class="form-label">Cédula:</label>
+                <input
+                  type="text"
+                  id="cedula"
+                  class="form-control"
+                  name="cedula"
+                  ngModel
+                  required
+                />
               </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Registrar</button>
+              <div class="form-group">
+                <label for="celular" class="form-label">Celular:</label>
+                <input
+                  type="text"
+                  id="celular"
+                  class="form-control"
+                  name="celular"
+                  ngModel
+                  required
+                />
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="correo" class="form-label"
+                  >Correo Electrónico:</label
+                >
+                <input
+                  type="email"
+                  id="correo"
+                  class="form-control"
+                  name="correo"
+                  ngModel
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input
+                  type="text"
+                  id="direccion"
+                  class="form-control"
+                  name="direccion"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!userForm.form.valid"
+              >
+                Registrar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
 <div class="client-info-container">
   <div class="client-info-body">
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">Nombre:</label>
-        <p class="data-field">{{ selectedClient.nombre || '' }}</p>
+        <p class="data-field">{{ selectedClient.nombre || "" }}</p>
       </div>
       <div class="form-group">
         <label class="form-label">Cédula:</label>
-        <p class="data-field">{{ selectedClient.cedula || '' }}</p>
+        <p class="data-field">{{ selectedClient.cedula || "" }}</p>
       </div>
       <div class="form-group">
         <label class="form-label">Celular:</label>
-        <p class="data-field">{{ selectedClient.celular || '' }}</p>
+        <p class="data-field">{{ selectedClient.celular || "" }}</p>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">Correo Electrónico:</label>
-        <p class="data-field">{{ selectedClient.correo || '' }}</p>
+        <p class="data-field">{{ selectedClient.correo || "" }}</p>
       </div>
       <div class="form-group">
         <label class="form-label">Dirección:</label>
-        <p class="data-field">{{ selectedClient.direccion || '' }}</p>
+        <p class="data-field">{{ selectedClient.direccion || "" }}</p>
       </div>
     </div>
   </div>
 </div>
-  
+
 <div class="contenedor-venta">
   <div class="venta-info">
-      <h2 class="titulo-venta">Datos de la venta</h2>
-      <span class="numero-venta">{{ siguienteVentaId }}</span>
+    <h2 class="titulo-venta">Datos de la venta</h2>
+    <span class="numero-venta">{{ siguienteVentaId }}</span>
   </div>
 </div>
 
@@ -162,7 +221,7 @@
       </div>
       <div class="form-row">
         <label class="form-label">Fecha:</label>
-        <input type="date" class="data-field" [(ngModel)]="fechaSeleccionada"/>
+        <input type="date" class="data-field" [(ngModel)]="fechaSeleccionada" />
       </div>
       <div class="form-row">
         <label class="form-label-FormaPago">Forma de pago</label>
@@ -170,183 +229,258 @@
       <div class="form-row">
         <div class="payment-buttons">
           <div class="form-row payment-buttons">
-            <button class="btn-payment" [ngClass]="{'activo': botonActivo === 'pago'}" (click)="activarBoton('pago')">Efectivo</button>
-            <button class="btn-payment" [ngClass]="{'activo': botonActivo === 'credito'}" (click)="activarBoton('credito')">Crédito</button>
-          </div>         
+            <button
+              class="btn-payment"
+              [ngClass]="{ activo: botonActivo === 'pago' }"
+              (click)="activarBoton('pago')"
+            >
+              Efectivo
+            </button>
+            <button
+              class="btn-payment"
+              [ngClass]="{ activo: botonActivo === 'credito' }"
+              (click)="activarBoton('credito')"
+            >
+              Crédito
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="form-column-right">
-    <div class="modal-pago" *ngIf="botonActivo === 'pago'">
-      <div class="form-row">
-        <label class="form-label">Total a pagar:</label>
-        <input type="text" class="data-field" [value]="getTotalTotalPrice() | currency: 'USD' : 'symbol' : '1.0-0'" readonly />
-      </div>
-      <div class="form-row">
-        <label class="form-label">Total recibido:</label>
-        <input 
-            type="text" 
-            class="data-field2" 
-            [(ngModel)]="MontoRecibido" 
+      <div class="modal-pago" *ngIf="botonActivo === 'pago'">
+        <div class="form-row">
+          <label class="form-label">Total a pagar:</label>
+          <input
+            type="text"
+            class="data-field"
+            [value]="
+              getTotalTotalPrice() | currency : 'USD' : 'symbol' : '1.0-0'
+            "
+            readonly
+          />
+        </div>
+        <div class="form-row">
+          <label class="form-label">Total recibido:</label>
+          <input
+            type="text"
+            class="data-field2"
+            [(ngModel)]="MontoRecibido"
             (input)="formatCurrency()"
-            placeholder="$0"  
-        />
-    </div>
-      <div class="form-row">
-        <label class="form-label">Regreso:</label>
-        <input type="text" class="data-field3" [value]="calcularRegreso() | currency: 'USD' : 'symbol' : '1.0-0'" readonly placeholder="$0" />
+            placeholder="$0"
+          />
+        </div>
+        <div class="form-row">
+          <label class="form-label">Regreso:</label>
+          <input
+            type="text"
+            class="data-field3"
+            [value]="calcularRegreso() | currency : 'USD' : 'symbol' : '1.0-0'"
+            readonly
+            placeholder="$0"
+          />
+        </div>
       </div>
-    </div>
-    <div class="modal-credito" *ngIf="botonActivo === 'credito'">
-      <div class="form-row">
-        <label class="form-label">Total a pagar:</label>
-        <input type="text" class="data-field" [value]="getTotalTotalPrice() | currency: 'USD' : 'symbol' : '1.0-0'" readonly />
-      </div>
-      <div class="form-row">
-        <label class="form-label">Abono inicial:</label>
-        <input 
-            type="text" 
-            class="data-field2" 
-            [(ngModel)]="AbonoInicial" 
-            (input)="formatAbonoInicial()" 
-            placeholder="$0" 
-        />
+      <div class="modal-credito" *ngIf="botonActivo === 'credito'">
+        <div class="form-row">
+          <label class="form-label">Total a pagar:</label>
+          <input
+            type="text"
+            class="data-field"
+            [value]="
+              getTotalTotalPrice() | currency : 'USD' : 'symbol' : '1.0-0'
+            "
+            readonly
+          />
+        </div>
+        <div class="form-row">
+          <label class="form-label">Abono inicial:</label>
+          <input
+            type="text"
+            class="data-field2"
+            [(ngModel)]="AbonoInicial"
+            (input)="formatAbonoInicial()"
+            placeholder="$0"
+          />
         </div>
         <div class="form-row">
           <label class="form-label">Total crédito:</label>
-          <input type="text" class="data-field3" [value]="totalCredito | currency: 'USD' : 'symbol' : '1.0-0'" readonly placeholder="$0"/>
-      </div>  
+          <input
+            type="text"
+            class="data-field3"
+            [value]="totalCredito | currency : 'USD' : 'symbol' : '1.0-0'"
+            readonly
+            placeholder="$0"
+          />
+        </div>
+      </div>
     </div>
   </div>
-</div> 
 </div>
 
 <h2 class="titulo-buscador">Agregar un producto</h2>
 
 <div class="flex-container-column">
   <div class="flex-container">
-      <div class="search-container">
-          <div class="search-header">
-              <h2 class="titulo-buscador">Buscar un producto</h2>
-              <input
-                  type="text"
-                  [(ngModel)]="searchTerm"
-                  name="searchTerm"
-                  (input)="onSearch()"
-                  placeholder="Buscar por nombre o código"
-                  class="search-input"
-              />
-          </div> 
+    <div class="search-container">
+      <div class="search-header">
+        <h2 class="titulo-buscador">Buscar un producto</h2>
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
+          (input)="onSearch()"
+          placeholder="Buscar por nombre o código"
+          class="search-input"
+        />
       </div>
-      <div class="search-container">
-          <div class="search-header">
-              <h2 class="titulo-buscador">Filtrar por unidad</h2>
-              <select [(ngModel)]="selectedUnit" (change)="onSearch()" class="search-select">
-                  <option value="">Todas</option>
-                  <option *ngFor="let unit of filteredUnits" [value]="unit.nombre">{{ unit.nombre }}</option>
-              </select>
-          </div>
+    </div>
+    <div class="search-container">
+      <div class="search-header">
+        <h2 class="titulo-buscador">Filtrar por unidad</h2>
+        <select
+          [(ngModel)]="selectedUnit"
+          (change)="onSearch()"
+          class="search-select"
+        >
+          <option value="">Todas</option>
+          <option *ngFor="let unit of filteredUnits" [value]="unit.nombre">
+            {{ unit.nombre }}
+          </option>
+        </select>
       </div>
+    </div>
   </div>
-</div> 
+</div>
 
 <div class="table-container table1">
   <table>
-      <thead>
-          <tr>
-              <th>Código</th>
-              <th>Proveedor</th>
-              <th>Subcategoria</th>
-              <th>Nombre</th>
-              <th>Formulación</th>
-              <th>Unidad</th>
-              <th>Cantidad</th>
-              <th>Precio venta</th>
-              <th>Agregar</th>
-          </tr> 
-      </thead>
-      <tbody>
-          <tr *ngFor="let product of limitedFilteredProducts(); let i = index">
-              <ng-container *ngIf="!product.noResults; else noResultsRow">
-                  <td>{{ product.codigo }}</td>
-                  <td>{{ product.proveedor }}</td>
-                  <td>{{ product.subcategoria }}</td>
-                  <td>{{ product.nombre }}</td>
-                  <td>{{ product.formulacion }}</td>
-                  <td>{{ product.unidad }}</td>
-                  <td>{{ product.cantidad }}</td>
-                  <td>{{ product.precio_venta ? (product.precio_venta | currency: 'USD' : 'symbol' : '1.0-0') : '' }}</td>
-                  <td>
-                      <button class="btn btn-success" (click)="onAdd(product)">
-                        <i class="bi bi-plus-lg"></i>
-                      </button>
-                    </td>                      
-              </ng-container>
-          </tr>
-          <ng-template #noResultsRow>
-              <td colspan="9" class="No-resultados">No se encontraron resultados</td>
-          </ng-template>
-      </tbody>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proveedor</th>
+        <th>Subcategoria</th>
+        <th>Nombre</th>
+        <th>Formulación</th>
+        <th>Unidad</th>
+        <th>Cantidad</th>
+        <th>Precio venta</th>
+        <th>Agregar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of limitedFilteredProducts(); let i = index">
+        <ng-container *ngIf="!product.noResults; else noResultsRow">
+          <td>{{ product.codigo }}</td>
+          <td>{{ product.proveedor }}</td>
+          <td>{{ product.subcategoria }}</td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.formulacion }}</td>
+          <td>{{ product.unidad }}</td>
+          <td>{{ product.cantidad }}</td>
+          <td>
+            {{
+              product.precio_venta
+                ? (product.precio_venta | currency : "USD" : "symbol" : "1.0-0")
+                : ""
+            }}
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="onAdd(product)">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </td>
+        </ng-container>
+      </tr>
+      <ng-template #noResultsRow>
+        <td colspan="9" class="No-resultados">No se encontraron resultados</td>
+      </ng-template>
+    </tbody>
   </table>
 </div>
 
 <h2 class="titulo-buscador">Productos agregados a la venta</h2>
 
 <div class="table-container table2">
-<table>
-  <thead>
-    <tr>
-      <th>Código</th> 
-      <th>Proveedor</th>
-      <th>Subcategoria</th>
-      <th>Nombre</th>
-      <th>Formulación</th>
-      <th>Unidad</th>
-      <th>Cantidad</th>
-      <th>Precio venta</th>
-      <th>Subtotal</th>
-      <th>Eliminar</th>
-    </tr>
-  </thead>  
-  <tbody>
-    <tr *ngFor="let product of venta; let i = index">
-      <td>{{ product.codigo }}</td>
-      <td>{{ product.proveedor }}</td>
-      <td>{{ product.subcategoria }}</td>
-      <td>{{ product.nombre }}</td>
-      <td>{{ product.formulacion }}</td>
-      <td>{{ product.unidad }}</td>
-      <td>
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Proveedor</th>
+        <th>Subcategoria</th>
+        <th>Nombre</th>
+        <th>Formulación</th>
+        <th>Unidad</th>
+        <th>Cantidad</th>
+        <th>Precio venta</th>
+        <th>Subtotal</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of venta; let i = index">
+        <td>{{ product.codigo }}</td>
+        <td>{{ product.proveedor }}</td>
+        <td>{{ product.subcategoria }}</td>
+        <td>{{ product.nombre }}</td>
+        <td>{{ product.formulacion }}</td>
+        <td>{{ product.unidad }}</td>
+        <td>
           <div class="quantity-control">
-            <button class="btn-quantity" (click)="decrementQuantity(i)">-</button>
+            <button class="btn-quantity" (click)="decrementQuantity(i)">
+              -
+            </button>
             <span>{{ product.cantidad }}</span>
-            <button class="btn-quantity-more" (click)="incrementQuantity(i)">+</button>
+            <button class="btn-quantity-more" (click)="incrementQuantity(i)">
+              +
+            </button>
           </div>
-        </td>                   
-      <td>{{ product.precio_venta | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
-      <td>{{ product.subtotal | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
-      <td>
-        <button class="btn btn-danger" (click)="onRemove(i)">
-          <i class="bi bi-trash-fill"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+        <td>
+          {{ product.precio_venta | currency : "USD" : "symbol" : "1.0-0" }}
+        </td>
+        <td>{{ product.subtotal | currency : "USD" : "symbol" : "1.0-0" }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onRemove(i)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="total-table-container">
   <table class="total-table">
-      <tbody>
-          <tr class="total-row">
-            <td colspan="8" style="text-align: center; font-weight: bold;">Total</td>
-            <td class="calculo">{{ getTotalTotalPrice() | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
-          </tr>
-      </tbody>
+    <tbody>
+      <tr class="total-row">
+        <td colspan="8" style="text-align: center; font-weight: bold">Total</td>
+        <td class="calculo">
+          {{ getTotalTotalPrice() | currency : "USD" : "symbol" : "1.0-0" }}
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
 
 <div class="final">
-  <button class="btn-finalizar" (click)="finalizarVenta()">Finalizar venta</button>
+  <button class="btn-finalizar" (click)="finalizarVenta()">
+    Finalizar venta
+  </button>
+</div>
+
+<!-- Animación venta hecha -->
+<div
+  class="compra-exitosa"
+  [ngClass]="{ activa: animaccionActiva }"
+  *ngIf="animaccionActiva"
+>
+  <div class="contenido">
+    <div class="checkmark-circle">
+      <div class="background"></div>
+      <div class="checkmark"></div>
+    </div>
+    <h2>¡Venta realizada con éxito!</h2>
+  </div>
 </div>

@@ -9,7 +9,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   imports: [HttpClientModule, CommonModule, FormsModule],
   templateUrl: './registrar-una-venta.component.html',
   styleUrl: './registrar-una-venta.component.css'
-}) 
+})
 
 export class RegistrarUnaVentaComponent {
   searchTerm: string = '';
@@ -28,19 +28,21 @@ export class RegistrarUnaVentaComponent {
   mostrarModalPago: boolean = false;
   mostrarModalCredito: boolean = false;
   botonActivo: string = 'pago';
-  totalRecibido: number = 0;  
+  totalRecibido: number = 0;
   MontoRecibido: string = '';
   AbonoInicial: string = '';
   fechaSeleccionada: string | null = null;
-  selectedVentaId: number | null = null; 
+  selectedVentaId: number | null = null;
   siguienteVentaId: number | null = null;
 
   siguienteFacturaId: string = '';
 
-  constructor(private http: HttpClient) {} 
- 
+  animaccionActiva: boolean = false;
+
+  constructor(private http: HttpClient) { }
+
   ngOnInit(): void {
-    this.getProducts(); 
+    this.getProducts();
     this.getUnits();
     this.getClientsList();
     this.botonActivo = 'pago';
@@ -60,15 +62,15 @@ export class RegistrarUnaVentaComponent {
     const filtered = this.filteredProducts();
 
     if (!this.searchTerm) {
-        return new Array(3).fill({ codigo: '', proveedor: '', subcategoria: '', nombre: '', formulacion: '', unidad: '', cantidad: '', precio_venta: null });
+      return new Array(3).fill({ codigo: '', proveedor: '', subcategoria: '', nombre: '', formulacion: '', unidad: '', cantidad: '', precio_venta: null });
     }
 
     if (filtered.length > 0) {
-        const resultsToShow = filtered.slice(0, 3); 
-        while (resultsToShow.length < 3) {
-            resultsToShow.push({ codigo: '', proveedor: '', subcategoria: '', nombre: '', formulacion: '', unidad: '', cantidad: '', precio_venta: null });
-        }
-        return resultsToShow;
+      const resultsToShow = filtered.slice(0, 3);
+      while (resultsToShow.length < 3) {
+        resultsToShow.push({ codigo: '', proveedor: '', subcategoria: '', nombre: '', formulacion: '', unidad: '', cantidad: '', precio_venta: null });
+      }
+      return resultsToShow;
     }
 
     return new Array(3).fill({ noResults: true });
@@ -96,8 +98,8 @@ export class RegistrarUnaVentaComponent {
         console.error('Error al obtener las unidades:', error);
       }
     );
-  } 
-  
+  }
+
   filteredProducts() {
     let filteredProducts = this.products;
 
@@ -119,38 +121,38 @@ export class RegistrarUnaVentaComponent {
 
   updateFilteredUnits(): void {
     const filteredProducts = this.filteredProducts();
-        const uniqueUnits = new Set(filteredProducts.map(product => product.unidad));
-        this.filteredUnits = Array.from(uniqueUnits).map(unit => ({ nombre: unit }));
+    const uniqueUnits = new Set(filteredProducts.map(product => product.unidad));
+    this.filteredUnits = Array.from(uniqueUnits).map(unit => ({ nombre: unit }));
   }
 
   onAdd(product: any): void {
     if (!product || !product.codigo || !product.nombre) {
-      return; 
+      return;
     }
-  
+
     const productExists = this.venta.some(item => item.codigo === product.codigo);
     if (!productExists) {
       this.venta.push({
         codigo: product.codigo,
-        proveedor_id: product.proveedor_id,      
-        subcategoria_id: product.subcategoria_id, 
-        formulacion_id: product.formulacion_id,   
-        unidad_id: product.unidad_id,             
-        proveedor: product.proveedor,             
-        subcategoria: product.subcategoria,       
-        nombre: product.nombre,                   
-        formulacion: product.formulacion,         
-        unidad: product.unidad,                   
-        cantidad: 1,                              
-        precio_venta: product.precio_venta,       
-        subtotal: 1 * product.precio_venta        
+        proveedor_id: product.proveedor_id,
+        subcategoria_id: product.subcategoria_id,
+        formulacion_id: product.formulacion_id,
+        unidad_id: product.unidad_id,
+        proveedor: product.proveedor,
+        subcategoria: product.subcategoria,
+        nombre: product.nombre,
+        formulacion: product.formulacion,
+        unidad: product.unidad,
+        cantidad: 1,
+        precio_venta: product.precio_venta,
+        subtotal: 1 * product.precio_venta
       });
       console.log("Producto agregado a la venta:", this.venta);
     }
   }
-  
+
   incrementQuantity(index: number): void {
-    const productInStock = this.products.find( 
+    const productInStock = this.products.find(
       product => product.codigo === this.venta[index].codigo
     );
 
@@ -192,9 +194,9 @@ export class RegistrarUnaVentaComponent {
 
   openSearchClient(): void {
     this.showSearchClientModal = true;
-    this.searchCedula = ''; 
-    this.filteredClients = []; 
-    this.searchAttempted = false; 
+    this.searchCedula = '';
+    this.filteredClients = [];
+    this.searchAttempted = false;
   }
 
   onSearchClient(): void {
@@ -204,11 +206,11 @@ export class RegistrarUnaVentaComponent {
     if (this.searchCedula.trim() === '') {
       return new Array(3).fill({ nombre: '', cedula: '', emptyRow: true, showIcon: false });
     }
-  
+
     const filtered = this.clientList
       .filter(client => client.cedula.toString().includes(this.searchCedula))
       .slice(0, 3);
-  
+
     if (filtered.length > 0) {
       const resultsToShow = filtered.map(client => ({ ...client, emptyRow: false, showIcon: true }));
       while (resultsToShow.length < 3) {
@@ -216,15 +218,15 @@ export class RegistrarUnaVentaComponent {
       }
       return resultsToShow;
     }
-  
+
     return new Array(3).fill({ noResults: true });
   }
-  
+
   closeSearchClientModal(): void {
     this.showSearchClientModal = false;
-    this.searchCedula = ''; 
-    this.filteredClients = []; 
-    this.searchAttempted = false; 
+    this.searchCedula = '';
+    this.filteredClients = [];
+    this.searchAttempted = false;
   }
 
   createEmptyRows(currentLength: number): any[] {
@@ -233,13 +235,13 @@ export class RegistrarUnaVentaComponent {
   }
 
   selectClient(client: any): void {
-    this.selectedClient = { ...client }; 
-    console.log('Cliente seleccionado:', this.selectedClient); 
+    this.selectedClient = { ...client };
+    console.log('Cliente seleccionado:', this.selectedClient);
     this.closeSearchClientModal();
-  }  
+  }
 
   onAddCliente(): void {
-    this.showAddModal = true; 
+    this.showAddModal = true;
   }
 
   onSubmitClientes(userForm: NgForm): void {
@@ -252,16 +254,16 @@ export class RegistrarUnaVentaComponent {
     this.http.post('http://localhost:3000/contactos/cliente-agregar', clienteData)
       .subscribe((response) => {
         console.log('Cliente registrado:', response);
-        this.getClientsList(); 
-        this.closeAddModalCliente(); 
-        userForm.reset(); 
+        this.getClientsList();
+        this.closeAddModalCliente();
+        userForm.reset();
       }, (error) => {
         console.error('Error al registrar cliente:', error);
       });
   }
 
   closeAddModalCliente(): void {
-    this.showAddModal = false; 
+    this.showAddModal = false;
   }
 
   toggleModalPago() {
@@ -276,7 +278,7 @@ export class RegistrarUnaVentaComponent {
 
   activarBoton(tipo: string) {
     this.botonActivo = tipo;
-    this.MontoRecibido = '';  
+    this.MontoRecibido = '';
     this.AbonoInicial = '';
   }
 
@@ -284,8 +286,8 @@ export class RegistrarUnaVentaComponent {
     const numericTotalRecibido = parseFloat(this.MontoRecibido.replace(/[^0-9.]/g, ''));
     return Math.abs(numericTotalRecibido - this.getTotalTotalPrice());
   }
-  
-  formatCurrency() { 
+
+  formatCurrency() {
     let numericValue = this.MontoRecibido ? this.MontoRecibido.replace(/[^0-9]/g, '') : '';
     this.MontoRecibido = numericValue ? `$${Number(numericValue).toLocaleString('en-US')}` : '';
   }
@@ -304,13 +306,13 @@ export class RegistrarUnaVentaComponent {
     const total = this.getTotalTotalPrice();
     const forma_pago_id = this.botonActivo === 'pago' ? 1 : 2;
     const estado_venta_id = this.botonActivo === 'pago' ? 1 : 2;
-  
+
     if (this.fechaSeleccionada && this.selectedClient.id && this.venta.length > 0) {
       const ventaData: any = {
         fecha: this.fechaSeleccionada,
         cliente_id: this.selectedClient.id,
         total_a_pagar: total,
-        forma_pago_id: forma_pago_id, 
+        forma_pago_id: forma_pago_id,
         estado_venta_id: estado_venta_id,
         productos: this.venta.map(product => ({
           codigo: product.codigo,
@@ -322,38 +324,46 @@ export class RegistrarUnaVentaComponent {
           precio_venta: product.precio_venta
         }))
       };
-  
+
       if (forma_pago_id === 2) {
-        ventaData.abono_inicial = parseFloat(this.AbonoInicial.replace(/[^0-9.]/g, '')) || 0; 
+        ventaData.abono_inicial = parseFloat(this.AbonoInicial.replace(/[^0-9.]/g, '')) || 0;
       }
-  
+
       console.log("Datos completos de venta antes de enviar:", JSON.stringify(ventaData, null, 2));
-  
+
       this.http.post('http://localhost:3000/ventas/venta-completa', ventaData)
         .subscribe(
           (response) => {
             console.log('Venta completa registrada:', response);
             this.fechaSeleccionada = null;
-            this.venta = [];         
-            this.searchTerm = '';    
-            this.selectedUnit = '';  
+            this.venta = [];
+            this.searchTerm = '';
+            this.selectedUnit = '';
             this.botonActivo = 'pago';
-            this.selectedClient = {};  
+            this.selectedClient = {};
             this.MontoRecibido = '';
             this.AbonoInicial = '';
             this.getNextVentaId();
             this.getProducts();
             this.getNextFacturaId();
+            this.showAnimation();
           },
-          (error) => { 
+          (error) => {
             console.error('Error al registrar venta completa:', error);
           }
         );
     } else {
       alert('Por favor, selecciona una fecha, un cliente, y agrega productos a la venta.');
     }
-  }  
-  
+  }
+
+  showAnimation(): void {
+    this.animaccionActiva = true;
+    setTimeout(() => {
+      this.animaccionActiva = false;
+    }, 2000);
+  }
+
   getNextVentaId(): void {
     this.http.get<{ siguienteId: number }>('http://localhost:3000/ventas/ultimo-id')
       .subscribe(
@@ -363,8 +373,8 @@ export class RegistrarUnaVentaComponent {
         (error) => {
           console.error('Error al obtener el próximo ID de venta:', error);
         }
-      ); 
-  }  
+      );
+  }
 
   getNextFacturaId(): void {
     this.http.get<{ factura_actual: string }>('http://localhost:3000/api/factura-actual')
@@ -375,6 +385,6 @@ export class RegistrarUnaVentaComponent {
         (error) => {
           console.error('Error al obtener el próximo ID de factura:', error);
         }
-      ); 
-  }  
+      );
+  }
 }
