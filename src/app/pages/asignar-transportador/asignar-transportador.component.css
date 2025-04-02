@@ -4,7 +4,6 @@ h3 {
   text-align: center;
   font-weight: bold;
   color: #30543f;
-  /* Verde oscuro para los títulos */
 }
 
 /* Características del pedido (7 y 5 columnas) */
@@ -39,7 +38,6 @@ h3 {
   margin: 0;
   text-align: center;
   color: #30543f;
-  /* Verde oscuro para las etiquetas */
 }
 
 .form-control2,
@@ -48,15 +46,12 @@ h3 {
 .search-select2,
 .search-select {
   padding: 12px;
-  /* Aumentado el padding */
   font-size: 18px;
   border: 2px solid #30543f;
   border-radius: 8px;
-  /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(48, 84, 63, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el ancho */
 }
 
 .form-control2,
@@ -108,23 +103,18 @@ input[type="number"]::-webkit-outer-spin-button {
 table {
   margin: 20px 0;
   font-size: 16px;
-  /* Aumentado el tamaño de fuente */
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
-  /* Bordes redondeados */
   overflow: hidden;
-  /* Evita que los bordes redondeados se desborden */
   box-shadow: 0 6px 12px rgba(48, 84, 63, 0.3);
-  /* Sombra con verde oscuro */
 }
 
 th,
 td {
   padding: 15px;
-  /* Aumentado el padding */
   text-align: center;
-  border: 1px solid #e0e0e0;
+  border: none;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -132,18 +122,13 @@ th {
   background-color: #30543f;
   color: white;
   font-weight: 600;
-  /* Añadido para consistencia */
-}
-
-td {
-  border: 1px solid #e0e0e0;
 }
 
 tr:nth-child(even) {
   background-color: #f2f9f5;
 }
 
-.table-container tr:hover {
+.table-container tr:not(.total-row):hover {
   background-color: #e6f7ec;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -156,7 +141,7 @@ tr:nth-child(even) {
 
 .table-container td:nth-child(7),
 .table-container td:nth-child(8) {
-  text-align: right;
+  text-align: center;
 }
 
 .No-resultados {
@@ -217,17 +202,14 @@ tr:nth-child(even) {
 .btn-quantity-more {
   margin-left: 10px;
   padding: 12px 20px;
-  /* Aumentado el padding */
   font-size: 20px;
   background-color: #30543f;
   color: white;
   border: none;
   border-radius: 8px;
-  /* Bordes redondeados */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-success {
@@ -240,7 +222,6 @@ tr:nth-child(even) {
 .btn-quantity-more:hover {
   background-color: #28a745;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Subtitulo de cada proveedor */
@@ -273,14 +254,12 @@ tr:nth-child(even) {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Transición suave con transformación */
 }
 
 .btn-quantity:hover,
 .btn-danger:hover {
   background-color: #b02a37;
   transform: scale(1.05);
-  /* Ligera escala al hacer hover */
 }
 
 /* Contenedor del número */
@@ -307,10 +286,11 @@ tr:nth-child(even) {
 
 .total-table td {
   padding: 25px;
+  text-align: center;
 }
 
 .calculo {
-  text-align: right;
+  text-align: center;
 }
 
 .total-table td:nth-child(2) {
@@ -324,5 +304,56 @@ tr:nth-child(even) {
 
 .total-table td:nth-child(2) {
   width: 19%;
-  text-align: right;
+  text-align: center;
+}
+
+/* Contenedor de los botones "Devolver a pedidos" y "Agregar al envío" */
+.Finalizar-pedido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  /* Agregado para separar los botones del contenido anterior */
+}
+
+/* Estilos de los botones "Devolver a pedidos" y "Agregar al envío" */
+.btn-danger,
+.btn-finalizar {
+  display: inline-flex;
+  /* Usamos inline-flex para centrar el contenido y mantenerlos en línea */
+  align-items: center;
+  /* Centra el texto verticalmente dentro del botón */
+  justify-content: center;
+  /* Centra el texto horizontalmente dentro del botón */
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 10px;
+  min-width: 150px;
+  /* Asegura que tengan el mismo ancho */
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b02a37;
+  transform: scale(1.05);
+}
+
+.btn-finalizar {
+  background-color: #30543f;
+  color: white;
+}
+
+.btn-finalizar:hover {
+  background-color: #28a745;
+  transform: scale(1.05);
 }

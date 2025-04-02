@@ -69,9 +69,7 @@ th,
 td {
   padding: 15px 20px;
   text-align: center;
-  /* Centrar todo el texto en las celdas */
   border: none;
-  /* Eliminar bordes de las celdas */
   transition: background-color 0.3s ease;
 }
 
@@ -95,14 +93,7 @@ tr:hover {
 .table-container td {
   padding: 15px 20px;
   text-align: center;
-  /* Centrar todo el texto en las celdas y encabezados */
   height: 50px;
-}
-
-.table-container td:nth-child(7),
-.table-container td:nth-child(8) {
-  text-align: right;
-  /* Alineación a la derecha para las columnas 7 y 8 */
 }
 
 .No-resultados {

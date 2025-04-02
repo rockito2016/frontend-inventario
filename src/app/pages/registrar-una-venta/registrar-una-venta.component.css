@@ -710,3 +710,31 @@ form-group:not(.venta-info-body) {
   display: inline-block;
   min-width: 50px;
 }
+
+/* Centrar el botón "Finalizar venta" */
+.final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  /* Agregado para separar el botón del contenido anterior */
+}
+
+.btn-finalizar {
+  display: inline-flex;
+  /* Usamos inline-flex para centrar el contenido y mantenerlo en línea */
+  align-items: center;
+  /* Centra el texto verticalmente dentro del botón */
+  justify-content: center;
+  /* Centra el texto horizontalmente dentro del botón */
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  min-width: 150px;
+  /* Asegura un ancho mínimo */
+}

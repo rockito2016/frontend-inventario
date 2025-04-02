@@ -24,21 +24,21 @@ export class RealizarPedidoComponent implements OnInit {
   units: any[] = [];
   groupedSuppliers: { [key: string]: any[] } = {};
   compraId: number | string = '';
-  siguienteCompraId: number | null = null; 
+  siguienteCompraId: number | null = null;
   facturaNumero: string = '';
   formasPagoList: any[] = [];
-  selectedFormaPago: number | null = null; 
+  selectedFormaPago: number | null = null;
   selectedDate: string | null = null;
-  abonoInicial: string = ''; 
+  abonoInicial: string = '';
   compraIdsBySupplier: { [key: string]: number } = {};
-  isAbonoInicialEnabled: boolean = false; 
+  isAbonoInicialEnabled: boolean = false;
   supplierData: { [key: string]: any } = {};
   groupedSuppliersArray: { key: string; value: any[] }[] = [];
 
   private proveedoresMap: { [key: string]: number } = {};
 
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.initializeSelectedProducts();
@@ -50,53 +50,53 @@ export class RealizarPedidoComponent implements OnInit {
 
 
     const storedSupplierData = JSON.parse(localStorage.getItem('supplierData') || '{}');
-    const returnedPedidos = JSON.parse(localStorage.getItem('returnedPedidos') || '[]'); 
-    this.supplierData = {}; 
+    const returnedPedidos = JSON.parse(localStorage.getItem('returnedPedidos') || '[]');
+    this.supplierData = {};
 
     if (returnedPedidos.length > 0) {
-        returnedPedidos.forEach((pedido: any) => {
-            pedido.productos.forEach((producto: any) => {
-                this.selectedProducts.push({
-                    ...producto, 
-                    precio_compra: producto.precioCompra || 0, 
-                    nombre_producto: producto.nombre || 'Producto sin nombre', 
-                    proveedor: pedido.proveedor, 
-                });
-            });
-
-            this.supplierData[pedido.proveedor] = {
-                facturaNumero: pedido.facturaNumero || '',
-                fecha: pedido.fecha || '',
-                formaPago: pedido.formaPago || '',
-                abonoInicial: pedido.abonoInicial || '',
-            };
+      returnedPedidos.forEach((pedido: any) => {
+        pedido.productos.forEach((producto: any) => {
+          this.selectedProducts.push({
+            ...producto,
+            precio_compra: producto.precioCompra || 0,
+            nombre_producto: producto.nombre || 'Producto sin nombre',
+            proveedor: pedido.proveedor,
+          });
         });
 
-        localStorage.removeItem('returnedPedidos');
+        this.supplierData[pedido.proveedor] = {
+          facturaNumero: pedido.facturaNumero || '',
+          fecha: pedido.fecha || '',
+          formaPago: pedido.formaPago || '',
+          abonoInicial: pedido.abonoInicial || '',
+        };
+      });
+
+      localStorage.removeItem('returnedPedidos');
     }
 
     Object.keys(storedSupplierData).forEach((key) => {
-        if (!this.supplierData[key]) {
-            this.supplierData[key] = storedSupplierData[key];
-        }
+      if (!this.supplierData[key]) {
+        this.supplierData[key] = storedSupplierData[key];
+      }
     });
 
     this.groupedSuppliers = this.getGroupedBySupplier();
-  this.groupedSuppliersArray = Object.entries(this.groupedSuppliers).map(([key, value]) => ({
-    key,
-    value,
-  }));
+    this.groupedSuppliersArray = Object.entries(this.groupedSuppliers).map(([key, value]) => ({
+      key,
+      value,
+    }));
 
     Object.keys(this.supplierData).forEach((key) => {
-        if (!this.groupedSuppliers[key]) {
-            delete this.supplierData[key];
-        }
+      if (!this.groupedSuppliers[key]) {
+        delete this.supplierData[key];
+      }
     });
 
     if (this.siguienteCompraId) {
-        this.compraIdsBySupplier = this.assignCompraIdsToSuppliers(this.siguienteCompraId);
+      this.compraIdsBySupplier = this.assignCompraIdsToSuppliers(this.siguienteCompraId);
     } else {
-        this.compraIdsBySupplier = {}; 
+      this.compraIdsBySupplier = {};
     }
 
     this.initializeSupplierData();
@@ -110,28 +110,28 @@ export class RealizarPedidoComponent implements OnInit {
           map[proveedor.nombre] = proveedor.id;
           return map;
         }, {} as { [key: string]: number });
-  
+
         console.log('Proveedores cargados:', this.proveedoresMap);
-  
+
         this.initializeSupplierData();
       },
       error: (error) => {
         console.error('Error al cargar los proveedores:', error);
       },
     });
-  }  
+  }
 
   private initializeSupplierData(): void {
     const orderedSuppliers = Object.keys(this.groupedSuppliers);
-  
+
     const newSupplierData: { [key: string]: any } = {};
-  
+
     orderedSuppliers.forEach((supplier) => {
       const proveedorId = this.proveedoresMap[supplier] || null;
-  
+
       if (!this.supplierData[supplier]) {
         newSupplierData[supplier] = {
-          id: proveedorId, 
+          id: proveedorId,
           facturaNumero: '',
           fecha: null,
           formaPago: null,
@@ -140,34 +140,34 @@ export class RealizarPedidoComponent implements OnInit {
       } else {
         newSupplierData[supplier] = {
           ...this.supplierData[supplier],
-          id: proveedorId, 
+          id: proveedorId,
         };
       }
     });
-  
+
     this.supplierData = newSupplierData;
-  
+
     console.log('Datos inicializados para los proveedores:', this.supplierData);
   }
-  
+
   private initializeSelectedProducts(): void {
     const products = localStorage.getItem('selectedProducts');
     this.selectedProducts = products
       ? JSON.parse(products).map((product: any) => ({
-          ...product,
-          cantidad: product.cantidad ? parseInt(product.cantidad, 10) : 1,
-          subtotal: product.cantidad
-            ? parseInt(product.cantidad, 10) * product.precio_compra
-            : product.precio_compra,
-        }))
+        ...product,
+        cantidad: product.cantidad ? parseInt(product.cantidad, 10) : 1,
+        subtotal: product.cantidad
+          ? parseInt(product.cantidad, 10) * product.precio_compra
+          : product.precio_compra,
+      }))
       : [];
   }
-  
+
   private loadInitialData(): void {
     this.getProducts();
     this.getUnits();
   }
-  
+
   getProducts(): void {
     this.http.get<any[]>('http://localhost:3000/pedido/busqueda-pedido').subscribe(
       (data) => {
@@ -261,11 +261,11 @@ export class RealizarPedidoComponent implements OnInit {
     if (!product || !product.codigo || !product.nombre) {
       return;
     }
-  
+
     const existingProduct = this.selectedProducts.find(
       (item) => item.codigo === product.codigo && item.proveedor === product.proveedor
     );
-  
+
     if (existingProduct) {
       existingProduct.cantidad++;
       existingProduct.subtotal = existingProduct.cantidad * existingProduct.precio_compra;
@@ -285,7 +285,7 @@ export class RealizarPedidoComponent implements OnInit {
         },
       ];
     }
-  
+
     if (!this.supplierData[product.proveedor]) {
       this.supplierData[product.proveedor] = {
         facturaNumero: '',
@@ -294,21 +294,21 @@ export class RealizarPedidoComponent implements OnInit {
         abonoInicial: '',
       };
     }
-  
+
     this.groupedSuppliers = this.getGroupedBySupplier();
     this.groupedSuppliersArray = Object.entries(this.groupedSuppliers).map(([key, value]) => ({
       key,
       value,
     }));
-  
+
     if (this.siguienteCompraId) {
       this.compraIdsBySupplier = this.assignCompraIdsToSuppliers(this.siguienteCompraId);
     }
-  
-    this.updateLocalStorage(); 
+
+    this.updateLocalStorage();
     console.log('Producto agregado a la lista de pedido:', this.selectedProducts);
   }
-  
+
   getFormasPagoList(): void {
     this.http.get<any[]>('http://localhost:3000/api/formas-pago').subscribe(
       (data) => {
@@ -320,53 +320,53 @@ export class RealizarPedidoComponent implements OnInit {
     );
   }
 
- getGroupedBySupplier(): { [key: string]: any[] } {
-  const grouped = new Map<string, any[]>();
+  getGroupedBySupplier(): { [key: string]: any[] } {
+    const grouped = new Map<string, any[]>();
 
-  this.selectedProducts.forEach((product) => {
-    const supplier = product.proveedor;
-    if (!grouped.has(supplier)) {
-      grouped.set(supplier, []);
-    }
-    grouped.get(supplier)?.push(product);
-  });
+    this.selectedProducts.forEach((product) => {
+      const supplier = product.proveedor;
+      if (!grouped.has(supplier)) {
+        grouped.set(supplier, []);
+      }
+      grouped.get(supplier)?.push(product);
+    });
 
-  const groupedObject: { [key: string]: any[] } = {};
-  Array.from(grouped.entries()).forEach(([key, value]) => {
-    groupedObject[key] = value;
-  });
+    const groupedObject: { [key: string]: any[] } = {};
+    Array.from(grouped.entries()).forEach(([key, value]) => {
+      groupedObject[key] = value;
+    });
 
-  return groupedObject;
+    return groupedObject;
   }
 
   assignCompraIdsToSuppliers(lastId: number): { [key: string]: number } {
     const compraIds: { [key: string]: number } = {};
-  
+
     const enviadosPedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
     const transportePedidos = JSON.parse(localStorage.getItem('transporte') || '[]');
-  
+
     const idsUsados = new Set<number>([
       ...enviadosPedidos.map((pedido: any) => pedido.compraNumero),
       ...transportePedidos.map((pedido: any) => pedido.compraNumero),
     ]);
-  
+
     const minIdUsado = idsUsados.size > 0 ? Math.min(...Array.from(idsUsados)) : 1;
     const maxIdUsado = idsUsados.size > 0 ? Math.max(...Array.from(idsUsados)) : 0;
-  
+
     const numerosVacios: number[] = [];
     for (let i = minIdUsado; i <= maxIdUsado; i++) {
       if (!idsUsados.has(i)) {
         numerosVacios.push(i);
       }
     }
-  
+
     let compraCounter = Math.max(lastId, maxIdUsado + 1);
-  
+
     Object.keys(this.groupedSuppliers).forEach((supplier) => {
       const proveedorPedido = enviadosPedidos.find((pedido: any) => pedido.proveedor === supplier);
-  
+
       const proveedorTransporte = transportePedidos.find((pedido: any) => pedido.proveedor === supplier);
-  
+
       if (proveedorPedido) {
         compraIds[supplier] = proveedorPedido.compraNumero;
       } else if (proveedorTransporte) {
@@ -377,32 +377,32 @@ export class RealizarPedidoComponent implements OnInit {
         compraIds[supplier] = compraCounter++;
       }
     });
-  
+
     localStorage.setItem('compraIds', JSON.stringify(compraIds));
-  
+
     return compraIds;
   }
-  
-  getNextCompraId(): void {
-  this.http.get<{ siguienteId: number }>('http://localhost:3000/compras/ultimo-id')
-    .subscribe(
-      (response) => {
-        this.siguienteCompraId = response.siguienteId; 
 
-        this.compraIdsBySupplier = this.assignCompraIdsToSuppliers(this.siguienteCompraId);
-      },
-      (error) => {
-        console.error('Error al obtener el próximo ID de compra:', error);
-      }
-    );
+  getNextCompraId(): void {
+    this.http.get<{ siguienteId: number }>('http://localhost:3000/compras/ultimo-id')
+      .subscribe(
+        (response) => {
+          this.siguienteCompraId = response.siguienteId;
+
+          this.compraIdsBySupplier = this.assignCompraIdsToSuppliers(this.siguienteCompraId);
+        },
+        (error) => {
+          console.error('Error al obtener el próximo ID de compra:', error);
+        }
+      );
   }
 
   incrementQuantity(product: any): void {
     if (product) {
-      product.cantidad += 1; 
-      product.subtotal = product.cantidad * product.precio_compra; 
-      this.updateLocalStorage(); 
-      this.groupedSuppliers = this.getGroupedBySupplier(); 
+      product.cantidad += 1;
+      product.subtotal = product.cantidad * product.precio_compra;
+      this.updateLocalStorage();
+      this.groupedSuppliers = this.getGroupedBySupplier();
     } else {
       console.error('Producto no encontrado:', product);
     }
@@ -410,10 +410,10 @@ export class RealizarPedidoComponent implements OnInit {
 
   decrementQuantity(product: any): void {
     if (product && product.cantidad > 1) {
-      product.cantidad -= 1; 
-      product.subtotal = product.cantidad * product.precio_compra; 
-      this.updateLocalStorage(); 
-      this.groupedSuppliers = this.getGroupedBySupplier(); 
+      product.cantidad -= 1;
+      product.subtotal = product.cantidad * product.precio_compra;
+      this.updateLocalStorage();
+      this.groupedSuppliers = this.getGroupedBySupplier();
     } else {
       console.error('Producto no encontrado:', product);
     }
@@ -425,21 +425,21 @@ export class RealizarPedidoComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log(response.message);
-  
+
           this.selectedProducts = this.selectedProducts.filter((p) => p.codigo !== product.codigo);
-  
+
           this.groupedSuppliers = this.getGroupedBySupplier();
           this.groupedSuppliersArray = Object.entries(this.groupedSuppliers).map(([key, value]) => ({
             key,
             value,
           }));
-  
+
           if (this.siguienteCompraId) {
             this.compraIdsBySupplier = this.assignCompraIdsToSuppliers(this.siguienteCompraId);
           }
-  
+
           this.updateLocalStorage();
-  
+
           const stockMinimo = JSON.parse(localStorage.getItem('stockMinimo') || '[]');
           stockMinimo.push(product);
           localStorage.setItem('stockMinimo', JSON.stringify(stockMinimo));
@@ -450,53 +450,53 @@ export class RealizarPedidoComponent implements OnInit {
         }
       );
   }
-  
+
   getTotalTotalPrice(products: any[]): number {
     return products.reduce((total, product) => total + product.cantidad * product.precio_compra, 0);
   }
 
   updateLocalStorage(): void {
     localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
-    
+
     localStorage.setItem('supplierData', JSON.stringify(this.supplierData));
   }
 
   formatAbonoInicial(supplierKey: string): void {
     let abono = this.supplierData[supplierKey].abonoInicial;
-  
+
     abono = abono.replace(/[^0-9]/g, '');
     this.supplierData[supplierKey].abonoInicial = abono
       ? `$${Number(abono).toLocaleString('es-CO')}`
       : '';
   }
-  
+
   onFormaPagoChange(supplierKey: string): void {
     const formaPago = this.supplierData[supplierKey]?.formaPago;
-  
+
     console.log(`Forma de Pago cambiada para ${supplierKey}:`, formaPago);
-  
+
     const isAbonoInicialEnabled = typeof formaPago === 'string'
       ? parseInt(formaPago, 10) === 2
       : formaPago === 2;
-  
+
     this.supplierData[supplierKey].isAbonoInicialEnabled = isAbonoInicialEnabled;
-  
+
     if (!isAbonoInicialEnabled) {
       this.supplierData[supplierKey].abonoInicial = '';
       console.log(`Abono Inicial limpiado para ${supplierKey}`);
     }
-  
+
     console.log('isAbonoInicialEnabled:', this.supplierData[supplierKey].isAbonoInicialEnabled);
   }
-  
+
   updateAbonoInicial(event: Event, supplierKey: string): void {
-    const input = event.target as HTMLInputElement; 
-  
+    const input = event.target as HTMLInputElement;
+
     if (input) {
       const rawValue = input.value.replace(/[^0-9]/g, '');
-      
+
       const numericValue = parseFloat(rawValue);
-  
+
       if (!isNaN(numericValue)) {
         input.value = numericValue.toLocaleString('en-US', {
           style: 'currency',
@@ -504,24 +504,24 @@ export class RealizarPedidoComponent implements OnInit {
           minimumFractionDigits: 0,
           maximumFractionDigits: 0,
         });
-  
+
         this.supplierData[supplierKey].abonoInicial = numericValue;
       } else {
-        input.value = ''; 
+        input.value = '';
         this.supplierData[supplierKey].abonoInicial = '';
       }
-  
+
       this.updateSupplierDataInLocalStorage(supplierKey);
     }
   }
-  
+
   exportToPDF(supplier: string): void {
     const doc = new jsPDF();
-  
+
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(25);
     doc.text(`${supplier}`, 105, 20, { align: 'center' });
-  
+
     const rows: any[] = [];
     this.groupedSuppliers[supplier].forEach((product: any) => {
       rows.push([
@@ -531,7 +531,7 @@ export class RealizarPedidoComponent implements OnInit {
         product.cantidad,
       ]);
     });
-  
+
     (doc as any).autoTable({
       head: [['Nombre', 'Formulación', 'Unidad', 'Cantidad']],
       body: rows,
@@ -539,10 +539,10 @@ export class RealizarPedidoComponent implements OnInit {
       styles: { fontSize: 12 },
       headStyles: { fillColor: [0, 128, 0] },
     });
-  
-    const safeSupplier = supplier.replace(/[^a-zA-Z0-9]/g, '_'); 
+
+    const safeSupplier = supplier.replace(/[^a-zA-Z0-9]/g, '_');
     doc.save(`${safeSupplier}.pdf`);
-  
+
     this.groupedSuppliers = this.getGroupedBySupplier();
   }
 
@@ -551,7 +551,7 @@ export class RealizarPedidoComponent implements OnInit {
       console.error('El producto no es válido.');
       return;
     }
-  
+
     const precio = parseFloat(nuevoPrecio);
     if (!isNaN(precio) && precio > 0) {
       product.precio_compra = precio;
@@ -560,9 +560,9 @@ export class RealizarPedidoComponent implements OnInit {
       console.error('Precio inválido:', nuevoPrecio);
     }
   }
-  
+
   formatPrecioCompra(product: any, event: FocusEvent): void {
-    const input = event.target as HTMLInputElement; 
+    const input = event.target as HTMLInputElement;
     if (input && input.value) {
       const rawValue = parseFloat(input.value.replace(/[^0-9.]/g, ''));
       if (!isNaN(rawValue) && rawValue > 0) {
@@ -570,7 +570,7 @@ export class RealizarPedidoComponent implements OnInit {
       } else {
         console.error('Valor de precio no válido:', input.value);
       }
-      
+
       input.value = product.precio_compra.toLocaleString('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -581,10 +581,10 @@ export class RealizarPedidoComponent implements OnInit {
       console.error('El campo de entrada no contiene un valor válido.');
     }
   }
-  
+
   removeCurrencyFormat(event: FocusEvent): void {
-    const input = event.target as HTMLInputElement; 
-  
+    const input = event.target as HTMLInputElement;
+
     if (input && input.value) {
       const rawValue = parseFloat(input.value.replace(/[^0-9.]/g, ''));
       input.value = isNaN(rawValue) ? '' : rawValue.toString();
@@ -596,15 +596,15 @@ export class RealizarPedidoComponent implements OnInit {
       console.error(`No se encontró información para el proveedor: ${supplierKey}`);
       return;
     }
-  
+
     const totalProveedor = this.groupedSuppliers[supplierKey]
       .reduce((sum, product) => sum + product.cantidad * product.precio_compra, 0);
-  
+
     console.log('Total del Proveedor calculado:', totalProveedor);
-  
+
     const pedido = {
       proveedor: supplierKey,
-      proveedorId: this.supplierData[supplierKey]?.id || null, 
+      proveedorId: this.supplierData[supplierKey]?.id || null,
       compraNumero: this.compraIdsBySupplier[supplierKey] || null,
       facturaNumero: this.supplierData[supplierKey]?.facturaNumero || '',
       fecha: this.supplierData[supplierKey]?.fecha || new Date().toISOString(),
@@ -622,54 +622,54 @@ export class RealizarPedidoComponent implements OnInit {
         total: product.cantidad * product.precio_compra,
       })),
     };
-  
+
     console.log('Pedido enviado:', pedido);
-  
+
     const pedidosGuardados = JSON.parse(localStorage.getItem('pedidos') || '[]');
     pedidosGuardados.push(pedido);
     localStorage.setItem('pedidos', JSON.stringify(pedidosGuardados));
-  
+
     delete this.groupedSuppliers[supplierKey];
     delete this.supplierData[supplierKey];
     delete this.compraIdsBySupplier[supplierKey];
     this.selectedProducts = this.selectedProducts.filter(
       (product) => product.proveedor !== supplierKey
     );
-  
+
     this.groupedSuppliersArray = Object.entries(this.groupedSuppliers).map(([key, value]) => ({
       key,
       value,
     }));
-  
-    this.updateLocalStorage(); 
-  
+
+    this.updateLocalStorage();
+
     console.log(`Proveedor eliminado: ${supplierKey}`);
     console.log('Proveedores restantes:', this.groupedSuppliers);
   }
-  
+
   updateSupplierDataInLocalStorage(supplierKey: string): void {
     if (!this.supplierData[supplierKey]) {
       console.error(`No se encontró información para el proveedor: ${supplierKey}`);
       return;
     }
-  
+
     const storedData = JSON.parse(localStorage.getItem('supplierData') || '{}');
-  
+
     const abonoInicial = this.supplierData[supplierKey].abonoInicial;
     if (typeof abonoInicial === 'string') {
       this.supplierData[supplierKey].abonoInicial = Number(
         abonoInicial.replace(/[^0-9]/g, '')
       );
     }
-  
+
     storedData[supplierKey] = storedData[supplierKey] || {};
     storedData[supplierKey].facturaNumero = this.supplierData[supplierKey].facturaNumero || '';
     storedData[supplierKey].fecha = this.supplierData[supplierKey].fecha || '';
     storedData[supplierKey].formaPago = this.supplierData[supplierKey].formaPago || '';
-    storedData[supplierKey].abonoInicial = this.supplierData[supplierKey].abonoInicial || 0; 
-  
+    storedData[supplierKey].abonoInicial = this.supplierData[supplierKey].abonoInicial || 0;
+
     localStorage.setItem('supplierData', JSON.stringify(storedData));
-  
+
   }
 }
 
